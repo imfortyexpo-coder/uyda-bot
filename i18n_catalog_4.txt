@@ -1,0 +1,519 @@
+# config.py — названия столбцов (видны в «📄 Подробно» и в «❗ Не заполнено»)
+Наименование груза ¦ Yuk nomi ¦ Shipment name
+Отправитель ¦ Jo‘natuvchi ¦ Sender
+Получатель ¦ Qabul qiluvchi ¦ Consignee
+ГТД, часть 1 ¦ BYD, 1-qism ¦ GTD, part 1
+ГТД, часть 2 (дата) ¦ BYD, 2-qism (sana) ¦ GTD, part 2 (date)
+ГТД, часть 3 ¦ BYD, 3-qism ¦ GTD, part 3
+Таможенная стоимость ¦ Bojxona qiymati ¦ Customs value
+Курс USD/UZS на дату ГТД ¦ BYD sanasidagi USD/UZS kursi ¦ USD/UZS rate on the GTD date
+Страна отправления (код) ¦ Jo‘natish mamlakati (kod) ¦ Country of dispatch (code)
+Страна происхождения (код) ¦ Kelib chiqish mamlakati (kod) ¦ Country of origin (code)
+Номер автотранспорта ¦ Avtotransport raqami ¦ Vehicle number
+Фактурная стоимость в ГТД ¦ BYD dagi faktura qiymati ¦ Invoice value in the GTD
+Фактурная стоимость (завод), USD ¦ Faktura qiymati (zavod), USD ¦ Invoice value (factory), USD
+Фактурная стоимость (завод), валюта контракта ¦ Faktura qiymati (zavod), shartnoma valyutasi ¦ Invoice value (factory), contract currency
+Расход по переводу оплаты (банк), USD ¦ To‘lov o‘tkazmasi xarajati (bank), USD ¦ Payment transfer cost (bank), USD
+Курс валюты контракта к UZS ¦ Shartnoma valyutasining UZS ga kursi ¦ Contract currency rate to UZS
+Курс валюты контракта к USD ¦ Shartnoma valyutasining USD ga kursi ¦ Contract currency rate to USD
+Рыночный курс USD/UZS ¦ USD/UZS bozor kursi ¦ Market USD/UZS rate
+Количество мест ¦ Joylar soni ¦ Number of packages
+Вес нетто, кг ¦ Netto vazn, kg ¦ Net weight, kg
+Вес брутто, кг ¦ Brutto vazn, kg ¦ Gross weight, kg
+Объём, м³ ¦ Hajm, m³ ¦ Volume, m³
+Номер ККДГ ¦ KKDG raqami ¦ KKDG number
+Таможенный сбор (код 10), UZS ¦ Bojxona yig‘imi (kod 10), UZS ¦ Customs fee (code 10), UZS
+Пошлина (код 20), UZS ¦ Boj (kod 20), UZS ¦ Duty (code 20), UZS
+Акциз (код 27), UZS ¦ Aksiz (kod 27), UZS ¦ Excise (code 27), UZS
+НДС (код 29), UZS ¦ QQS (kod 29), UZS ¦ VAT (code 29), UZS
+Итого таможенные платежи и сборы, UZS ¦ Jami bojxona to‘lovlari va yig‘imlari, UZS ¦ Total customs payments and fees, UZS
+Гигиенический сертификат: наличные, UZS ¦ Gigiyena sertifikati: naqd, UZS ¦ Hygiene certificate: cash, UZS
+Гигиенический сертификат: перечислено, UZS ¦ Gigiyena sertifikati: o‘tkazilgan, UZS ¦ Hygiene certificate: transferred, UZS
+Гигиенический сертификат: счёт-фактура ¦ Gigiyena sertifikati: hisob-faktura ¦ Hygiene certificate: invoice
+Сертификат соответствия: наличные, UZS ¦ Muvofiqlik sertifikati: naqd, UZS ¦ Conformity certificate: cash, UZS
+Сертификат соответствия: перечислено, UZS ¦ Muvofiqlik sertifikati: o‘tkazilgan, UZS ¦ Conformity certificate: transferred, UZS
+Сертификат соответствия: счёт-фактура ¦ Muvofiqlik sertifikati: hisob-faktura ¦ Conformity certificate: invoice
+Экология: наличные, UZS ¦ Ekologiya: naqd, UZS ¦ Ecology: cash, UZS
+Экология: перечислено, UZS ¦ Ekologiya: o‘tkazilgan, UZS ¦ Ecology: transferred, UZS
+Экология: счёт-фактура ¦ Ekologiya: hisob-faktura ¦ Ecology: invoice
+Карантин (ИКР): наличные, UZS ¦ Karantin (IKR): naqd, UZS ¦ Quarantine (IKR): cash, UZS
+Карантин (ИКР): перечислено, UZS ¦ Karantin (IKR): o‘tkazilgan, UZS ¦ Quarantine (IKR): transferred, UZS
+Карантин (ИКР): счёт-фактура ¦ Karantin (IKR): hisob-faktura ¦ Quarantine (IKR): invoice
+Экспертное заключение, UZS ¦ Ekspert xulosasi, UZS ¦ Expert opinion, UZS
+Экспертное заключение: счёт-фактура ¦ Ekspert xulosasi: hisob-faktura ¦ Expert opinion: invoice
+Расход AR (без заголовка), UZS ¦ AR xarajati (sarlavhasiz), UZS ¦ Cost AR (no header), UZS
+Расход AR: счёт-фактура (AS) ¦ AR xarajati: hisob-faktura (AS) ¦ Cost AR: invoice (AS)
+Расход AT/AU: наличные, UZS ¦ AT/AU xarajati: naqd, UZS ¦ Cost AT/AU: cash, UZS
+Расход AT/AU: перечислено, UZS ¦ AT/AU xarajati: o‘tkazilgan, UZS ¦ Cost AT/AU: transferred, UZS
+Расход AT/AU: счёт-фактура (AV) ¦ AT/AU xarajati: hisob-faktura (AV) ¦ Cost AT/AU: invoice (AV)
+Логистика: наличные расходы, USD ¦ Logistika: naqd xarajatlar, USD ¦ Logistics: cash costs, USD
+Логистика: перечислено (исходное значение AX) ¦ Logistika: o‘tkazilgan (AX asl qiymati) ¦ Logistics: transferred (original AX value)
+Логистическая компания ¦ Logistika kompaniyasi ¦ Logistics company
+Логистика: № и дата счёт-фактуры ¦ Logistika: hisob-faktura № va sanasi ¦ Logistics: invoice no. and date
+Контактное лицо логистической компании ¦ Logistika kompaniyasi vakili ¦ Logistics company contact
+Таможенный досмотр, USD ¦ Bojxona ko‘rigi, USD ¦ Customs inspection, USD
+Таможенное оформление (инспектор), USD ¦ Bojxona rasmiylashtiruvi (inspektor), USD ¦ Customs clearance (inspector), USD
+Процент завода / услуги агента, USD ¦ Zavod foizi / agent xizmati, USD ¦ Factory % / agent services, USD
+Погрузочно-разгрузочные работы (ПРР), UZS ¦ Yuklash-tushirish ishlari (YuTI), UZS ¦ Loading/unloading (handling), UZS
+Прочие расходы, UZS ¦ Boshqa xarajatlar, UZS ¦ Other costs, UZS
+Итого все расходы с товаром (по таблице), USD ¦ Tovar bilan barcha xarajatlar jami (jadval bo‘yicha), USD ¦ Total costs with goods (per sheet), USD
+Примечание к грузу ¦ Yukka izoh ¦ Shipment note
+Примечание к BD (агент) ¦ BD ga izoh (agent) ¦ Note on BD (agent)
+Примечание к прочим расходам ¦ Boshqa xarajatlarga izoh ¦ Note on other costs
+Заводская стоимость (N) ¦ Zavod qiymati (N) ¦ Factory value (N)
+Расход по переводу оплаты (P) ¦ To‘lov o‘tkazmasi xarajati (P) ¦ Payment transfer cost (P)
+Рыночный курс (S) ¦ Bozor kursi (S) ¦ Market rate (S)
+Таможенный сбор (Y) ¦ Bojxona yig‘imi (Y) ¦ Customs fee (Y)
+Пошлина (Z) ¦ Boj (Z) ¦ Duty (Z)
+НДС (AB) ¦ QQS (AB) ¦ VAT (AB)
+Итого таможня (AC) ¦ Jami bojxona (AC) ¦ Customs total (AC)
+Счёт-фактура гиг. сертификата (AF) ¦ Gigiyena sertifikati hisob-fakturasi (AF) ¦ Hygiene certificate invoice (AF)
+Сертификат соответствия (AG/AH) ¦ Muvofiqlik sertifikati (AG/AH) ¦ Conformity certificate (AG/AH)
+Счёт-фактура сертификата (AI) ¦ Sertifikat hisob-fakturasi (AI) ¦ Certificate invoice (AI)
+Логистика (AW/AX) ¦ Logistika (AW/AX) ¦ Logistics (AW/AX)
+Логистическая компания (AY) ¦ Logistika kompaniyasi (AY) ¦ Logistics company (AY)
+Счёт-фактура логистики (AZ) ¦ Logistika hisob-fakturasi (AZ) ¦ Logistics invoice (AZ)
+Таможенный досмотр (BB) ¦ Bojxona ko‘rigi (BB) ¦ Customs inspection (BB)
+Таможенное оформление (BC) ¦ Bojxona rasmiylashtiruvi (BC) ¦ Customs clearance (BC)
+ПРР (BE) ¦ YuTI (BE) ¦ Handling (BE)
+Итог всех расходов (BG) ¦ Barcha xarajatlar jami (BG) ¦ Total of all costs (BG)
+# sheet.py — расчётные поля в «📄 Подробно»
+Номер ГТД ¦ BYD raqami ¦ GTD number
+⚠ Расхождение: AC − (Y+Z+AA+AB), UZS ¦ ⚠ Farq: AC − (Y+Z+AA+AB), UZS ¦ ⚠ Difference: AC − (Y+Z+AA+AB), UZS
+Сертификаты и разрешения итого, UZS ¦ Sertifikatlar va ruxsatnomalar jami, UZS ¦ Certificates and permits total, UZS
+Таможенный досмотр, UZS (в строке указан в сумах) ¦ Bojxona ko‘rigi, UZS (qatorda so‘mda) ¦ Customs inspection, UZS (given in UZS in the row)
+Таможенное оформление, UZS (в строке указано в сумах) ¦ Bojxona rasmiylashtiruvi, UZS (qatorda so‘mda) ¦ Customs clearance, UZS (given in UZS in the row)
+Логистика: перечислено, UZS ¦ Logistika: o‘tkazilgan, UZS ¦ Logistics: transferred, UZS
+Логистика: перечислено, USD ¦ Logistika: o‘tkazilgan, USD ¦ Logistics: transferred, USD
+Логистика итого, USD ¦ Logistika jami, USD ¦ Logistics total, USD
+Прочие расходы итого (AR+AT/AU+BB…BF), USD ¦ Boshqa xarajatlar jami (AR+AT/AU+BB…BF), USD ¦ Other costs total (AR+AT/AU+BB…BF), USD
+Накладные расходы итого, USD ¦ Ustama xarajatlar jami, USD ¦ Overheads total, USD
+Накладные расходы итого, UZS ¦ Ustama xarajatlar jami, UZS ¦ Overheads total, UZS
+Накладные к заводской стоимости, % ¦ Ustama xarajatning zavod qiymatiga nisbati, % ¦ Overheads to factory value, %
+Себестоимость с накладными (с НДС), USD ¦ Ustama bilan tannarx (QQS bilan), USD ¦ Landed cost with overheads (incl. VAT), USD
+Себестоимость с накладными (с НДС), UZS ¦ Ustama bilan tannarx (QQS bilan), UZS ¦ Landed cost with overheads (incl. VAT), UZS
+Себестоимость без НДС, USD ¦ QQSsiz tannarx, USD ¦ Landed cost excl. VAT, USD
+Себестоимость за 1 кг нетто, USD ¦ 1 kg netto tannarxi, USD ¦ Landed cost per 1 kg net, USD
+⚠ Расхождение: BG (таблица) − расчёт бота, USD ¦ ⚠ Farq: BG (jadval) − bot hisobi, USD ¦ ⚠ Difference: BG (sheet) − bot calculation, USD
+Курс для пересчёта UZS→USD ¦ UZS→USD hisoblash kursi ¦ Rate for UZS→USD conversion
+Стоимость товара ¦ Tovar qiymati ¦ Goods value
+Банковские расходы ¦ Bank xarajatlari ¦ Bank costs
+Расчёт себестоимости (вычислено ботом) ¦ Tannarx hisobi (bot hisoblagan) ¦ Landed cost calculation (computed by the bot)
+# categories.py — страны
+Россия ¦ Rossiya ¦ Russia
+Китай ¦ Xitoy ¦ China
+Турция ¦ Turkiya ¦ Turkey
+ОАЭ ¦ BAA ¦ UAE
+Иран ¦ Eron ¦ Iran
+Беларусь ¦ Belarus ¦ Belarus
+Латвия ¦ Latviya ¦ Latvia
+Пакистан ¦ Pokiston ¦ Pakistan
+Гонконг ¦ Gonkong ¦ Hong Kong
+Франция ¦ Fransiya ¦ France
+Узбекистан ¦ O‘zbekiston ¦ Uzbekistan
+Казахстан ¦ Qozog‘iston ¦ Kazakhstan
+Кыргызстан ¦ Qirg‘iziston ¦ Kyrgyzstan
+Украина ¦ Ukraina ¦ Ukraine
+Польша ¦ Polsha ¦ Poland
+Италия ¦ Italiya ¦ Italy
+Германия ¦ Germaniya ¦ Germany
+Южная Корея ¦ Janubiy Koreya ¦ South Korea
+Япония ¦ Yaponiya ¦ Japan
+Индия ¦ Hindiston ¦ India
+Таиланд ¦ Tailand ¦ Thailand
+Вьетнам ¦ Vyetnam ¦ Vietnam
+Сингапур ¦ Singapur ¦ Singapore
+США ¦ AQSh ¦ USA
+Великобритания ¦ Buyuk Britaniya ¦ United Kingdom
+Испания ¦ Ispaniya ¦ Spain
+Чехия ¦ Chexiya ¦ Czechia
+Австрия ¦ Avstriya ¦ Austria
+Болгария ¦ Bolgariya ¦ Bulgaria
+Румыния ¦ Ruminiya ¦ Romania
+Монголия ¦ Mo‘g‘uliston ¦ Mongolia
+Таджикистан ¦ Tojikiston ¦ Tajikistan
+Туркменистан ¦ Turkmaniston ¦ Turkmenistan
+Азербайджан ¦ Ozarbayjon ¦ Azerbaijan
+Грузия ¦ Gruziya ¦ Georgia
+Армения ¦ Armaniston ¦ Armenia
+Эстония ¦ Estoniya ¦ Estonia
+Литва ¦ Litva ¦ Lithuania
+Финляндия ¦ Finlyandiya ¦ Finland
+Нидерланды ¦ Niderlandiya ¦ Netherlands
+Бельгия ¦ Belgiya ¦ Belgium
+Португалия ¦ Portugaliya ¦ Portugal
+Греция ¦ Gretsiya ¦ Greece
+Израиль ¦ Isroil ¦ Israel
+Саудовская Аравия ¦ Saudiya Arabistoni ¦ Saudi Arabia
+Бангладеш ¦ Bangladesh ¦ Bangladesh
+Индонезия ¦ Indoneziya ¦ Indonesia
+Малайзия ¦ Malayziya ¦ Malaysia
+Филиппины ¦ Filippin ¦ Philippines
+Тайвань ¦ Tayvan ¦ Taiwan
+# условия поставки, транспорт, разделы
+франко-завод ¦ zavoddan olib ketish ¦ ex works
+франко-перевозчик ¦ tashuvchiga topshirish ¦ free carrier
+перевозка оплачена до ¦ tashish ... gacha to‘langan ¦ carriage paid to
+перевозка и страхование оплачены до ¦ tashish va sug‘urta ... gacha to‘langan ¦ carriage and insurance paid to
+поставка в место назначения ¦ manzilga yetkazib berish ¦ delivered at place
+поставка с оплатой пошлин ¦ boj to‘langan holda yetkazish ¦ delivered duty paid
+франко-борт ¦ kema bortida ¦ free on board
+стоимость и фрахт ¦ qiymat va fraxt ¦ cost and freight
+стоимость, страхование, фрахт ¦ qiymat, sug‘urta, fraxt ¦ cost, insurance, freight
+франко вдоль борта ¦ kema yonida ¦ free alongside ship
+поставка на терминал ¦ terminalga yetkazish ¦ delivered at terminal
+Автотранспорт ¦ Avtotransport ¦ Road transport
+Железная дорога ¦ Temir yo‘l ¦ Railway
+Другое ¦ Boshqa ¦ Other
+Не указан ¦ Ko‘rsatilmagan ¦ Not specified
+Не указана ¦ Ko‘rsatilmagan ¦ Not specified
+Страны ¦ Mamlakatlar ¦ Countries
+страна отправления ¦ jo‘natish mamlakati ¦ country of dispatch
+Таможенные режимы ¦ Bojxona rejimlari ¦ Customs regimes
+таможенный режим (ИМ40 / ИМ74 / ИМ70 / НД40 / ИМ51) ¦ bojxona rejimi (IM40 / IM74 / IM70 / ND40 / IM51) ¦ customs regime (IM40 / IM74 / IM70 / ND40 / IM51)
+Поставщики ¦ Yetkazib beruvchilar ¦ Suppliers
+отправитель ¦ jo‘natuvchi ¦ sender
+Транспорт ¦ Transport ¦ Transport
+вид транспорта ¦ transport turi ¦ transport type
+Получатели ¦ Qabul qiluvchilar ¦ Consignees
+получатель ¦ qabul qiluvchi ¦ consignee
+Годы ¦ Yillar ¦ Years
+год по ГТД выпуска (ИМ40) ¦ chiqarish BYD bo‘yicha yil (IM40) ¦ year by the release GTD (IM40)
+Условия поставки ¦ Yetkazib berish shartlari ¦ Delivery terms
+условие поставки (Инкотермс) ¦ yetkazib berish sharti (Inkoterms) ¦ delivery term (Incoterms)
+Таможенные посты ¦ Bojxona postlari ¦ Customs posts
+код таможенного поста из номера ГТД ¦ BYD raqamidagi bojxona posti kodi ¦ customs post code from the GTD number
+🏳️ Код ¦ 🏳️ Kod ¦ 🏳️ Code
+ИМ40 · Импорт ¦ IM40 · Import ¦ IM40 · Import
+ИМ40 + ИМ74 · через таможенный склад ¦ IM40 + IM74 · bojxona ombori orqali ¦ IM40 + IM74 · via customs warehouse
+ИМ40 + ИМ70 · через временное хранение ¦ IM40 + IM70 · vaqtincha saqlash orqali ¦ IM40 + IM70 · via temporary storage
+ИМ40 + ИМ70 + ИМ74 ¦ IM40 + IM70 + IM74 ¦ IM40 + IM70 + IM74
+НД40 · Неполная декларация ¦ ND40 · To‘liq bo‘lmagan deklaratsiya ¦ ND40 · Incomplete declaration
+ИМ51 · Переработка на таможенной территории ¦ IM51 · Bojxona hududida qayta ishlash ¦ IM51 · Processing in the customs territory
+Только ИМ74 · декларации ИМ40 в таблице нет ¦ Faqat IM74 · jadvalda IM40 deklaratsiyasi yo‘q ¦ IM74 only · no IM40 declaration in the sheet
+Только ИМ70 · декларации ИМ40 в таблице нет ¦ Faqat IM70 · jadvalda IM40 deklaratsiyasi yo‘q ¦ IM70 only · no IM40 declaration in the sheet
+Только ИМ70 и ИМ74 · декларации ИМ40 нет ¦ Faqat IM70 va IM74 · IM40 deklaratsiyasi yo‘q ¦ IM70 and IM74 only · no IM40 declaration
+Другой режим ¦ Boshqa rejim ¦ Other regime
+# новое: выбор языка
+🌐 Язык ¦ 🌐 Til ¦ 🌐 Language
+сум ¦ so‘m ¦ UZS
+автотранспорт ¦ avtotransport ¦ road transport
+железная дорога ¦ temir yo‘l ¦ railway
+другое ¦ boshqa ¦ other
+не указан ¦ ko‘rsatilmagan ¦ not specified
+Груз ¦ Yuk ¦ Shipment
+ГТД ¦ BYD ¦ GTD
+🖼 Сводка картинкой ¦ 🖼 Rasmli hisobot ¦ 🖼 Summary as image
+Нужна библиотека Pillow: py -3.12 -m pip install pillow ¦ Pillow kutubxonasi kerak: py -3.12 -m pip install pillow ¦ The Pillow library is needed: py -3.12 -m pip install pillow
+Открытые работы ¦ Ochiq ishlar ¦ Open tasks
+У таможни ¦ Bojxonada ¦ With customs
+У 1С УНФ ¦ 1C UNF da ¦ With 1C UNF
+Замечаний открыто ¦ Ochiq mulohazalar ¦ Open remarks
+# Обновление интерфейса: меню «Ещё», карточка, картинки
+☰ Ещё ¦ ☰ Yana ¦ ☰ More
+☰ <b>Все разделы</b>\nВыберите раздел: ¦ ☰ <b>Barcha bo‘limlar</b>\nBo‘limni tanlang: ¦ ☰ <b>All sections</b>\nChoose a section:
+💵 Расходы ¦ 💵 Xarajatlar ¦ 💵 Costs
+💱 Валюты ¦ 💱 Valyuta ¦ 💱 Currencies
+🖼 Картинкой ¦ 🖼 Rasm sifatida ¦ 🖼 As image
+Завод <b> ¦ Zavod <b> ¦ Factory <b>
+расходы <b> ¦ xarajatlar <b> ¦ costs <b>
+💰 Себестоимость <b> ¦ 💰 Tannarx <b> ¦ 💰 Landed cost <b>
+· <i>предварительная</i> ¦ · <i>taxminiy</i> ¦ · <i>preliminary</i>
+❗ Не заполнено ( ¦ ❗ To‘ldirilmagan ( ¦ ❗ Not filled (
+— подробно в «💵 Расходы» ¦ — batafsil «💵 Xarajatlar» da ¦ — details in «💵 Costs»
+⚠️ Цифры в таблице не сходятся — подробно в «💵 Расходы» ¦ ⚠️ Jadvaldagi raqamlar mos kelmaydi — batafsil «💵 Xarajatlar» da ¦ ⚠️ Sheet figures do not match — details in «💵 Costs»
+🌐 Til · Язык · Language ¦ 🌐 Til · Язык · Language ¦ 🌐 Language · Til · Язык
+Расходы <b> ¦ Xarajatlar <b> ¦ Costs <b>
+# Обновление 30.10: 1С, курс ЦБ, сроки этапов, недельный отчёт, Excel
+🧾 Для 1С ¦ 🧾 1C uchun ¦ 🧾 For 1C
+🧾 <b>Для 1С УНФ</b> ¦ 🧾 <b>1C UNF uchun</b> ¦ 🧾 <b>For 1C UNF</b>
+Для 1С УНФ ¦ 1C UNF uchun ¦ For 1C UNF
+<i>Нажмите на значение — оно скопируется.</i> ¦ <i>Qiymatni bosing — u nusxalanadi.</i> ¦ <i>Tap a value to copy it.</i>
+<b>Дополнительные расходы</b> ¦ <b>Qo‘shimcha xarajatlar</b> ¦ <b>Additional costs</b>
+<b>Итого расходов ≈ ¦ <b>Jami xarajatlar ≈ ¦ <b>Total costs ≈
+📎 Ниже — файл Excel: лист «Поступление» и лист «Доп. расходы». ¦ 📎 Pastda — Excel fayl: «Kirim» va «Qo‘sh. xarajatlar» varaqlari. ¦ 📎 Below is an Excel file: «Receipt» and «Add. costs» sheets.
+Себестоимость предварительная: есть незаполненные или неподтверждённые суммы. ¦ Tannarx taxminiy: to‘ldirilmagan yoki tasdiqlanmagan summalar bor. ¦ Preliminary landed cost: there are unfilled or unconfirmed amounts.
+Груз (столбец A) ¦ Yuk (A ustuni) ¦ Shipment (column A)
+Поставщик (контрагент) ¦ Yetkazib beruvchi (kontragent) ¦ Supplier (counterparty)
+Дата ГТД ¦ BYD sanasi ¦ GTD date
+Таможенный пост ¦ Bojxona posti ¦ Customs post
+Таможенный режим ¦ Bojxona rejimi ¦ Customs regime
+Страна отправления ¦ Jo‘natish mamlakati ¦ Country of dispatch
+Номер машины ¦ Mashina raqami ¦ Truck number
+Цена завода, USD ¦ Zavod narxi, USD ¦ Factory price, USD
+Цена завода в валюте контракта ¦ Shartnoma valyutasidagi zavod narxi ¦ Factory price in contract currency
+Рыночный курс S ¦ Bozor kursi S ¦ Market rate S
+Курс ГТД H ¦ BYD kursi H ¦ GTD rate H
+Курс ЦБ на дату ГТД ¦ BYD sanasidagi MB kursi ¦ Central Bank rate on GTD date
+Перевозчик ¦ Tashuvchi ¦ Carrier
+Расходы итого, USD ¦ Jami xarajatlar, USD ¦ Total costs, USD
+Себестоимость, USD ¦ Tannarx, USD ¦ Landed cost, USD
+Строка таблицы ¦ Jadval qatori ¦ Sheet row
+Реквизит ¦ Rekvizit ¦ Field
+Значение ¦ Qiymat ¦ Value
+Поступление ¦ Kirim ¦ Receipt
+Доп. расходы ¦ Qo‘sh. xarajatlar ¦ Add. costs
+Дополнительные расходы (для документа «Дополнительные расходы») ¦ Qo‘shimcha xarajatlar («Qo‘shimcha xarajatlar» hujjati uchun) ¦ Additional costs (for the «Additional costs» document)
+Статья ¦ Modda ¦ Item
+Сумма ¦ Summa ¦ Amount
+Валюта ¦ Valyuta ¦ Currency
+Сумма, USD ¦ Summa, USD ¦ Amount, USD
+Сумма, UZS ¦ Summa, UZS ¦ Amount, UZS
+Оплата ¦ To‘lov ¦ Payment
+Контрагент / счёт-фактура ¦ Kontragent / hisob-faktura ¦ Counterparty / invoice
+Подтверждение ¦ Tasdiq ¦ Confirmation
+подтверждено ¦ tasdiqlangan ¦ confirmed
+не подтверждено (жёлтая) ¦ tasdiqlanmagan (sariq) ¦ unconfirmed (yellow)
+Статус ¦ Holat ¦ Status
+Ответственный ¦ Javobgar ¦ Responsible
+Дней на этапе ¦ Bosqichda kun ¦ Days at stage
+Режим ¦ Rejim ¦ Regime
+Страна ¦ Mamlakat ¦ Country
+Поставщик ¦ Yetkazib beruvchi ¦ Supplier
+Цена завода, $ ¦ Zavod narxi, $ ¦ Factory price, $
+Расходы, $ ¦ Xarajatlar, $ ¦ Costs, $
+Себестоимость, $ ¦ Tannarx, $ ¦ Landed cost, $
+Расходы к заводу, % ¦ Xarajat/zavod narxi, % ¦ Costs to factory, %
+Не заполнено ¦ To‘ldirilmagan ¦ Not filled
+Не подтверждено ¦ Tasdiqlanmagan ¦ Unconfirmed
+Закрыто за неделю ¦ Hafta davomida yopilgan ¦ Closed this week
+Сотрудники ¦ Xodimlar ¦ Staff
+Кто ¦ Kim ¦ Who
+Взял ¦ Oldi ¦ Took
+Закрыл ¦ Yopdi ¦ Closed
+С пометкой ¦ Belgi bilan ¦ Flagged
+Причина ¦ Sabab ¦ Reason
+📥 Excel ¦ 📥 Excel ¦ 📥 Excel
+Срок этапа прошёл ¦ Bosqich muddati o‘tdi ¦ Stage deadline passed
+⏳ На этапе: ¦ ⏳ Bosqichda: ¦ ⏳ At this stage:
+· норма ¦ · me’yor ¦ · norm
+· <b>срок прошёл</b> ¦ · <b>muddat o‘tdi</b> ¦ · <b>overdue</b>
+Срок этапа прошёл: <b> ¦ Bosqich muddati o‘tdi: <b> ¦ Stage deadline passed: <b>
+</b> — напомнить или решить ¦ </b> — eslatish yoki hal qilish ¦ </b> — remind or resolve
+⏳ <b>Срок этапа прошёл: ¦ ⏳ <b>Bosqich muddati o‘tdi: ¦ ⏳ <b>Stage deadline passed:
+Норма — ¦ Me’yor — ¦ Norm —
+дн. Откройте груз и завершите свой этап: ¦ kun. Yukni oching va o‘z bosqichingizni yakunlang: ¦ days. Open the shipment and finish your stage:
+⏳ Весь список ¦ ⏳ Butun ro‘yxat ¦ ⏳ Full list
+🚨 <b>Просрочка больше ¦ 🚨 <b>Me’yordan ortiq kechikish: ¦ 🚨 <b>Overdue by more than
+дн. сверх нормы: ¦ kundan ko‘p: ¦ days beyond the norm:
+⏳ Открыть список ¦ ⏳ Ro‘yxatni ochish ¦ ⏳ Open the list
+(норма ¦ (me’yor ¦ (norm
+⏳ Срок прошёл ¦ ⏳ Muddat o‘tdi ¦ ⏳ Overdue
+📈 Отчёт за неделю ¦ 📈 Haftalik hisobot ¦ 📈 Weekly report
+📈 <b>Отчёт за неделю</b> ¦ 📈 <b>Haftalik hisobot</b> ¦ 📈 <b>Weekly report</b>
+Новых грузов ¦ Yangi yuklar ¦ New shipments
+Закрыто ¦ Yopilgan ¦ Closed
+из них с пометкой ¦ shundan belgi bilan ¦ of them flagged
+Открыто сейчас ¦ Hozir ochiq ¦ Open now
+⏳ Срок этапа прошёл ¦ ⏳ Bosqich muddati o‘tdi ¦ ⏳ Stage overdue
+⏰ Просрочено ¦ ⏰ Muddati o‘tgan ¦ ⏰ Overdue
+🟡 Не подтверждено ¦ 🟡 Tasdiqlanmagan ¦ 🟡 Unconfirmed
+⏳ <b>Дольше нормы на этапе</b> ¦ ⏳ <b>Bosqichda me’yordan uzoq</b> ¦ ⏳ <b>Longer than the norm at a stage</b>
+👤 <b>Кто что сделал</b> ¦ 👤 <b>Kim nima qildi</b> ¦ 👤 <b>Who did what</b>
+: взял ¦ : oldi ¦ : took
+, закрыл ¦ , yopdi ¦ , closed
+✅ <b>Закрыто за неделю</b> ¦ ✅ <b>Hafta davomida yopilgan</b> ¦ ✅ <b>Closed this week</b>
+📎 Подробно — в файле Excel. ¦ 📎 Batafsil — Excel faylida. ¦ 📎 Details are in the Excel file.
+⛔ Отчёт — для Директора и Разработчика ¦ ⛔ Hisobot — direktor va dasturchi uchun ¦ ⛔ The report is for the Director and the Developer
+🏦 Курс ЦБ на дату ГТД: <b> ¦ 🏦 BYD sanasidagi MB kursi: <b> ¦ 🏦 Central Bank rate on GTD date: <b>
+курс H ✓ ¦ H kursi ✓ ¦ rate H ✓
+⚠️ курс H отличается на <b> ¦ ⚠️ H kursi farq qiladi: <b> ¦ ⚠️ rate H differs by <b>
+⚠️ курс S отличается на <b> ¦ ⚠️ S kursi farq qiladi: <b> ¦ ⚠️ rate S differs by <b>
+Курс ГТД ≠ курс ЦБ ¦ BYD kursi ≠ MB kursi ¦ GTD rate ≠ Central Bank rate
+Наличные ¦ Naqd ¦ Cash
+Перечисление ¦ O‘tkazma ¦ Transfer
+Курс H (на дату ГТД) отличается от официального курса ЦБ Узбекистана на эту дату больше чем на ¦ H kursi (BYD sanasida) O‘zbekiston Markaziy banki shu sanadagi rasmiy kursidan ko‘proq farq qiladi: ¦ Rate H (on the GTD date) differs from the official Central Bank of Uzbekistan rate on that date by more than
+. Курс берётся с cbu.uz. Обычно это опечатка в столбце H. ¦ . Kurs cbu.uz dan olinadi. Odatda bu H ustunidagi xato. ¦ . The rate is taken from cbu.uz. Usually it is a typo in column H.
+# Обновление 30.10: навигация и главное меню
+🏠 Меню ¦ 🏠 Menyu ¦ 🏠 Menu
+◀ Назад ¦ ◀ Orqaga ¦ ◀ Back
+🟠 <b>Uyda · Импорт</b> — главное меню ¦ 🟠 <b>Uyda · Import</b> — asosiy menyu ¦ 🟠 <b>Uyda · Imports</b> — main menu
+📋 Открыто: <b> ¦ 📋 Ochiq: <b> ¦ 📋 Open: <b>
+Выберите раздел: ¦ Bo‘limni tanlang: ¦ Choose a section:
+🛃 Мои грузы · ¦ 🛃 Mening yuklarim · ¦ 🛃 My shipments ·
+🧾 Мои грузы · ¦ 🧾 Mening yuklarim · ¦ 🧾 My shipments ·
+⏳ Срок прошёл · ¦ ⏳ Muddat o‘tdi · ¦ ⏳ Overdue ·
+Завод ¦ Zavod ¦ Factory
+💰 Себестоимость ¦ 💰 Tannarx ¦ 💰 Landed cost
+весь ¦ to‘liq ¦ full
+грузов за те же дни месяца ¦ ta yuk — oyning shu kunlari bo‘yicha ¦ shipments over the same days of the month
+К прошлому месяцу: <b> ¦ O‘tgan oyga nisbatan: <b> ¦ Versus last month: <b>
+· 🧾 у 1С УНФ <b> ¦ · 🧾 1C UNF da <b> ¦ · 🧾 with 1C UNF <b>
+🛃 у таможни <b> ¦ 🛃 bojxonada <b> ¦ 🛃 with customs <b>
+· ⏳ срок прошёл <b> ¦ · ⏳ muddat o‘tdi <b> ¦ · ⏳ overdue <b>
+· 📌 замечаний <b> ¦ · 📌 mulohazalar <b> ¦ · 📌 remarks <b>
+📋 Открытые работы: <b> ¦ 📋 Ochiq ishlar: <b> ¦ 📋 Open tasks: <b>
+# Обновление: показатели строками
+📋 Открытые работы: <b> ¦ 📋 Ochiq ishlar: <b> ¦ 📋 Open tasks: <b>
+🆕 новые ¦ 🆕 yangi ¦ 🆕 new
+· ⚠️ с причиной ¦ · ⚠️ sabab bilan ¦ · ⚠️ with a reason
+🛃 У таможни: <b> ¦ 🛃 Bojxonada: <b> ¦ 🛃 With customs: <b>
+🧾 У 1С УНФ: <b> ¦ 🧾 1C UNF da: <b> ¦ 🧾 With 1C UNF: <b>
+❗ Не заполнено: <b> ¦ ❗ To‘ldirilmagan: <b> ¦ ❗ Not filled: <b>
+🟡 Не подтверждено: <b> ¦ 🟡 Tasdiqlanmagan: <b> ¦ 🟡 Unconfirmed: <b>
+⏰ Просрочено: <b> ¦ ⏰ Muddati o‘tgan: <b> ¦ ⏰ Overdue: <b>
+⏳ Срок этапа прошёл: <b> ¦ ⏳ Bosqich muddati o‘tdi: <b> ¦ ⏳ Stage overdue: <b>
+📌 Замечаний: <b> ¦ 📌 Mulohazalar: <b> ¦ 📌 Remarks: <b>
+🆘 Обращений: <b> ¦ 🆘 Murojaatlar: <b> ¦ 🆘 Requests: <b>
+✅ Закрыто: сегодня <b> ¦ ✅ Yopilgan: bugun <b> ¦ ✅ Closed: today <b>
+</b> · за 7 дней <b> ¦ </b> · 7 kunda <b> ¦ </b> · in 7 days <b>
+· ⚠️ с пометкой ¦ · ⚠️ belgi bilan ¦ · ⚠️ flagged
+📅 <b>Месяц к месяцу</b> <i>(по дате ГТД ИМ40)</i> ¦ 📅 <b>Oyma-oy</b> <i>(IM40 BYD sanasi bo‘yicha)</i> ¦ 📅 <b>Month on month</b> <i>(by IM40 GTD date)</i>
+🆕 Новых грузов: <b> ¦ 🆕 Yangi yuklar: <b> ¦ 🆕 New shipments: <b>
+✅ Закрыто: <b> ¦ ✅ Yopilgan: <b> ¦ ✅ Closed: <b>
+(⚠️ с пометкой ¦ (⚠️ belgi bilan ¦ (⚠️ flagged
+📋 Открыто сейчас: <b> ¦ 📋 Hozir ochiq: <b> ¦ 📋 Open now: <b>
+📈 К прошлому месяцу: <b> ¦ 📈 O‘tgan oyga nisbatan: <b> ¦ 📈 Versus last month: <b>
+📉 К прошлому месяцу: <b> ¦ 📉 O‘tgan oyga nisbatan: <b> ¦ 📉 Versus last month: <b>
+➖ К прошлому месяцу: <b> ¦ ➖ O‘tgan oyga nisbatan: <b> ¦ ➖ Versus last month: <b>
+# Управление рисками
+⚠️ Риски ¦ ⚠️ Xavflar ¦ ⚠️ Risks
+⚠️ <b>Управление рисками</b> ¦ ⚠️ <b>Xavflarni boshqarish</b> ¦ ⚠️ <b>Risk management</b>
+🔴 высоких <b> ¦ 🔴 yuqori <b> ¦ 🔴 high <b>
+</b> · 🟠 средних <b> ¦ </b> · 🟠 o‘rta <b> ¦ </b> · 🟠 medium <b>
+Все открытые ¦ Barcha ochiqlar ¦ All open
+🔴 Высокие ¦ 🔴 Yuqori ¦ 🔴 High
+Мои ¦ Meniki ¦ Mine
+Портфель: поставщики, страны, бот ¦ Portfel: yetkazib beruvchilar, mamlakatlar, bot ¦ Portfolio: suppliers, countries, bot
+Снятые и принятые ¦ Olib tashlangan va qabul qilingan ¦ Closed and accepted
+По группам: ¦ Guruhlar bo‘yicha: ¦ By group:
+Нажмите на риск — что случилось, кто отвечает, что сделать. ¦ Xavfni bosing — nima bo‘ldi, kim javobgar, nima qilish kerak. ¦ Tap a risk — what happened, who is responsible, what to do.
+Рисков нет 👍 ¦ Xavflar yo‘q 👍 ¦ No risks 👍
+Портфель ¦ Portfel ¦ Portfolio
+Архив ¦ Arxiv ¦ Archive
+➕ Добавить риск ¦ ➕ Xavf qo‘shish ¦ ➕ Add risk
+· высокий риск ¦ · yuqori xavf ¦ · high risk
+· средний риск ¦ · o‘rta xavf ¦ · medium risk
+· низкий риск ¦ · past xavf ¦ · low risk
+Балл: <b> ¦ Ball: <b> ¦ Score: <b>
+= вероятность ¦ = ehtimollik ¦ = likelihood
+× влияние ¦ × ta’sir ¦ × impact
+Группа: ¦ Guruh: ¦ Group:
+Статус: ¦ Holat: ¦ Status:
+🤖 Найден ботом ¦ 🤖 Bot topgan ¦ 🤖 Found by the bot
+✍️ Добавлен вручную ¦ ✍️ Qo‘lda qo‘shilgan ¦ ✍️ Added manually
+<b>Что случилось</b> ¦ <b>Nima bo‘ldi</b> ¦ <b>What happened</b>
+<b>Что сделать</b> ¦ <b>Nima qilish kerak</b> ¦ <b>What to do</b>
+Открыт ¦ Ochiq ¦ Open
+Снят ¦ Olib tashlandi ¦ Closed
+Принят ¦ Qabul qilindi ¦ Accepted
+✅ Снят ¦ ✅ Olib tashlandi ¦ ✅ Closed
+🤝 Принять ¦ 🤝 Qabul qilish ¦ 🤝 Accept
+🔓 Открыть снова ¦ 🔓 Qayta ochish ¦ 🔓 Reopen
+Вероятность ¦ Ehtimollik ¦ Likelihood
+Влияние ¦ Ta’sir ¦ Impact
+👤 Ответственный ¦ 👤 Javobgar ¦ 👤 Owner
+⚠️ Все риски ¦ ⚠️ Barcha xavflar ¦ ⚠️ All risks
+⚠️ Открыть риск ¦ ⚠️ Xavfni ochish ¦ ⚠️ Open risk
+📦 Карточка партии ¦ 📦 Yuk kartochkasi ¦ 📦 Shipment card
+Риск не найден. ¦ Xavf topilmadi. ¦ Risk not found.
+🔴 <b>Высокий риск</b> · балл ¦ 🔴 <b>Yuqori xavf</b> · ball ¦ 🔴 <b>High risk</b> · score
+👤 Ответственный: ¦ 👤 Javobgar: ¦ 👤 Owner:
+👤 <b>Вам назначен риск</b> ¦ 👤 <b>Sizga xavf tayinlandi</b> ¦ 👤 <b>A risk is assigned to you</b>
+👤 <b>Кто отвечает за риск?</b> ¦ 👤 <b>Xavf uchun kim javobgar?</b> ¦ 👤 <b>Who owns this risk?</b>
+⛔ Риски вручную добавляют Директор и Разработчик ¦ ⛔ Xavflarni qo‘lda direktor va dasturchi qo‘shadi ¦ ⛔ Only the Director and the Developer add risks manually
+✍️ Опишите риск одним сообщением.\nНапример: «Поставщик ПОСУДА предупредил о задержке отгрузки на 2 недели».\nОтмена — /cancel ¦ ✍️ Xavfni bitta xabarda yozing.\nMasalan: «ПОСУДА yetkazib beruvchisi jo‘natma 2 haftaga kechikishini ogohlantirdi».\nBekor qilish — /cancel ¦ ✍️ Describe the risk in one message.\nFor example: «Supplier ПОСУДА warned of a 2-week shipping delay».\nCancel — /cancel
+Описание риска… ¦ Xavf tavsifi… ¦ Risk description…
+✅ <b>Риск добавлен</b> — задайте вероятность, влияние и ответственного. ¦ ✅ <b>Xavf qo‘shildi</b> — ehtimollik, ta’sir va javobgarni belgilang. ¦ ✅ <b>Risk added</b> — set likelihood, impact and owner.
+✍️ Напишите, почему риск принимаем. Отмена — /cancel ¦ ✍️ Xavfni nega qabul qilayotganimizni yozing. Bekor qilish — /cancel ¦ ✍️ Write why we accept this risk. Cancel — /cancel
+✍️ Напишите, что сделано (коротко). Отмена — /cancel ¦ ✍️ Nima qilinganini qisqacha yozing. Bekor qilish — /cancel ¦ ✍️ Briefly write what was done. Cancel — /cancel
+Комментарий… ¦ Izoh… ¦ Comment…
+<b>Риск ¦ <b>Xavf ¦ <b>Risk
+1 — почти невозможно · 3 — может случиться · 5 — почти наверняка ¦ 1 — deyarli imkonsiz · 3 — bo‘lishi mumkin · 5 — deyarli aniq ¦ 1 — almost impossible · 3 — may happen · 5 — almost certain
+1 — мелочь · 3 — заметные деньги или сроки · 5 — крупный убыток или остановка ¦ 1 — arzimas · 3 — sezilarli pul yoki muddat · 5 — katta zarar yoki to‘xtash ¦ 1 — trivial · 3 — noticeable money or delay · 5 — major loss or stoppage
+</b> риска « ¦ </b>, xavf: « ¦ </b> of risk «
+Сохранено ¦ Saqlandi ¦ Saved
+⚠️ <b>Реестр рисков</b> ¦ ⚠️ <b>Xavflar reyestri</b> ¦ ⚠️ <b>Risk register</b>
+Реестр рисков ¦ Xavflar reyestri ¦ Risk register
+⚠️ Риск: ¦ ⚠️ Xavf: ¦ ⚠️ Risk:
+ещё: ¦ yana: ¦ also:
+⚠️ Риски: 🔴 <b> ¦ ⚠️ Xavflar: 🔴 <b> ¦ ⚠️ Risks: 🔴 <b>
+⚠️ Риски · 🔴 ¦ ⚠️ Xavflar · 🔴 ¦ ⚠️ Risks · 🔴
+Высоких рисков: <b> ¦ Yuqori xavflar: <b> ¦ High risks: <b>
+</b> — разберите в «⚠️ Риски» ¦ </b> — «⚠️ Xavflar» bo‘limida ko‘rib chiqing ¦ </b> — review in «⚠️ Risks»
+⚠️ <b>Риски</b>: сейчас 🔴 ¦ ⚠️ <b>Xavflar</b>: hozir 🔴 ¦ ⚠️ <b>Risks</b>: now 🔴
+· за неделю новых ¦ · hafta davomida yangi ¦ · new this week
+, снято или принято ¦ , yopilgan yoki qabul qilingan ¦ , closed or accepted
+Уровень ¦ Daraja ¦ Level
+Балл ¦ Ball ¦ Score
+Риск ¦ Xavf ¦ Risk
+Группа ¦ Guruh ¦ Group
+К чему относится ¦ Nimaga tegishli ¦ Relates to
+Что случилось ¦ Nima bo‘ldi ¦ What happened
+Найден ¦ Topilgan ¦ Found
+Обновлён ¦ Yangilangan ¦ Updated
+Заметка ¦ Izoh ¦ Note
+высокий ¦ yuqori ¦ high
+средний ¦ o‘rta ¦ medium
+низкий ¦ past ¦ low
+🛃 Специалист по таможне ¦ 🛃 Bojxona mutaxassisi ¦ 🛃 Customs specialist
+👔 Генеральный Директор ¦ 👔 Bosh direktor ¦ 👔 General Director
+💻 Разработчик ¦ 💻 Dasturchi ¦ 💻 Developer
+🧾 1С УНФ-Оператор ¦ 🧾 1C UNF operatori ¦ 🧾 1C UNF Operator
+# виды рисков и группы
+Расходы выше обычных ¦ Xarajatlar odatdagidan yuqori ¦ Costs above usual
+Подозрительный курс ¦ Shubhali kurs ¦ Suspicious rate
+Итог BG не сходится ¦ BG jami mos kelmaydi ¦ BG total does not match
+Неподтверждённые суммы ¦ Tasdiqlanmagan summalar ¦ Unconfirmed amounts
+Нет счёт-фактур ¦ Hisob-fakturalar yo‘q ¦ Missing invoices
+Долго от ГТД до завершения ¦ BYD dan yakunlashgacha uzoq ¦ Long time from GTD to completion
+Склад без выпуска ИМ40 ¦ IM40 chiqarilmagan ombor ¦ Warehouse without IM40 release
+Зависимость от одного поставщика ¦ Bitta yetkazib beruvchiga bog‘liqlik ¦ Dependence on one supplier
+Зависимость от одной страны ¦ Bitta mamlakatga bog‘liqlik ¦ Dependence on one country
+Расходы поставщика растут ¦ Yetkazib beruvchi xarajatlari o‘smoqda ¦ Supplier costs are rising
+Таблица не читается ¦ Jadval o‘qilmayapti ¦ The sheet cannot be read
+Нет свежей копии базы ¦ Bazaning yangi nusxasi yo‘q ¦ No recent database backup
+Файл таблицы давно не обновлялся ¦ Jadval fayli uzoq vaqt yangilanmagan ¦ The sheet file is outdated
+Ручной риск ¦ Qo‘lda kiritilgan xavf ¦ Manual risk
+Деньги ¦ Pul ¦ Money
+Учёт ¦ Hisob ¦ Accounting
+Документы ¦ Hujjatlar ¦ Documents
+Сроки ¦ Muddatlar ¦ Deadlines
+Склад ¦ Ombor ¦ Warehouse
+Поставщики ¦ Yetkazib beruvchilar ¦ Suppliers
+Работа бота ¦ Bot ishi ¦ Bot operation
+Другое ¦ Boshqa ¦ Other
+# объяснения рисков
+Расходы к цене завода: ¦ Xarajatlarning zavod narxiga nisbati: ¦ Costs to factory price:
+; обычно у этого поставщика: ¦ ; bu yetkazib beruvchida odatda: ¦ ; usually for this supplier:
+; партий в выборке: ¦ ; tanlovdagi yuklar: ¦ ; shipments in sample:
+Курс S или H сильно отличается от обычного курса месяца — пересчёт сумов неверный ¦ S yoki H kursi oyning odatiy kursidan juda farq qiladi — so‘mni hisoblash noto‘g‘ri ¦ Rate S or H differs a lot from the usual rate of the month — UZS conversion is wrong
+Курс H отличается от курса ЦБ на дату ГТД ¦ H kursi BYD sanasidagi MB kursidan farq qiladi ¦ Rate H differs from the Central Bank rate on the GTD date
+Итог BG не равен цене завода и всем расходам ¦ BG jami zavod narxi va barcha xarajatlarga teng emas ¦ BG total does not equal the factory price plus all costs
+Итог таможни AC не равен Y+Z+AA+AB ¦ Bojxona jami AC Y+Z+AA+AB ga teng emas ¦ Customs total AC does not equal Y+Z+AA+AB
+Неподтверждённых (жёлтых) сумм: ¦ Tasdiqlanmagan (sariq) summalar: ¦ Unconfirmed (yellow) amounts:
+; себестоимость предварительная ¦ ; tannarx taxminiy ¦ ; landed cost is preliminary
+Нет документов: ¦ Hujjatlar yo‘q: ¦ Missing documents:
+Дней на этапе: ¦ Bosqichdagi kunlar: ¦ Days at stage:
+; норма: ¦ ; me’yor: ¦ ; norm:
+Дней от ГТД: ¦ BYD dan beri kunlar: ¦ Days since GTD:
+; партия ещё не завершена ¦ ; yuk hali yakunlanmagan ¦ ; the shipment is not completed yet
+Дней под таможенным складом или временным хранением без ИМ40: ¦ IM40 siz bojxona omborida yoki vaqtincha saqlashda kunlar: ¦ Days in customs warehouse or temporary storage without IM40:
+; порог: ¦ ; chegara: ¦ ; threshold:
+; партий за 12 месяцев: ¦ ; 12 oydagi yuklar: ¦ ; shipments in 12 months:
+: расходы к заводу за 3 месяца: ¦ : 3 oydagi xarajat/zavod nisbati: ¦ : costs to factory over 3 months:
+; за год: ¦ ; yil davomida: ¦ ; over the year:
+Дней с последней копии базы: ¦ Oxirgi baza nusxasidan beri kunlar: ¦ Days since the last database backup:
+Таблица не читается — данные в боте по последнему чтению ¦ Jadval o‘qilmayapti — botdagi ma’lumotlar oxirgi o‘qish bo‘yicha ¦ The sheet cannot be read — bot data is from the last read
+Файл таблицы давно не обновлялся — данные могут быть устаревшими ¦ Jadval fayli uzoq vaqt yangilanmagan — ma’lumotlar eskirgan bo‘lishi mumkin ¦ The sheet file has not been updated for a long time — data may be outdated
+# что сделать
+Проверьте статьи расходов в «💵 Расходы»: нет ли суммы в чужом столбце или сумов в столбце долларов. Если всё верно — выясните у логиста или брокера причину роста. ¦ «💵 Xarajatlar» dagi moddalarni tekshiring: summa boshqa ustunga yozilmaganmi yoki dollar ustunida so‘m yo‘qmi. Hammasi to‘g‘ri bo‘lsa — logist yoki brokerdan o‘sish sababini bilib oling. ¦ Check the items in «💵 Costs»: an amount in the wrong column or UZS in the dollar column. If everything is right, ask the logistician or broker why costs grew.
+Сверьте курс H в таблице с курсом ЦБ на дату ГТД (cbu.uz) и исправьте опечатку. ¦ Jadvaldagi H kursini BYD sanasidagi MB kursi (cbu.uz) bilan solishtiring va xatoni tuzating. ¦ Compare rate H in the sheet with the Central Bank rate on the GTD date (cbu.uz) and fix the typo.
+Проверьте курс S и H в строке: из-за ошибки неверно пересчитаны все расходы в сумах. ¦ Qatordagi S va H kursini tekshiring: xato tufayli so‘mdagi barcha xarajatlar noto‘g‘ri hisoblangan. ¦ Check rates S and H in the row: an error converts all UZS costs incorrectly.
+Внесите цену завода (столбец N) по инвойсу — без неё себестоимость не считается. ¦ Invoys bo‘yicha zavod narxini (N ustuni) kiriting — usiz tannarx hisoblanmaydi. ¦ Enter the factory price (column N) from the invoice — without it the landed cost is not calculated.
+Сверьте итог BG с суммой цены завода и расходов («💵 Расходы»): одна из сумм внесена неверно. ¦ BG jamini zavod narxi va xarajatlar yig‘indisi bilan solishtiring («💵 Xarajatlar»): summalardan biri noto‘g‘ri. ¦ Compare total BG with the factory price plus costs («💵 Costs»): one of the amounts is wrong.
+Сверьте итог таможни AC с суммой сбора, пошлины, акциза и НДС по ГТД. ¦ Bojxona jami AC ni BYD bo‘yicha yig‘im, boj, aksiz va QQS yig‘indisi bilan solishtiring. ¦ Compare customs total AC with fee + duty + excise + VAT from the GTD.
+Подтвердите жёлтые суммы документами и снимите жёлтую заливку в таблице. ¦ Sariq summalarni hujjatlar bilan tasdiqlang va jadvaldagi sariq rangni olib tashlang. ¦ Confirm the yellow amounts with documents and remove the yellow fill in the sheet.
+Запросите счёт-фактуры у сертификационного органа или перевозчика и внесите номера в таблицу. ¦ Sertifikatlash organi yoki tashuvchidan hisob-fakturalarni so‘rang va raqamlarini jadvalga kiriting. ¦ Request the invoices from the certification body or carrier and enter their numbers in the sheet.
+Завершите свой этап или нажмите «⚠️ Причина» на карточке, чтобы Директор видел, что мешает. ¦ O‘z bosqichingizni yakunlang yoki kartochkada «⚠️ Sabab» ni bosing — direktor nima xalaqit berayotganini ko‘rsin. ¦ Finish your stage or tap «⚠️ Reason» on the card so the Director sees what is blocking it.
+Выясните, что держит партию, и завершите её или укажите причину. ¦ Yukni nima ushlab turganini aniqlang va uni yakunlang yoki sababini ko‘rsating. ¦ Find out what is holding the shipment and complete it or give a reason.
+Проверьте, оформлен ли выпуск ИМ40: хранение под складом ограничено по сроку и стоит денег. ¦ IM40 chiqarilishi rasmiylashtirilganini tekshiring: omborda saqlash muddati cheklangan va pul turadi. ¦ Check whether the IM40 release is filed: warehouse storage is time-limited and costs money.
+Оцените запасного поставщика по ключевым позициям, чтобы не зависеть от одного. ¦ Bittasiga bog‘liq bo‘lmaslik uchun asosiy pozitsiyalar bo‘yicha zaxira yetkazib beruvchini baholang. ¦ Evaluate a backup supplier for key items so as not to depend on one.
+Оцените поставки из другой страны для части ассортимента. ¦ Assortimentning bir qismi uchun boshqa mamlakatdan yetkazib berishni baholang. ¦ Evaluate supplies from another country for part of the range.
+Разберите расходы поставщика за 3 месяца: логистика, таможня, агент — и обсудите условия. ¦ Yetkazib beruvchining 3 oylik xarajatlarini ko‘rib chiqing: logistika, bojxona, agent — va shartlarni muhokama qiling. ¦ Review the supplier’s costs for 3 months: logistics, customs, agent — and discuss the terms.
+Проверьте, открыт ли файл в Excel (закройте его), есть ли интернет и доступ к таблице. ¦ Fayl Excelda ochiqmi (yoping), internet va jadvalga kirish bormi — tekshiring. ¦ Check whether the file is open in Excel (close it), and that there is internet and access to the sheet.
+Проверьте, что бот работает ночью (компьютер не спит) — копия делается в 03:00. ¦ Bot kechasi ishlayotganini tekshiring (kompyuter uxlamasin) — nusxa soat 03:00 da olinadi. ¦ Check that the bot runs at night (the computer does not sleep) — the backup is made at 03:00.
+Положите свежую выгрузку таблицы в папку бота и нажмите /reload. ¦ Bot papkasiga jadvalning yangi faylini qo‘ying va /reload ni bosing. ¦ Put a fresh export of the sheet in the bot folder and press /reload.
+Нет цены завода (столбец N) — себестоимость не посчитана ¦ Zavod narxi yo‘q (N ustuni) — tannarx hisoblanmagan ¦ No factory price (column N) — landed cost not calculated
+<b>⚠️ Управление рисками</b> ¦ <b>⚠️ Xavflarni boshqarish</b> ¦ <b>⚠️ Risk management</b>
+<blockquote expandable>Бот сам находит риски по каждой открытой партии и по всему импорту: расходы выше обычных у поставщика, курс ГТД не равен курсу ЦБ, нет цены завода, срок этапа прошёл, партия долго от ГТД, склад без выпуска ИМ40, нет счёт-фактур, зависимость от одного поставщика или страны, рост расходов поставщика, сбои бота.\nБалл = вероятность × влияние (1–25): 🔴 15 и выше — сразу сообщение ответственному и Директору; 🟠 8–14 — в реестре и утренней сводке; 🟡 ниже 8 — только в карточке партии.\n«🏠 Меню» → «⚠️ Риски»: что случилось, что сделать, кто отвечает. Статусы: 🔧 В работе, ✅ Снят (с комментарием), 🤝 Принят (Директор, с причиной). Директор и Разработчик добавляют риски вручную и меняют вероятность, влияние и ответственного. Если условие риска ушло, бот сам снимает его.</blockquote> ¦ <blockquote expandable>Bot har bir ochiq yuk va butun import bo‘yicha xavflarni o‘zi topadi: yetkazib beruvchida xarajatlar odatdagidan yuqori, BYD kursi MB kursiga teng emas, zavod narxi yo‘q, bosqich muddati o‘tgan, yuk BYD dan beri uzoq turibdi, IM40 chiqarilmagan ombor, hisob-fakturalar yo‘q, bitta yetkazib beruvchi yoki mamlakatga bog‘liqlik, yetkazib beruvchi xarajatlarining o‘sishi, bot nosozliklari.\nBall = ehtimollik × ta’sir (1–25): 🔴 15 va undan yuqori — javobgar va direktorga darhol xabar; 🟠 8–14 — reyestrda va ertalabki hisobotda; 🟡 8 dan past — faqat yuk kartochkasida.\n«🏠 Menyu» → «⚠️ Xavflar»: nima bo‘ldi, nima qilish kerak, kim javobgar. Holatlar: 🔧 Ishda, ✅ Olib tashlandi (izoh bilan), 🤝 Qabul qilindi (direktor, sabab bilan). Direktor va dasturchi xavflarni qo‘lda qo‘shadi hamda ehtimollik, ta’sir va javobgarni o‘zgartiradi. Xavf sharti yo‘qolsa, bot uni o‘zi olib tashlaydi.</blockquote> ¦ <blockquote expandable>The bot finds risks for every open shipment and for all imports: costs above the supplier’s usual, GTD rate not equal to the Central Bank rate, no factory price, stage deadline passed, long time since GTD, warehouse without IM40 release, missing invoices, dependence on one supplier or country, rising supplier costs, bot failures.\nScore = likelihood × impact (1–25): 🔴 15 and above — an immediate message to the owner and the Director; 🟠 8–14 — in the register and the morning summary; 🟡 below 8 — only on the shipment card.\n«🏠 Menu» → «⚠️ Risks»: what happened, what to do, who owns it. Statuses: 🔧 In progress, ✅ Closed (with a comment), 🤝 Accepted (Director, with a reason). The Director and the Developer add risks manually and change likelihood, impact and owner. When the risk condition disappears, the bot closes it itself.</blockquote>

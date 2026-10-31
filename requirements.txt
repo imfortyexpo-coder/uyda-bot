@@ -1,0 +1,8 @@
+aiogram>=3.13,<4
+anthropic>=0.40
+gspread>=6.1,<7
+google-auth>=2.30
+python-dotenv>=1.0
+tzdata>=2024.1
+openpyxl>=3.1
+pillow>=10.0

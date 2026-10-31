@@ -1,0 +1,40 @@
+# ── НИКОГДА не попадают в GitHub ──────────────────────────
+# токен бота и настройки
+env
+.env
+*.env
+tok
+service_account.json
+*.json.key
+# база бота, копии базы, файлы партий
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+backups/
+docs/
+# таблица импорта и любые выгрузки с данными компании
+/*.xlsx
+/*.xls
+/*.xlsm
+/*.csv
+odata_*.txt
+# служебное
+__pycache__/
+*.pyc
+*.log
+.venv/
+venv/
+uyda-update-*/
+uyda-update-*/
+*.zip
+**/*.xlsx
+/*/
+!/brand/
+!/BotFather/
+/*/
+!/brand/
+!/BotFather/
+/*/
+!/brand/
+!/BotFather/

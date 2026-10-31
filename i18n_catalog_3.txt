@@ -1,0 +1,222 @@
+Нажмите на человека, чтобы выбрать или изменить роль. ¦ Rolni tanlash yoki o‘zgartirish uchun odamni bosing. ¦ Tap a person to choose or change their role.
+Пока никого нет. ¦ Hozircha hech kim yo‘q. ¦ Nobody yet.
+➕ Дать доступ человеку, который ещё не писал боту: <code>/adduser 123456789</code> (его ID он узнаёт командой /id). ¦ ➕ Botga hali yozmagan odamga kirish berish: <code>/adduser 123456789</code> (u ID ni /id buyrug‘i bilan biladi). ¦ ➕ Grant access to someone who has not written to the bot yet: <code>/adduser 123456789</code> (they find their ID with /id).
+← К команде ¦ ← Jamoaga ¦ ← To team
+Пользователь не найден. ¦ Foydalanuvchi topilmadi. ¦ User not found.
+Роль: <b> ¦ Rol: <b> ¦ Role: <b>
+🕓 Запрос от ¦ 🕓 So‘rov sanasi: ¦ 🕓 Request from
+запрос ¦ so‘rov ¦ request
+Выбрано в боте: ¦ Botda tanlangan: ¦ Chosen in the bot:
+Роль задана в файле env (ALLOWED_USER_IDS / VIEWER_USER_IDS). Выбранная здесь главнее. ¦ Rol env faylida berilgan (ALLOWED_USER_IDS / VIEWER_USER_IDS). Bu yerda tanlangani ustun. ¦ The role is set in the env file (ALLOWED_USER_IDS / VIEWER_USER_IDS). The one chosen here takes priority.
+🔒 Администратор из файла env (OWNER_IDS): полный доступ отнять нельзя, можно выбрать должность — Директор или Разработчик. ¦ 🔒 env faylidagi administrator (OWNER_IDS): to‘liq kirishni olib bo‘lmaydi, lavozim tanlash mumkin — direktor yoki dasturchi. ¦ 🔒 Administrator from the env file (OWNER_IDS): full access cannot be removed, a position can be chosen — Director or Developer.
+🔒 Свой полный доступ убрать нельзя, можно выбрать должность — Директор или Разработчик. ¦ 🔒 O‘z to‘liq kirishingizni olib tashlab bo‘lmaydi, lavozim tanlash mumkin — direktor yoki dasturchi. ¦ 🔒 You cannot remove your own full access; you can choose a position — Director or Developer.
+закрыт ¦ yopiq ¦ closed
+<b>История ролей</b> ¦ <b>Rollar tarixi</b> ¦ <b>Role history</b>
+⛔ Отклонить запрос ¦ ⛔ So‘rovni rad etish ¦ ⛔ Decline request
+⛔ Закрыть доступ ¦ ⛔ Kirishni yopish ¦ ⛔ Close access
+<b>Вам передано грузов: ¦ <b>Sizga topshirilgan yuklar: ¦ <b>Shipments handed to you:
+В них снова есть незаполненное. ¦ Ularda yana to‘ldirilmagan joylar bor. ¦ They have unfilled items again.
+В них всё заполнено — осталось завершить. ¦ Ularda hammasi to‘ldirilgan — yakunlash qoldi. ¦ Everything is filled — only completion is left.
+Открыть список ¦ Ro‘yxatni ochish ¦ Open the list
+🛃 <b>Груз вернулся к вам: снова есть незаполненное</b> ¦ 🛃 <b>Yuk sizga qaytdi: yana to‘ldirilmagan joy bor</b> ¦ 🛃 <b>The shipment is back with you: something is unfilled again</b>
+🧾 <b>Груз передан вам: всё заполнено, осталось завершить</b> ¦ 🧾 <b>Yuk sizga topshirildi: hammasi to‘ldirilgan, yakunlash qoldi</b> ¦ 🧾 <b>The shipment is handed to you: everything is filled, only completion is left</b>
+🔔 <b>В таблице ¦ 🔔 <b>Jadvalda ¦ 🔔 <b>The sheet has
+новых записей</b>\n\nОни добавлены в открытые работы. Откройте список, чтобы распределить их. ¦ ta yangi yozuv</b>\n\nUlar ochiq ishlarga qo‘shildi. Taqsimlash uchun ro‘yxatni oching. ¦ new records</b>\n\nThey are added to open tasks. Open the list to distribute them.
+🔔 <b>Новый груз в таблице</b> ¦ 🔔 <b>Jadvalda yangi yuk</b> ¦ 🔔 <b>New shipment in the sheet</b>
+📝 <b>Новое примечание к грузу</b> ¦ 📝 <b>Yukka yangi izoh</b> ¦ 📝 <b>New note on a shipment</b>
+🟡 <b>Груз открыт снова: появилась новая жёлтая ячейка</b> ¦ 🟡 <b>Yuk qayta ochildi: yangi sariq katak paydo bo‘ldi</b> ¦ 🟡 <b>Shipment reopened: a new yellow cell appeared</b>
+🔔 <b>Статус изменён</b>\n\n📦 <b> ¦ 🔔 <b>Holat o‘zgardi</b>\n\n📦 <b> ¦ 🔔 <b>Status changed</b>\n\n📦 <b>
+📦 Открыть карточку ¦ 📦 Kartochkani ochish ¦ 📦 Open the card
+Возможные причины: файл открыт в Excel (закройте его), переименован или перемещён, повреждён. ¦ Ehtimoliy sabablar: fayl Excelda ochiq (yoping), nomi o‘zgargan yoki ko‘chirilgan, buzilgan. ¦ Possible reasons: the file is open in Excel (close it), renamed or moved, or damaged.
+Возможные причины: нет интернета, у сервисного аккаунта отняли доступ к таблице, лимит запросов Google. ¦ Ehtimoliy sabablar: internet yo‘q, xizmat akkauntining jadvalga kirishi olingan, Google so‘rovlar limiti. ¦ Possible reasons: no internet, the service account lost access to the sheet, Google request limit.
+🔴 <b>Таблица не читается уже ¦ 🔴 <b>Jadval o‘qilmayapti, allaqachon ¦ 🔴 <b>The sheet has been unreadable for
+Бот продолжает пробовать каждые 30 секунд. Данные в карточках — по последнему удачному чтению ( ¦ Bot har 30 soniyada urinishda davom etadi. Kartochkalardagi ma’lumotlar — oxirgi muvaffaqiyatli o‘qish bo‘yicha ( ¦ The bot keeps trying every 30 seconds. Card data is from the last successful read (
+его не было ¦ bo‘lmagan ¦ there was none
+🟢 <b>Таблица снова читается</b>\n\nПерерыв: ¦ 🟢 <b>Jadval yana o‘qilmoqda</b>\n\nTanaffus: ¦ 🟢 <b>The sheet is readable again</b>\n\nOutage:
+⚠️ <b>Не удалось сделать копию базы</b>\n<blockquote> ¦ ⚠️ <b>Baza nusxasini olib bo‘lmadi</b>\n<blockquote> ¦ ⚠️ <b>Database backup failed</b>\n<blockquote>
+🗄 Копия базы бота на ¦ 🗄 Bot bazasining nusxasi: ¦ 🗄 Bot database backup for
+. Храните файл — в нём статусы и история. ¦ . Faylni saqlang — unda holatlar va tarix bor. ¦ . Keep the file — it holds statuses and history.
+🔍 По запросу « ¦ 🔍 « ¦ 🔍 Nothing found for «
+» ничего не найдено.\n\nПопробуйте название груза, номер ГТД, номер машины или ККДГ. ¦ » bo‘yicha hech narsa topilmadi.\n\nYuk nomi, BYD raqami, mashina raqami yoki KKDG ni sinab ko‘ring. ¦ ».\n\nTry a shipment name, GTD number, truck number or KKDG.
+🔔 <b>Запрос доступа к боту</b>\n\n👤 <b> ¦ 🔔 <b>Botga kirish so‘rovi</b>\n\n👤 <b> ¦ 🔔 <b>Bot access request</b>\n\n👤 <b>
+</code>\n\nВыберите роль: ¦ </code>\n\nRolni tanlang: ¦ </code>\n\nChoose a role:
+⛔ Отклонить ¦ ⛔ Rad etish ¦ ⛔ Decline
+✅ <b>Доступ открыт</b>\n\n🔑 Ваша роль: <b> ¦ ✅ <b>Kirish ochildi</b>\n\n🔑 Rolingiz: <b> ¦ ✅ <b>Access granted</b>\n\n🔑 Your role: <b>
+.\n\nПользуйтесь меню внизу экрана 👇 ¦ .\n\nEkran pastidagi menyudan foydalaning 👇 ¦ .\n\nUse the menu at the bottom of the screen 👇
+⛔ <b>Доступ закрыт</b>\n\nГенеральный Директор закрыл вам доступ к боту. ¦ ⛔ <b>Kirish yopildi</b>\n\nBosh direktor sizga botga kirishni yopdi. ¦ ⛔ <b>Access closed</b>\n\nThe General Director has closed your access to the bot.
+Доступ закрыт. Если это ошибка — свяжитесь с Генеральным Директором. ¦ Kirish yopiq. Agar bu xato bo‘lsa — Bosh direktor bilan bog‘laning. ¦ Access closed. If this is a mistake, contact the General Director.
+Запрос отправлен. Когда вам выберут роль, придёт сообщение. ¦ So‘rov yuborildi. Sizga rol tanlanganda xabar keladi. ¦ Request sent. You will get a message when a role is chosen for you.
+Передайте этот ID администратору бота. ¦ Ushbu ID ni bot administratoriga bering. ¦ Give this ID to the bot administrator.
+⛔ <b>Доступ закрыт</b>\n\nВаш Telegram-ID: <code> ¦ ⛔ <b>Kirish yopiq</b>\n\nTelegram ID ingiz: <code> ¦ ⛔ <b>Access closed</b>\n\nYour Telegram ID: <code>
+⚠️ Не удалось прочитать таблицу: ¦ ⚠️ Jadvalni o‘qib bo‘lmadi: ¦ ⚠️ Could not read the sheet:
+⚠️ Не удалось прочитать файл таблицы: ¦ ⚠️ Jadval faylini o‘qib bo‘lmadi: ¦ ⚠️ Could not read the sheet file:
+⚠️ Произошла ошибка, подробности в окне бота. ¦ ⚠️ Xatolik yuz berdi, tafsilotlar bot jurnalida. ¦ ⚠️ An error occurred, details are in the bot log.
+номер ГТД ¦ BYD raqami ¦ GTD number
+номер машины ¦ mashina raqami ¦ truck number
+номер ККДГ ¦ KKDG raqami ¦ KKDG number
+название перевозчика ¦ tashuvchi nomi ¦ carrier name
+название отправителя ¦ jo‘natuvchi nomi ¦ sender name
+👋 Здравствуйте, ¦ 👋 Assalomu alaykum, ¦ 👋 Hello,
+!\n\nЯ слежу за таблицей импортных грузов <b>GOLD DISHES / UYDA</b>: напоминаю о новых грузах и открытых работах, считаю расходы и себестоимость.\n\n✅ Вы подписаны на напоминания. Сводка — каждый день в ¦ !\n\nMen <b>GOLD DISHES / UYDA</b> import yuklari jadvalini kuzataman: yangi yuklar va ochiq ishlar haqida eslataman, xarajatlar va tannarxni hisoblayman.\n\n✅ Siz eslatmalarga obuna bo‘ldingiz. Hisobot — har kuni soat ¦ !\n\nI watch the <b>GOLD DISHES / UYDA</b> import shipment sheet: I remind you about new shipments and open tasks, and calculate costs and landed cost.\n\n✅ You are subscribed to reminders. The summary comes every day at
+.\n🔑 Ваша роль: <b> ¦ da.\n🔑 Rolingiz: <b> ¦ .\n🔑 Your role: <b>
+❓ Помощь ¦ ❓ Yordam ¦ ❓ Help
+Ваш Telegram ID: <code> ¦ Telegram ID ingiz: <code> ¦ Your Telegram ID: <code>
+⛔ Принудительно перечитать таблицу могут Генеральный Директор и Разработчик. Бот и так проверяет таблицу сам каждые ¦ ⛔ Jadvalni majburan qayta o‘qishni Bosh direktor va dasturchi qila oladi. Bot jadvalni o‘zi har ¦ ⛔ Only the General Director and the Developer can force a re-read. The bot checks the sheet by itself every
+🔄 Таблица обновлена: ¦ 🔄 Jadval yangilandi: ¦ 🔄 Sheet refreshed:
+грузов, открытых работ: ¦ ta yuk, ochiq ishlar: ¦ shipments, open tasks:
+🔍 Напишите <b>название груза</b> из столбца A — покажу цену завода и все расходы.\n\nМожно и номер ГТД, номер машины, ККДГ или перевозчика. ¦ 🔍 A ustunidagi <b>yuk nomini</b> yozing — zavod narxi va barcha xarajatlarni ko‘rsataman.\n\nBYD raqami, mashina raqami, KKDG yoki tashuvchini ham yozish mumkin. ¦ 🔍 Type a <b>shipment name</b> from column A — I will show the factory price and all costs.\n\nA GTD number, truck number, KKDG or carrier also works.
+Например: 405 авто ¦ Masalan: 405 авто ¦ For example: 405 авто
+📊 <b>Итоги</b>\n\nВыберите период: ¦ 📊 <b>Hisobot</b>\n\nDavrni tanlang: ¦ 📊 <b>Totals</b>\n\nChoose a period:
+Груз с таким номером не найден. ¦ Bunday raqamli yuk topilmadi. ¦ No shipment with this number.
+Укажите ¦ Ko‘rsating: ¦ Specify
+значение</code> ¦ qiymat</code> ¦ value</code>
+⛔ Состояние бота доступно только Генеральному Директору и Разработчику. ¦ ⛔ Bot holati faqat Bosh direktor va dasturchiga ochiq. ¦ ⛔ Bot status is available only to the General Director and the Developer.
+⛔ Раздел «Команда» доступен только Генеральному Директору. ¦ ⛔ «Jamoa» bo‘limi faqat Bosh direktorga ochiq. ¦ ⛔ The «Team» section is for the General Director only.
+⛔ Давать доступ может только Генеральный Директор. ¦ ⛔ Kirishni faqat Bosh direktor bera oladi. ¦ ⛔ Only the General Director can grant access.
+Напишите команду и Telegram-ID человека, например: <code>/adduser 123456789</code>\nID человек узнаёт сам — командой /id в этом боте. ¦ Buyruq va odamning Telegram ID sini yozing, masalan: <code>/adduser 123456789</code>\nOdam ID ni o‘zi biladi — shu botdagi /id buyrug‘i bilan. ¦ Type the command and the person’s Telegram ID, for example: <code>/adduser 123456789</code>\nThe person finds their ID with /id in this bot.
+Это ваш собственный ID — свою роль выберите в разделе «👥 Команда». ¦ Bu o‘zingizning ID ingiz — rolingizni «👥 Jamoa» bo‘limida tanlang. ¦ This is your own ID — choose your role in «👥 Team».
+<i>Человеку придёт сообщение, когда вы выберете роль. Если он ещё не открывал бота, пусть нажмёт /start.</i> ¦ <i>Rol tanlaganingizda odamga xabar keladi. Agar u botni hali ochmagan bo‘lsa, /start ni bossin.</i> ¦ <i>The person gets a message when you choose a role. If they have not opened the bot yet, they should tap /start.</i>
+📌 <b>Замечания Генерального Директора</b> · открыто ¦ 📌 <b>Bosh direktor mulohazalari</b> · ochiq ¦ 📌 <b>General Director’s remarks</b> · open
+Открытых замечаний нет 👍 ¦ Ochiq mulohazalar yo‘q 👍 ¦ No open remarks 👍
+Нажмите на груз — откроется карточка, там можно нажать «👍 Принято». ¦ Yukni bosing — kartochka ochiladi, u yerda «👍 Qabul qilindi» ni bosish mumkin. ¦ Tap a shipment — its card opens, where you can tap «👍 Accepted».
+📌 <b>Замечание Генерального Директора</b>\n\n📦 <b> ¦ 📌 <b>Bosh direktor mulohazasi</b>\n\n📦 <b> ¦ 📌 <b>General Director’s remark</b>\n\n📦 <b>
+🆘 <b>Обращение № ¦ 🆘 <b>Murojaat № ¦ 🆘 <b>Request #
+🟢 открыто ¦ 🟢 ochiq ¦ 🟢 open
+✅ решено ¦ ✅ hal qilindi ¦ ✅ solved
+📌 Замечание Директора ¦ 📌 Direktor mulohazasi ¦ 📌 Director’s remark
+✍️ Написать ¦ ✍️ Yozish ¦ ✍️ Write
+✅ Решено ¦ ✅ Hal qilindi ¦ ✅ Solved
+↩ Ответить ¦ ↩ Javob berish ¦ ↩ Reply
+📦 Карточка груза ¦ 📦 Yuk kartochkasi ¦ 📦 Shipment card
+◀ Все обращения ¦ ◀ Barcha murojaatlar ¦ ◀ All requests
+🆘 <b>Поддержка</b> · открытых обращений: ¦ 🆘 <b>Yordam</b> · ochiq murojaatlar: ¦ 🆘 <b>Support</b> · open requests:
+Открытых обращений нет 👍 ¦ Ochiq murojaatlar yo‘q 👍 ¦ No open requests 👍
+✍️ Задать свой вопрос ¦ ✍️ O‘z savolingizni bering ¦ ✍️ Ask your own question
+🆘 <b>Поддержка</b>\n\nЕсли что-то не получается в 1С УНФ или в боте — напишите вопрос. Разработчик и Генеральный Директор получат его сразу и ответят прямо здесь.\n\nВопрос по конкретному грузу можно задать кнопкой «🆘 Помощь» на карточке груза. ¦ 🆘 <b>Yordam</b>\n\n1C UNF yoki botda nimadir chiqmasa — savol yozing. Dasturchi va Bosh direktor uni darhol oladi va shu yerda javob beradi.\n\nAniq yuk bo‘yicha savolni yuk kartochkasidagi «🆘 Yordam» tugmasi bilan berish mumkin. ¦ 🆘 <b>Support</b>\n\nIf something does not work in 1C UNF or in the bot, write a question. The Developer and the General Director get it at once and reply right here.\n\nFor a question about a specific shipment, use the «🆘 Help» button on its card.
+✍️ Написать в поддержку ¦ ✍️ Yordamga yozish ¦ ✍️ Write to support
+📌 <b>Замечание Генерального Директора</b> ¦ 📌 <b>Bosh direktor mulohazasi</b> ¦ 📌 <b>General Director’s remark</b>
+🆘 <b>Вопрос в поддержку № ¦ 🆘 <b>Yordamga savol № ¦ 🆘 <b>Support question #
+💬 <b>Ответ поддержки № ¦ 💬 <b>Yordam javobi № ¦ 💬 <b>Support reply #
+✍️ Ответить ¦ ✍️ Javob berish ¦ ✍️ Reply
+💬 Переписка ¦ 💬 Yozishma ¦ 💬 Conversation
+📌 <b>Замечание отправлено</b> · получателей: ¦ 📌 <b>Mulohaza yuborildi</b> · qabul qiluvchilar: ¦ 📌 <b>Remark sent</b> · recipients:
+⚠️ Некому доставить: в боте нет Разработчика / Директора. ¦ ⚠️ Yetkazadigan odam yo‘q: botda dasturchi / direktor yo‘q. ¦ ⚠️ Nobody to deliver to: there is no Developer / Director in the bot.
+✅ <b>Отправлено в поддержку</b> (обращение № ¦ ✅ <b>Yordamga yuborildi</b> (murojaat № ¦ ✅ <b>Sent to support</b> (request #
+Ответ придёт сюда. ¦ Javob shu yerga keladi. ¦ The reply will come here.
+✅ Отправлено · получателей: ¦ ✅ Yuborildi · qabul qiluvchilar: ¦ ✅ Sent · recipients:
+Отменено. ¦ Bekor qilindi. ¦ Cancelled.
+⛔ Наблюдатель не пишет в поддержку. Обратитесь к Генеральному Директору. ¦ ⛔ Kuzatuvchi yordamga yozmaydi. Bosh direktorga murojaat qiling. ¦ ⛔ An observer cannot write to support. Contact the General Director.
+✍️ <b>Причина сохранена</b> ¦ ✍️ <b>Sabab saqlandi</b> ¦ ✍️ <b>Reason saved</b>
+⛔ Нет доступа ¦ ⛔ Kirish yo‘q ¦ ⛔ No access
+Груз не найден ¦ Yuk topilmadi ¦ Shipment not found
+Обновлено ¦ Yangilandi ¦ Updated
+Расходы по валютам и видам — сумма всех частей ¦ Valyuta va turlar bo‘yicha xarajatlar — barcha qismlar yig‘indisi ¦ Costs by currency and type — sum of all parts
+📦 Весь груз ¦ 📦 Butun yuk ¦ 📦 Whole shipment
+</b> · расходы по валютам и видам ¦ </b> · valyuta va turlar bo‘yicha xarajatlar ¦ </b> · costs by currency and type
+⛔ Замечания оставляет Генеральный Директор ¦ ⛔ Mulohazani Bosh direktor qoldiradi ¦ ⛔ Remarks are left by the General Director
+📌 Напишите замечание по грузу <b> ¦ 📌 Yuk bo‘yicha mulohazani yozing: <b> ¦ 📌 Write a remark on shipment <b>
+</b> одним сообщением.\nОтмена — /cancel ¦ </b> — bitta xabarda.\nBekor qilish — /cancel ¦ </b> in one message.\nCancel — /cancel
+Замечание… ¦ Mulohaza… ¦ Remark…
+⛔ Наблюдатель не принимает замечания ¦ ⛔ Kuzatuvchi mulohazani qabul qilmaydi ¦ ⛔ An observer cannot accept remarks
+Открытых замечаний нет ¦ Ochiq mulohazalar yo‘q ¦ No open remarks
+👍 <b>Замечание принято</b>\n\n📦 ¦ 👍 <b>Mulohaza qabul qilindi</b>\n\n📦 ¦ 👍 <b>Remark accepted</b>\n\n📦
+⛔ Наблюдатель не пишет в поддержку ¦ ⛔ Kuzatuvchi yordamga yozmaydi ¦ ⛔ An observer cannot write to support
+Обращение не найдено ¦ Murojaat topilmadi ¦ Request not found
+по грузу <b> ¦ (yuk: <b> ¦ about shipment <b>
+✍️ Напишите вопрос ¦ ✍️ Savolni yozing ¦ ✍️ Write your question
+одним сообщением — он сразу уйдёт Разработчику и Директору.\nОтмена — /cancel ¦ bitta xabarda — u darhol dasturchi va direktorga ketadi.\nBekor qilish — /cancel ¦ in one message — it goes to the Developer and the Director at once.\nCancel — /cancel
+Ваш вопрос… ¦ Savolingiz… ¦ Your question…
+⛔ Недостаточно прав ¦ ⛔ Huquq yetarli emas ¦ ⛔ Not enough rights
+ответ ¦ javob ¦ reply
+замечание ¦ mulohaza ¦ remark
+✍️ Напишите ¦ ✍️ Yozing: ¦ ✍️ Write a
+по обращению № ¦ , murojaat № ¦ for request #
+одним сообщением.\nОтмена — /cancel ¦ — bitta xabarda.\nBekor qilish — /cancel ¦ in one message.\nCancel — /cancel
+Текст… ¦ Matn… ¦ Text…
+✅ <b>Обращение № ¦ ✅ <b>Murojaat № ¦ ✅ <b>Request #
+решено</b>\n👤 закрыл: ¦ hal qilindi</b>\n👤 yopdi: ¦ solved</b>\n👤 closed by:
+👁 С вашей ролью можно только смотреть — статусы менять нельзя. ¦ 👁 Sizning rolingiz bilan faqat ko‘rish mumkin — holatni o‘zgartirib bo‘lmaydi. ¦ 👁 Your role is view-only — you cannot change statuses.
+⚠️ <b>Закрыть груз, хотя данные не полные?</b> ¦ ⚠️ <b>Ma’lumotlar to‘liq bo‘lmasa ham yukni yopasizmi?</b> ¦ ⚠️ <b>Close the shipment although the data is incomplete?</b>
+Груз будет отмечен «⚠️ с пометкой» — это увидят Директор, Разработчик и Оператор. ¦ Yuk «⚠️ belgi bilan» deb belgilanadi — buni direktor, dasturchi va operator ko‘radi. ¦ The shipment will be marked «⚠️ flagged» — the Director, the Developer and the Operator will see it.
+✅ Закрыть с пометкой ¦ ✅ Belgi bilan yopish ¦ ✅ Close with a flag
+← Сначала исправлю ¦ ← Avval tuzataman ¦ ← I will fix it first
+Проверьте перед закрытием ¦ Yopishdan oldin tekshiring ¦ Check before closing
+· с пометкой ¦ · belgi bilan ¦ · flagged
+✍️ Напишите причину, почему «<b> ¦ ✍️ «<b> ¦ ✍️ Write why «<b>
+</b>» не завершён: ¦ </b>» nega yakunlanmaganini yozing: ¦ </b>» is not completed:
+Например: ждём сертификат ¦ Masalan: sertifikatni kutyapmiz ¦ For example: waiting for the certificate
+Когда напомнить? ¦ Qachon eslatay? ¦ When should I remind you?
+⏰ Напомню ¦ ⏰ Eslataman: ¦ ⏰ I will remind you
+💱 <b>Расходы по валютам и видам · ¦ 💱 <b>Valyuta va turlar bo‘yicha xarajatlar · ¦ 💱 <b>Costs by currency and type ·
+</b>\nГрузов: ¦ </b>\nYuklar: ¦ </b>\nShipments:
+⛔ Раздел только для Генерального Директора ¦ ⛔ Bo‘lim faqat Bosh direktor uchun ¦ ⛔ This section is for the General Director only
+⛔ Роли назначает Генеральный Директор ¦ ⛔ Rollarni Bosh direktor tayinlaydi ¦ ⛔ Roles are assigned by the General Director
+Неизвестная роль ¦ Noma’lum rol ¦ Unknown role
+Полный доступ администратора из env и свой собственный убрать нельзя. Можно выбрать должность: Директор или Разработчик. ¦ env dagi administrator va o‘zingizning to‘liq kirishingizni olib bo‘lmaydi. Lavozim tanlash mumkin: direktor yoki dasturchi. ¦ The full access of the env administrator and your own cannot be removed. You can choose a position: Director or Developer.
+Эта роль уже назначена ¦ Bu rol allaqachon tayinlangan ¦ This role is already assigned
+Нельзя убрать последнего администратора ¦ Oxirgi administratorni olib tashlab bo‘lmaydi ¦ The last administrator cannot be removed
+⛔ Журнал действий доступен только Генеральному Директору и Разработчику. ¦ ⛔ Harakatlar jurnali faqat Bosh direktor va dasturchiga ochiq. ¦ ⛔ The action log is available only to the General Director and the Developer.
+⛔ Журнал — только для Директора и Разработчика ¦ ⛔ Jurnal — faqat direktor va dasturchi uchun ¦ ⛔ The log is for the Director and the Developer only
+⏰ <b>Напоминание</b> ¦ ⏰ <b>Eslatma</b> ¦ ⏰ <b>Reminder</b>
+🏠 Сегодня: что горит ¦ 🏠 Bugun: shoshilinch ishlar ¦ 🏠 Today: what is urgent
+🗂 Категории: страны, поставщики, транспорт ¦ 🗂 Toifalar: mamlakatlar, yetkazib beruvchilar, transport ¦ 🗂 Categories: countries, suppliers, transport
+🧪 Проверки данных таблицы ¦ 🧪 Jadval ma’lumotlarini tekshirish ¦ 🧪 Sheet data checks
+✅ Завершённые по месяцам ¦ ✅ Yakunlanganlar oylar bo‘yicha ¦ ✅ Completed by month
+📊 Итоги за период ¦ 📊 Davr bo‘yicha hisobot ¦ 📊 Totals for a period
+🧾 Поиск по номеру ГТД ¦ 🧾 BYD raqami bo‘yicha qidiruv ¦ 🧾 Search by GTD number
+🚛 Поиск по номеру машины ¦ 🚛 Mashina raqami bo‘yicha qidiruv ¦ 🚛 Search by truck number
+📑 Поиск по номеру ККДГ ¦ 📑 KKDG raqami bo‘yicha qidiruv ¦ 📑 Search by KKDG number
+🚚 Грузы перевозчика ¦ 🚚 Tashuvchi yuklari ¦ 🚚 Carrier’s shipments
+🏭 Грузы отправителя ¦ 🏭 Jo‘natuvchi yuklari ¦ 🏭 Sender’s shipments
+🆘 Поддержка: вопрос Разработчику ¦ 🆘 Yordam: dasturchiga savol ¦ 🆘 Support: ask the Developer
+📌 Замечания Генерального Директора ¦ 📌 Bosh direktor mulohazalari ¦ 📌 General Director’s remarks
+🔄 Перечитать таблицу ¦ 🔄 Jadvalni qayta o‘qish ¦ 🔄 Re-read the sheet
+🗒 Журнал действий (Директор, Разработчик) ¦ 🗒 Harakatlar jurnali (direktor, dasturchi) ¦ 🗒 Action log (Director, Developer)
+➕ Дать доступ по ID (Генеральный Директор) ¦ ➕ ID bo‘yicha kirish berish (Bosh direktor) ¦ ➕ Grant access by ID (General Director)
+🩺 Состояние бота (для администраторов) ¦ 🩺 Bot holati (administratorlar uchun) ¦ 🩺 Bot status (administrators)
+🟢 <b>Бот запущен</b> · ¦ 🟢 <b>Bot ishga tushdi</b> · ¦ 🟢 <b>Bot started</b> ·
+📋 Грузов: ¦ 📋 Yuklar: ¦ 📋 Shipments:
+· открытых работ: ¦ · ochiq ishlar: ¦ · open tasks:
+⚠️ Файл давно не обновлялся. ¦ ⚠️ Fayl uzoq vaqt yangilanmagan. ¦ ⚠️ The file has not been updated for a long time.
+# checks.py
+BG ≠ расчёт бота ¦ BG ≠ bot hisobi ¦ BG ≠ bot calculation
+Итог в столбце BG отличается от суммы цены завода и всех расходов больше чем на max($5; 0,5%). ¦ BG ustunidagi jami zavod narxi va barcha xarajatlar yig‘indisidan max($5; 0,5%) dan ko‘proq farq qiladi. ¦ The total in column BG differs from the factory price plus all costs by more than max($5; 0.5%).
+Подозрительный курс ¦ Shubhali kurs ¦ Suspicious rate
+Курс S (или H) отличается от обычного курса того же месяца больше чем на ¦ S (yoki H) kursi shu oyning odatiy kursidan ko‘proq farq qiladi: ¦ Rate S (or H) differs from the usual rate of the same month by more than
+. Из-за ошибки в курсе неверно пересчитываются все расходы в сумах. ¦ . Kursdagi xato tufayli so‘mdagi barcha xarajatlar noto‘g‘ri hisoblanadi. ¦ . A wrong rate converts all UZS costs incorrectly.
+Расходы больше ¦ Xarajatlar ko‘p: ¦ Costs above
+% цены завода ¦ % zavod narxidan ¦ % of factory price
+Обычно это сумма, вписанная не в тот столбец, или сумы в столбце долларов. ¦ Odatda bu boshqa ustunga yozilgan summa yoki dollar ustunidagi so‘m. ¦ Usually an amount in the wrong column, or UZS in the dollar column.
+Расходы меньше ¦ Xarajatlar kam: ¦ Costs below
+Скорее всего, внесены не все расходы. ¦ Ehtimol, barcha xarajatlar kiritilmagan. ¦ Most likely not all costs are entered.
+Таможня AC ≠ Y+Z+AA+AB ¦ Bojxona AC ≠ Y+Z+AA+AB ¦ Customs AC ≠ Y+Z+AA+AB
+Итог таможенных платежей не равен сумме сбора, пошлины, акциза и НДС. ¦ Bojxona to‘lovlari jami yig‘im, boj, aksiz va QQS yig‘indisiga teng emas. ¦ The customs payments total does not equal fee + duty + excise + VAT.
+Нет курса ¦ Kurs yo‘q ¦ No rate
+Не заполнены курс S и курс ГТД H — себестоимость не посчитана. ¦ S kursi va BYD kursi H to‘ldirilmagan — tannarx hisoblanmagan. ¦ Rate S and GTD rate H are empty — landed cost not calculated.
+Метка режима ≠ содержимое ¦ Rejim belgisi ≠ mazmun ¦ Regime mark ≠ content
+В названии стоит ИМ70 или ИМ74 (временное хранение / таможенный склад), но в этой части груза есть цена завода — то есть это полная декларация. Скорее всего, ошибка в названии: проверьте режим. ¦ Nomda IM70 yoki IM74 (vaqtincha saqlash / bojxona ombori), lekin yukning bu qismida zavod narxi bor — ya’ni bu to‘liq deklaratsiya. Ehtimol, nomda xato: rejimni tekshiring. ¦ The name has IM70 or IM74 (temporary storage / customs warehouse), but this part has a factory price — so it is a full declaration. Most likely the name is wrong: check the regime.
+Нет цены завода ¦ Zavod narxi yo‘q ¦ No factory price
+Ни в одной части груза не заполнен столбец N — себестоимость не посчитана. ¦ Yukning hech bir qismida N ustuni to‘ldirilmagan — tannarx hisoblanmagan. ¦ Column N is empty in every part — landed cost not calculated.
+BG − расчёт = ¦ BG − hisob = ¦ BG − calculation =
+курс ¦ kurs ¦ rate
+, обычно ¦ , odatda ¦ , usually
+разница ¦ farq ¦ difference
+метка ¦ belgi ¦ mark
+, но есть цена завода ¦ , lekin zavod narxi bor ¦ , but there is a factory price
+нет курса S и H ¦ S va H kursi yo‘q ¦ no rate S and H
+нет столбца N ¦ N ustuni yo‘q ¦ no column N
+# breakdown.py
+Банк (перевод оплаты) ¦ Bank (to‘lov o‘tkazmasi) ¦ Bank (payment transfer)
+Таможенные платежи ¦ Bojxona to‘lovlari ¦ Customs payments
+Сертификаты и разрешения ¦ Sertifikatlar va ruxsatnomalar ¦ Certificates and permits
+Досмотр и оформление ¦ Ko‘rik va rasmiylashtirish ¦ Inspection and clearance
+Процент завода / агент ¦ Zavod foizi / agent ¦ Factory % / agent
+ПРР (погрузка-разгрузка) ¦ YuTI (yuklash-tushirish) ¦ Handling (loading/unloading)
+Прочие расходы ¦ Boshqa xarajatlar ¦ Other costs
+# reliability.py
+меньше минуты ¦ bir daqiqadan kam ¦ less than a minute
+КБ ¦ KB ¦ KB
+МБ ¦ MB ¦ MB
+🔒 Администратор из файла env (OWNER_IDS): можно выбрать любую роль, закрыть доступ нельзя. Пока Генеральный Директор не назначен, он управляет командой при любой роли. ¦ 🔒 env faylidagi administrator (OWNER_IDS): istalgan rolni tanlash mumkin, kirishni yopib bo‘lmaydi. Bosh direktor tayinlanmaguncha u istalgan rolda jamoani boshqaradi. ¦ 🔒 Administrator from the env file (OWNER_IDS): any role can be chosen, access cannot be closed. Until a General Director is appointed, they manage the team with any role.
+Администратору из файла env нельзя закрыть доступ. Можно выбрать любую роль. ¦ env faylidagi administratorga kirishni yopib bo‘lmaydi. Istalgan rolni tanlash mumkin. ¦ Access of the env administrator cannot be closed. Any role can be chosen.
+Свой полный доступ убрать нельзя. Можно выбрать должность: Директор или Разработчик. ¦ O‘z to‘liq kirishingizni olib bo‘lmaydi. Lavozim tanlash mumkin: direktor yoki dasturchi. ¦ You cannot remove your own full access. You can choose a position: Director or Developer.

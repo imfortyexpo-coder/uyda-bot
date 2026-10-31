@@ -1,0 +1,91 @@
+# Обновление 13 · обмен документами по партиям
+📎 Документы ¦ 📎 Hujjatlar ¦ 📎 Documents
+Документы ¦ Hujjatlar ¦ Documents
+Новые документы ¦ Yangi hujjatlar ¦ New documents
+Документы партии ¦ Yuk hujjatlari ¦ Shipment documents
+Документы партий ¦ Yuklar hujjatlari ¦ Shipment documents
+Документ по партии ¦ Yuk bo‘yicha hujjat ¦ Shipment document
+Файл из документов партии ¦ Yuk hujjatlaridan fayl ¦ File from the shipment documents
+Все документы партии ¦ Yukning barcha hujjatlari ¦ All shipment documents
+📎 Открыть документы ¦ 📎 Hujjatlarni ochish ¦ 📎 Open documents
+📎 Документы: обмен файлами по партиям ¦ 📎 Hujjatlar: yuklar bo‘yicha fayl almashish ¦ 📎 Documents: file exchange by shipment
+Файлов пока нет. ¦ Hozircha fayllar yo‘q. ¦ No files yet.
+Файлов пока нет ¦ Hozircha fayllar yo‘q ¦ No files yet
+Файлов: ¦ Fayllar: ¦ Files:
+Ждут вашего «Принято»: ¦ Sizdan «Qabul qilindi» kutilmoqda: ¦ Awaiting your «Accepted»:
+ждут «Принято»: ¦ «Qabul qilindi» kutilmoqda: ¦ awaiting «Accepted»:
+⏳ ждёт «Принято» ¦ ⏳ «Qabul qilindi» kutilmoqda ¦ ⏳ awaiting «Accepted»
+все приняты ✅ ¦ hammasi qabul qilindi ✅ ¦ all accepted ✅
+📁 сохранён у партии ¦ 📁 yukda saqlandi ¦ 📁 saved to the shipment
+✅ принято: ¦ ✅ qabul qildi: ¦ ✅ accepted by:
+🔔 вам ¦ 🔔 sizga ¦ 🔔 for you
+📤 Отправить файлы ¦ 📤 Fayllarni yuborish ¦ 📤 Send files
+Отправить файлы ¦ Fayllarni yuborish ¦ Send files
+📦 Карточка партии ¦ 📦 Yuk kartochkasi ¦ 📦 Shipment card
+📦 Партия ¦ 📦 Yuk ¦ 📦 Shipment
+📥 Реестр Excel ¦ 📥 Reyestr (Excel) ¦ 📥 Register (Excel)
+📥 Реестр всех документов (Excel) ¦ 📥 Barcha hujjatlar reyestri (Excel) ¦ 📥 Register of all documents (Excel)
+Кому отправить? Отметьте одного или нескольких: ¦ Kimga yuborilsin? Bir yoki bir nechtasini belgilang: ¦ Send to whom? Tick one or more:
+Файлов к отправке: ¦ Yuboriladigan fayllar: ¦ Files to send:
+🛃 Специалисту по таможне ¦ 🛃 Bojxona mutaxassisiga ¦ 🛃 To the customs specialist
+🧾 1С УНФ-Оператору ¦ 🧾 1C UNF operatoriga ¦ 🧾 To the 1C UNF Operator
+👔 Директору ¦ 👔 Direktorga ¦ 👔 To the Director
+🛃 Таможня ¦ 🛃 Bojxona ¦ 🛃 Customs
+🧾 1С УНФ ¦ 🧾 1C UNF ¦ 🧾 1C UNF
+👔 Директор ¦ 👔 Direktor ¦ 👔 Director
+нет в боте ¦ botda yo‘q ¦ not in the bot
+(пока Директор не назначен — администратору) ¦ (direktor hali tayinlanmagan — administratorga) ¦ (no Director yet — to the administrator)
+📎 Дальше — прислать файлы ¦ 📎 Keyingisi — fayllarni yuborish ¦ 📎 Next — send the files
+✖ Отменить ¦ ✖ Bekor qilish ¦ ✖ Cancel
+📤 Отправить ¦ 📤 Yuborish ¦ 📤 Send
+Получено файлов: ¦ Qabul qilingan fayllar: ¦ Files received:
+К какой партии их отнести? ¦ Ularni qaysi yukka biriktiramiz? ¦ Which shipment do they belong to?
+🔍 Ничего не найдено — попробуйте другое название, номер ГТД или машины. ¦ 🔍 Hech narsa topilmadi — boshqa nom, BYD yoki mashina raqamini kiriting. ¦ 🔍 Nothing found — try another name, GTD or vehicle number.
+🔎 Найти партию ¦ 🔎 Yukni topish ¦ 🔎 Find shipment
+🔎 Напишите название партии, номер ГТД или машины: ¦ 🔎 Yuk nomi, BYD yoki mashina raqamini yozing: ¦ 🔎 Type the shipment name, GTD or vehicle number:
+🔔 Новых файлов для вас нет 👍 ¦ 🔔 Siz uchun yangi fayllar yo‘q 👍 ¦ 🔔 No new files for you 👍
+· от ¦ · yuboruvchi: ¦ · from
+Последние партии с файлами ¦ Fayllari bor oxirgi yuklar ¦ Latest shipments with files
+Как отправить: пришлите файл боту — он спросит, к какой партии и кому. Или откройте партию → «📎 Документы» → «📤 Отправить файлы». ¦ Qanday yuboriladi: faylni botga yuboring — u qaysi yukka va kimga ekanini so‘raydi. Yoki yukni oching → «📎 Hujjatlar» → «📤 Fayllarni yuborish». ¦ How to send: send the file to the bot — it will ask which shipment and to whom. Or open the shipment → «📎 Documents» → «📤 Send files».
+Дата ¦ Sana ¦ Date
+Файл ¦ Fayl ¦ File
+Размер ¦ Hajmi ¦ Size
+От кого ¦ Kimdan ¦ From
+Роль ¦ Rol ¦ Role
+Кому ¦ Kimga ¦ To
+От: ¦ Kimdan: ¦ From:
+Комментарий ¦ Izoh ¦ Comment
+Получатели ¦ Oluvchilar ¦ Recipients
+Приняли ¦ Qabul qilganlar ¦ Accepted by
+Копия в папке бота ¦ Bot papkasidagi nusxa ¦ Copy in the bot folder
+КБ ¦ KB ¦ KB
+МБ ¦ MB ¦ MB
+Файлы ждут вашего «✅ Принято»: ¦ Sizdan «✅ Qabul qilindi» kutayotgan fayllar: ¦ Files awaiting your «✅ Accepted»:
+Пришлите файлы сюда в чат ¦ Fayllarni shu chatga yuboring ¦ Send the files here in this chat
+— Excel, PDF, Word, фото. Можно сразу несколько. ¦ — Excel, PDF, Word, rasm. Bir nechtasini birdaniga yuborish mumkin. ¦ — Excel, PDF, Word, photos. Several at once is fine.
+Подпись к файлу станет комментарием. ¦ Faylga yozilgan izoh sharh sifatida saqlanadi. ¦ A file caption becomes the comment.
+Когда закончите — «✅ Готово». Отмена — /cancel. ¦ Tugatgach — «✅ Tayyor». Bekor qilish — /cancel. ¦ When finished — «✅ Done». Cancel — /cancel.
+✅ Готово ¦ ✅ Tayyor ¦ ✅ Done
+✅ Принято ¦ ✅ Qabul qilindi ¦ ✅ Accepted
+✅ Вы приняли ¦ ✅ Siz qabul qildingiz ¦ ✅ You accepted
+Уже отмечено ✅ ¦ Allaqachon belgilangan ✅ ¦ Already marked ✅
+Отправлено файлов: ¦ Yuborilgan fayllar: ¦ Files sent:
+Получили: ¦ Oldi: ¦ Received by:
+Когда получатель нажмёт «✅ Принято», вам придёт сообщение. ¦ Oluvchi «✅ Qabul qilindi» tugmasini bosganda sizga xabar keladi. ¦ When the recipient taps «✅ Accepted», you will get a message.
+⚠️ Некому доставить ¦ ⚠️ Yetkazadigan odam yo‘q ¦ ⚠️ Nobody to deliver to
+Файлы сохранены у партии. ¦ Fayllar yukda saqlandi. ¦ The files are saved to the shipment.
+📎 Ещё файлы ¦ 📎 Yana fayllar ¦ 📎 More files
+принял(а) файлы: ¦ fayllarni qabul qildi: ¦ accepted files:
+✖ Отменено — файлы никуда не отправлены. ¦ ✖ Bekor qilindi — fayllar hech qayerga yuborilmadi. ¦ ✖ Cancelled — the files were not sent.
+Файлы уже отправлены или время вышло — пришлите их ещё раз. ¦ Fayllar allaqachon yuborilgan yoki vaqt tugagan — ularni qaytadan yuboring. ¦ The files were already sent or the time ran out — send them again.
+Отметьте, кому отправить ¦ Kimga yuborishni belgilang ¦ Tick who to send to
+📤 Отправляю… ¦ 📤 Yuborilmoqda… ¦ 📤 Sending…
+Файл не найден ¦ Fayl topilmadi ¦ File not found
+⚠️ Файл недоступен в Telegram и копии в папке бота нет ¦ ⚠️ Fayl Telegramda mavjud emas va bot papkasida nusxasi yo‘q ¦ ⚠️ The file is not available in Telegram and there is no copy in the bot folder
+⛔ Наблюдатель не отправляет файлы. Обратитесь к Генеральному Директору. ¦ ⛔ Kuzatuvchi fayl yubormaydi. Bosh direktorga murojaat qiling. ¦ ⛔ A Viewer cannot send files. Contact the General Director.
+⛔ Наблюдатель не отправляет файлы ¦ ⛔ Kuzatuvchi fayl yubormaydi ¦ ⛔ A Viewer cannot send files
+Лимит за один раз: ¦ Bir martalik chegara: ¦ Limit per send:
+Сначала отправьте эти файлы. ¦ Avval shu fayllarni yuboring. ¦ Send these files first.
+<b>📎 Документы партии</b> ¦ <b>📎 Yuk hujjatlari</b> ¦ <b>📎 Shipment documents</b>
+<blockquote expandable>Файлы (Excel, PDF, Word, фото) передаются через бота и хранятся у партии. Просто пришлите файл боту — он спросит, к какой партии его отнести и кому отправить: 🛃 Специалисту по таможне, 🧾 1С УНФ-Оператору, 👔 Директору (можно нескольким сразу). Или на карточке партии: «📎 Документы» → «📤 Отправить файлы». Подпись к файлу станет комментарием.\nПолучатель получает сам файл и нажимает «✅ Принято» — отправителю приходит ответ. Кто не принял файл больше суток — получает напоминание утром. У партии видна вся история: кто, кому, когда, кто принял; любой файл можно получить снова, реестр — в Excel. Копии файлов хранятся в папке docs рядом с ботом.</blockquote> ¦ <blockquote expandable>Fayllar (Excel, PDF, Word, rasm) bot orqali uzatiladi va yukda saqlanadi. Faylni botga yuboring — u qaysi yukka biriktirish va kimga yuborishni so‘raydi: 🛃 bojxona mutaxassisiga, 🧾 1C UNF operatoriga, 👔 direktorga (bir nechtasiga birdaniga ham mumkin). Yoki yuk kartochkasida: «📎 Hujjatlar» → «📤 Fayllarni yuborish». Faylga yozilgan izoh sharh sifatida saqlanadi.\nOluvchi faylning o‘zini oladi va «✅ Qabul qilindi» ni bosadi — yuboruvchiga javob keladi. Faylni bir kundan ortiq qabul qilmagan kishiga ertalab eslatma keladi. Yukda butun tarix ko‘rinadi: kim, kimga, qachon, kim qabul qildi; istalgan faylni qayta olish mumkin, reyestr — Excelda. Fayllar nusxasi bot yonidagi docs papkasida saqlanadi.</blockquote> ¦ <blockquote expandable>Files (Excel, PDF, Word, photos) are passed through the bot and kept with the shipment. Just send a file to the bot — it will ask which shipment it belongs to and whom to send it to: 🛃 the customs specialist, 🧾 the 1C UNF Operator, 👔 the Director (several at once is fine). Or on the shipment card: «📎 Documents» → «📤 Send files». A file caption becomes the comment.\nThe recipient gets the file itself and taps «✅ Accepted» — the sender gets a reply. Anyone who has not accepted a file for more than a day gets a reminder in the morning. The shipment shows the full history: who, to whom, when, who accepted; any file can be received again, the register is in Excel. Copies of the files are kept in the docs folder next to the bot.</blockquote>
+обмен документами ¦ hujjat almashish ¦ document exchange

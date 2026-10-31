@@ -1,0 +1,152 @@
+<blockquote expandable>Все грузы, разделённые по столбцам таблицы: 🌍 страна отправления (I), 📜 таможенный режим (метка ИМ40 / ИМ74 / ИМ70 / НД40 / ИМ51 в названии), 🏭 поставщик (B), 🚛 транспорт (L), 🏢 получатель (C), 📅 год по ГТД ИМ40, 📦 условия поставки (K), 🛃 таможенный пост (первая часть номера ГТД, D).\nВ каждой категории: число грузов и доля, цена завода, расходы, себестоимость, расходы к заводу (общая и «обычная» — медиана), цена за 1 кг, сравнение со всеми грузами, годы и список грузов.\nМожно просто написать в чат «Китай», «ПОСУДА», «2025», «FCA» или «ИМ74» — откроется категория.</blockquote> ¦ <blockquote expandable>Jadval ustunlari bo‘yicha ajratilgan barcha yuklar: 🌍 jo‘natish mamlakati (I), 📜 bojxona rejimi (nomdagi IM40 / IM74 / IM70 / ND40 / IM51 belgisi), 🏭 yetkazib beruvchi (B), 🚛 transport (L), 🏢 qabul qiluvchi (C), 📅 IM40 BYD bo‘yicha yil, 📦 yetkazib berish shartlari (K), 🛃 bojxona posti (BYD raqamining birinchi qismi, D).\nHar bir toifada: yuklar soni va ulushi, zavod narxi, xarajatlar, tannarx, xarajatning zavod narxiga nisbati (umumiy va «odatiy» — mediana), 1 kg narxi, barcha yuklar bilan solishtirish, yillar va yuklar ro‘yxati.\nChatga «Xitoy», «ПОСУДА», «2025», «FCA» yoki «IM74» deb yozsangiz ham bo‘ladi — toifa ochiladi.</blockquote> ¦ <blockquote expandable>All shipments split by sheet columns: 🌍 country of dispatch (I), 📜 customs regime (IM40 / IM74 / IM70 / ND40 / IM51 mark in the name), 🏭 supplier (B), 🚛 transport (L), 🏢 consignee (C), 📅 year by IM40 GTD, 📦 delivery terms (K), 🛃 customs post (first part of the GTD number, D).\nEach category shows: number of shipments and share, factory price, costs, landed cost, costs to factory price (overall and «typical» — median), price per 1 kg, comparison with all shipments, years and the shipment list.\nYou can simply type «China», «ПОСУДА», «2025», «FCA» or «IM74» in the chat — the category opens.</blockquote>
+<b>📜 Таможенные режимы</b> ¦ <b>📜 Bojxona rejimlari</b> ¦ <b>📜 Customs regimes</b>
+<blockquote expandable>Режим указан в названии груза (столбец A). Без метки — обычная декларация <b>ИМ40</b>.\n<b>ИМ40</b> — Импорт (выпуск для свободного обращения): здесь цена завода и все расходы\n<b>ИМ74</b> — Таможенный склад: до выпуска, в строке только небольшой сбор\n<b>ИМ70</b> — Временное хранение: до выпуска, в строке почти нет денег\n<b>НД40</b> — Неполная декларация (полный расчёт в строке есть)\n<b>ИМ51</b> — Переработка на таможенной территории\nИМ74 и ИМ70 — «хвосты» того же груза: бот складывает их с ИМ40 в один груз.</blockquote> ¦ <blockquote expandable>Rejim yuk nomida ko‘rsatilgan (A ustuni). Belgisiz — oddiy <b>IM40</b> deklaratsiyasi.\n<b>IM40</b> — Import (erkin muomalaga chiqarish): zavod narxi va barcha xarajatlar shu yerda\n<b>IM74</b> — Bojxona ombori: chiqarishdan oldin, qatorda faqat kichik yig‘im\n<b>IM70</b> — Vaqtincha saqlash: chiqarishdan oldin, qatorda deyarli pul yo‘q\n<b>ND40</b> — To‘liq bo‘lmagan deklaratsiya (qatorda to‘liq hisob bor)\n<b>IM51</b> — Bojxona hududida qayta ishlash\nIM74 va IM70 — o‘sha yukning «dumlari»: bot ularni IM40 bilan bitta yukka qo‘shadi.</blockquote> ¦ <blockquote expandable>The regime is shown in the shipment name (column A). No mark means a regular <b>IM40</b> declaration.\n<b>IM40</b> — Import (release for free circulation): factory price and all costs are here\n<b>IM74</b> — Customs warehouse: before release, the row has only a small fee\n<b>IM70</b> — Temporary storage: before release, the row has almost no money\n<b>ND40</b> — Incomplete declaration (the row has a full calculation)\n<b>IM51</b> — Processing in the customs territory\nIM74 and IM70 are «tails» of the same shipment: the bot adds them to IM40 as one shipment.</blockquote>
+<b>🧪 Проверки</b> ¦ <b>🧪 Tekshiruvlar</b> ¦ <b>🧪 Checks</b>
+<blockquote expandable>Бот сам ищет вероятные ошибки ввода: BG ≠ расчёт, курс сильно не такой, как обычно в этом месяце, расходы больше ¦ <blockquote expandable>Bot kiritishdagi ehtimoliy xatolarni o‘zi qidiradi: BG ≠ hisob, kurs shu oydagi odatiy kursdan juda farq qiladi, xarajatlar zavod narxining ¦ <blockquote expandable>The bot looks for likely input errors itself: BG ≠ calculation, a rate far from the usual rate for the month, costs above
+% или меньше ¦ % dan ko‘p yoki ¦ % or below
+% цены завода, AC ≠ Y+Z+AA+AB, нет курса, нет цены завода, метка ИМ70/ИМ74 на полной декларации. Таблицу бот не меняет — только показывает, где посмотреть.</blockquote> ¦ % dan kam, AC ≠ Y+Z+AA+AB, kurs yo‘q, zavod narxi yo‘q, to‘liq deklaratsiyada IM70/IM74 belgisi. Bot jadvalni o‘zgartirmaydi — faqat qayerni tekshirishni ko‘rsatadi.</blockquote> ¦ % of the factory price, AC ≠ Y+Z+AA+AB, no rate, no factory price, an IM70/IM74 mark on a full declaration. The bot does not change the sheet — it only shows where to look.</blockquote>
+<b>Закрытие с пометкой</b> ¦ <b>Belgi bilan yopish</b> ¦ <b>Closing with a flag</b>
+<blockquote expandable>Если у груза есть 🟡 жёлтые ячейки, ❗ пустые расходы или нет цены завода, бот перед закрытием спросит подтверждение. Такой груз отмечается «⚠️ с пометкой» — это видно Директору, в журнале и в сводке. Если в завершённом грузе появится новая жёлтая ячейка, он сам вернётся в 🆕 Новые.</blockquote> ¦ <blockquote expandable>Agar yukda 🟡 sariq kataklar, ❗ bo‘sh xarajatlar bo‘lsa yoki zavod narxi bo‘lmasa, bot yopishdan oldin tasdiq so‘raydi. Bunday yuk «⚠️ belgi bilan» deb belgilanadi — buni direktor, jurnal va hisobot ko‘radi. Yakunlangan yukda yangi sariq katak paydo bo‘lsa, u o‘zi 🆕 Yangilarga qaytadi.</blockquote> ¦ <blockquote expandable>If a shipment has 🟡 yellow cells, ❗ empty costs or no factory price, the bot asks for confirmation before closing. Such a shipment is marked «⚠️ flagged» — the Director sees it, as do the log and the summary. If a new yellow cell appears in a completed shipment, it returns to 🆕 New by itself.</blockquote>
+<b>Статусы</b> ¦ <b>Holatlar</b> ¦ <b>Statuses</b>
+<blockquote expandable>🆕 Новая — груз появился в таблице, его ещё никто не взял\n🔧 В работе — расходы оформляются\n✅ Завершён — всё оплачено и подтверждено\n⚠️ Не завершён — указана причина (видна в карточке и в сводке)\nГрузы выше начала открытых работ считаются завершёнными ✅</blockquote> ¦ <blockquote expandable>🆕 Yangi — yuk jadvalda paydo bo‘ldi, hali hech kim olmagan\n🔧 Ishda — xarajatlar rasmiylashtirilmoqda\n✅ Yakunlangan — hammasi to‘langan va tasdiqlangan\n⚠️ Yakunlanmagan — sabab ko‘rsatilgan (kartochkada va hisobotda ko‘rinadi)\nOchiq ishlar boshidan yuqoridagi yuklar yakunlangan hisoblanadi ✅</blockquote> ¦ <blockquote expandable>🆕 New — the shipment appeared in the sheet, nobody has taken it yet\n🔧 In progress — costs are being processed\n✅ Completed — everything is paid and confirmed\n⚠️ Not completed — a reason is given (shown in the card and the summary)\nShipments above the start of open tasks count as completed ✅</blockquote>
+<b>Кто отвечает за груз</b> ¦ <b>Yuk uchun kim javobgar</b> ¦ <b>Who is responsible for a shipment</b>
+<blockquote expandable>Бот назначает ответственного сам, по таблице:\n🛃 Специалист по таможенному оформлению — если в грузе есть незаполненные расходы (❗) или неподтверждённая жёлтая сумма (🟡);\n🧾 1С УНФ-Оператор — если всё заполнено, но груз не завершён;\nпосле завершения ответственного нет. Как только заполнено последнее поле, груз сам переходит к 1С УНФ — ему приходит уведомление; если в таблице что-то снова пусто — возвращается таможне.\nФильтры 🛃 и 🧾 — в «📋 Открытые работы» и в «🏠 Сегодня».</blockquote> ¦ <blockquote expandable>Bot javobgarni jadval bo‘yicha o‘zi tayinlaydi:\n🛃 Bojxona rasmiylashtiruvi mutaxassisi — yukda to‘ldirilmagan xarajatlar (❗) yoki tasdiqlanmagan sariq summa (🟡) bo‘lsa;\n🧾 1C UNF operatori — hammasi to‘ldirilgan, lekin yuk yakunlanmagan bo‘lsa;\nyakunlangandan keyin javobgar yo‘q. Oxirgi maydon to‘ldirilishi bilan yuk o‘zi 1C UNF ga o‘tadi — unga bildirishnoma keladi; jadvalda yana bo‘sh joy paydo bo‘lsa — bojxonaga qaytadi.\n🛃 va 🧾 filtrlari — «📋 Ochiq ishlar» va «🏠 Bugun» bo‘limlarida.</blockquote> ¦ <blockquote expandable>The bot assigns the responsible person itself, from the sheet:\n🛃 Customs Clearance Specialist — if the shipment has unfilled costs (❗) or an unconfirmed yellow amount (🟡);\n🧾 1C UNF Operator — if everything is filled but the shipment is not completed;\nafter completion nobody is responsible. As soon as the last field is filled, the shipment moves to 1C UNF by itself and they get a notification; if something is empty again, it returns to customs.\nThe 🛃 and 🧾 filters are in «📋 Open tasks» and «🏠 Today».</blockquote>
+<b>Замечания и поддержка</b> ¦ <b>Mulohazalar va yordam</b> ¦ <b>Remarks and support</b>
+<blockquote expandable>📌 Генеральный Директор на карточке груза нажимает «Замечание» и пишет текст — его получают ответственный, 1С УНФ-Оператор и Разработчик. Исполнитель нажимает «👍 Принято» — Директору приходит ответ. «📌 Замечания» в меню — список открытых.\n🆘 «Поддержка»: Оператор (или любой сотрудник) нажимает «Написать», пишет вопрос — Разработчик и Директор получают его сразу и отвечают кнопкой «Ответить» прямо в боте. Вопрос можно задать по конкретному грузу (кнопка «🆘 Помощь» на карточке). Директор видит всю переписку и может отправить замечание. «✅ Решено» закрывает обращение. /cancel — отменить ввод.</blockquote> ¦ <blockquote expandable>📌 Bosh direktor yuk kartochkasida «Mulohaza» ni bosib matn yozadi — uni javobgar, 1C UNF operatori va dasturchi oladi. Ijrochi «👍 Qabul qilindi» ni bosadi — direktorga javob keladi. Menyudagi «📌 Mulohazalar» — ochiqlari ro‘yxati.\n🆘 «Yordam»: operator (yoki istalgan xodim) «Yozish» ni bosib savol yozadi — dasturchi va direktor uni darhol oladi va botning o‘zida «Javob berish» tugmasi bilan javob beradi. Savolni aniq yuk bo‘yicha ham berish mumkin (kartochkadagi «🆘 Yordam» tugmasi). Direktor barcha yozishmalarni ko‘radi va mulohaza yuborishi mumkin. «✅ Hal qilindi» murojaatni yopadi. /cancel — kiritishni bekor qilish.</blockquote> ¦ <blockquote expandable>📌 The General Director taps «Remark» on a shipment card and writes the text — the responsible person, the 1C UNF Operator and the Developer receive it. The assignee taps «👍 Accepted» and the Director gets a reply. «📌 Remarks» in the menu lists the open ones.\n🆘 «Support»: the Operator (or any staff member) taps «Write» and types a question — the Developer and the Director receive it at once and reply with «Reply» right in the bot. A question can be about a specific shipment (the «🆘 Help» button on the card). The Director sees the whole conversation and can send a remark. «✅ Solved» closes the request. /cancel — cancel typing.</blockquote>
+<b>Роли</b> ¦ <b>Rollar</b> ¦ <b>Roles</b>
+Роли назначает только Генеральный Директор. Новый человек нажимает /start — Директору приходит запрос с кнопками выбора роли. Дать доступ заранее: /adduser ID (ID человек узнаёт командой /id). Менять роли можно в любой момент: «👥 Команда» или /team.\nУведомления о каждой смене статуса получают Директор, Разработчик и 1С УНФ-Оператор.</blockquote> ¦ Rollarni faqat Bosh direktor tayinlaydi. Yangi odam /start ni bosadi — direktorga rol tanlash tugmalari bilan so‘rov keladi. Oldindan kirish berish: /adduser ID (odam ID ni /id buyrug‘i bilan biladi). Rollarni istalgan vaqtda o‘zgartirish mumkin: «👥 Jamoa» yoki /team.\nHar bir holat o‘zgarishi haqida direktor, dasturchi va 1C UNF operatori xabar oladi.</blockquote> ¦ Only the General Director assigns roles. A new person taps /start and the Director receives a request with role buttons. To grant access in advance: /adduser ID (the person finds their ID with /id). Roles can be changed any time: «👥 Team» or /team.\nThe Director, the Developer and the 1C UNF Operator are notified of every status change.</blockquote>
+<b>Обозначения</b> ¦ <b>Belgilar</b> ¦ <b>Legend</b>
+<blockquote expandable>🟡 — <b>жёлтая ячейка в таблице = сумма не подтверждена</b>. В таблице расходов такая статья помечена звёздочкой *, себестоимость предварительная\n❗ — расходы, которые ещё не заполнены (пустые ячейки)\n⏰ — работа открыта дольше ¦ <blockquote expandable>🟡 — <b>jadvaldagi sariq katak = summa tasdiqlanmagan</b>. Xarajatlar jadvalida bunday modda * bilan belgilangan, tannarx taxminiy\n❗ — hali to‘ldirilmagan xarajatlar (bo‘sh kataklar)\n⏰ — ish ochiq turgan muddat: ¦ <blockquote expandable>🟡 — <b>a yellow cell in the sheet = the amount is not confirmed</b>. In the cost table such an item is marked with *, the landed cost is preliminary\n❗ — costs that are not filled yet (empty cells)\n⏰ — the task has been open for more than
+дней\n⚠️ — цифры в таблице не сходятся (AC ≠ Y+Z+AA+AB или BG ≠ расчёт)</blockquote> ¦ kundan ortiq\n⚠️ — jadvaldagi raqamlar mos kelmaydi (AC ≠ Y+Z+AA+AB yoki BG ≠ hisob)</blockquote> ¦ days\n⚠️ — figures in the sheet do not match (AC ≠ Y+Z+AA+AB or BG ≠ calculation)</blockquote>
+<b>Названия грузов (столбец A)</b> ¦ <b>Yuk nomlari (A ustuni)</b> ¦ <b>Shipment names (column A)</b>
+<blockquote expandable>Части одного груза объединяются: «Коко 1 авто (1-2)», «Коко 1 авто (2-2)» и «Коко 1 авто ИМ74» — один груз «Коко 1 авто». Также не важны avto/авто, заглавные буквы и лишние пробелы. В поиске такой груз показывается суммой всех частей и по каждой части отдельно.</blockquote> ¦ <blockquote expandable>Bitta yukning qismlari birlashtiriladi: «Коко 1 авто (1-2)», «Коко 1 авто (2-2)» va «Коко 1 авто ИМ74» — bitta «Коко 1 авто» yuki. avto/авто, katta harflar va ortiqcha bo‘shliqlar ahamiyatsiz. Qidiruvda bunday yuk barcha qismlar yig‘indisi va har bir qism alohida ko‘rsatiladi.</blockquote> ¦ <blockquote expandable>Parts of one shipment are merged: «Коко 1 авто (1-2)», «Коко 1 авто (2-2)» and «Коко 1 авто ИМ74» are one shipment «Коко 1 авто». avto/авто, capital letters and extra spaces do not matter. Search shows such a shipment as the sum of all parts and each part separately.</blockquote>
+<b>Статьи расходов → столбцы таблицы</b> ¦ <b>Xarajat moddalari → jadval ustunlari</b> ¦ <b>Cost items → sheet columns</b>
+<blockquote expandable>Цена завода — N ($)\nБанк (перевод оплаты) — P ($)\nТаможня: сбор Y, пошлина Z, акциз AA, НДС AB, итого AC (сум)\nГигиенический сертификат — AD/AE (сум)\nСертификат соответствия — AG/AH (сум), счёт-фактура AI\nЭкология AJ/AK, карантин AM/AN, экспертиза AP (сум)\nЛогистика: наличные AW ($), перечислено AX (больше ¦ <blockquote expandable>Zavod narxi — N ($)\nBank (to‘lov o‘tkazmasi) — P ($)\nBojxona: yig‘im Y, boj Z, aksiz AA, QQS AB, jami AC (so‘m)\nGigiyena sertifikati — AD/AE (so‘m)\nMuvofiqlik sertifikati — AG/AH (so‘m), hisob-faktura AI\nEkologiya AJ/AK, karantin AM/AN, ekspertiza AP (so‘m)\nLogistika: naqd AW ($), o‘tkazilgan AX ( ¦ <blockquote expandable>Factory price — N ($)\nBank (payment transfer) — P ($)\nCustoms: fee Y, duty Z, excise AA, VAT AB, total AC (UZS)\nHygiene certificate — AD/AE (UZS)\nConformity certificate — AG/AH (UZS), invoice AI\nEcology AJ/AK, quarantine AM/AN, expert review AP (UZS)\nLogistics: cash AW ($), transferred AX (above
+— сум, иначе $), перевозчик AY\nДосмотр BB, инспектор BC ($; в старых строках — сум)\nПроцент завода / агент — BD ($)\nПРР BE, прочие BF, AR, AT/AU (сум)\nИтог всех расходов с товаром — BG ($)\n\nСумы переводятся в $ по рыночному курсу S (если пусто — по курсу ГТД H).</blockquote> ¦ dan ko‘p — so‘m, aks holda $), tashuvchi AY\nKo‘rik BB, inspektor BC ($; eski qatorlarda — so‘m)\nZavod foizi / agent — BD ($)\nYuTI BE, boshqalar BF, AR, AT/AU (so‘m)\nTovar bilan barcha xarajatlar jami — BG ($)\n\nSo‘m $ ga S bozor kursi bo‘yicha o‘tkaziladi (bo‘sh bo‘lsa — BYD kursi H bo‘yicha).</blockquote> ¦ — UZS, otherwise $), carrier AY\nInspection BB, inspector BC ($; UZS in old rows)\nFactory % / agent — BD ($)\nHandling BE, other BF, AR, AT/AU (UZS)\nTotal of all costs with goods — BG ($)\n\nUZS are converted to $ at the market rate S (if empty — at the GTD rate H).</blockquote>
+<b>Как пользоваться</b> ¦ <b>Qanday foydalanish</b> ¦ <b>How to use</b>
+<blockquote expandable>🔔 Новый груз или примечание к ячейке A — бот пришлёт карточку с кнопками: 🔧 В работе · ✅ Завершён · ⚠️ Причина · ⏰ Позже\n☀️ Каждый день в ¦ <blockquote expandable>🔔 Yangi yuk yoki A katagiga izoh — bot tugmali kartochka yuboradi: 🔧 Ishda · ✅ Yakunlandi · ⚠️ Sabab · ⏰ Keyinroq\n☀️ Har kuni soat ¦ <blockquote expandable>🔔 A new shipment or a note on cell A — the bot sends a card with buttons: 🔧 In progress · ✅ Completed · ⚠️ Reason · ⏰ Later\n☀️ Every day at
+— сводка открытых работ\n🔍 Напишите название груза — цена завода и все расходы\n✅ Завершённые — по месяцам, дата по ГТД ИМ40\n📊 Итоги — за месяц, год или по открытым работам\n◀ ▶ — соседний груз, 📄 Подробно — все поля из таблицы\n💱 Валюты и виды — расходы груза: сколько заплачено в $ и в сумах, по видам расходов (таможня, логистика, сертификаты…) с долей, наличные / перечисление. Есть и для всего груза из частей, и в 📊 Итогах за период</blockquote> ¦ da — ochiq ishlar hisoboti\n🔍 Yuk nomini yozing — zavod narxi va barcha xarajatlar\n✅ Yakunlanganlar — oylar bo‘yicha, sana IM40 BYD bo‘yicha\n📊 Hisobot — oy, yil yoki ochiq ishlar bo‘yicha\n◀ ▶ — qo‘shni yuk, 📄 Batafsil — jadvaldagi barcha maydonlar\n💱 Valyuta va turlar — yuk xarajatlari: $ va so‘mda qancha to‘langan, xarajat turlari (bojxona, logistika, sertifikatlar…) va ulushi, naqd / o‘tkazma. Qismlardan iborat butun yuk uchun ham, davr bo‘yicha 📊 Hisobotda ham bor</blockquote> ¦ — summary of open tasks\n🔍 Type a shipment name — factory price and all costs\n✅ Completed — by month, dated by the IM40 GTD\n📊 Totals — for a month, a year or open tasks\n◀ ▶ — neighbouring shipment, 📄 Details — all fields from the sheet\n💱 Currencies and types — shipment costs: how much was paid in $ and in UZS, by cost type (customs, logistics, certificates…) with shares, cash / transfer. Also for a whole multi-part shipment and in 📊 Totals for a period</blockquote>
+<b>Команды</b> ¦ <b>Buyruqlar</b> ¦ <b>Commands</b>
+/gtd номер · /auto номер · /kkdg номер\n/logist перевозчик · /otpr отправитель\n/today — сегодня · /cat — категории · /checks — проверки\n/support — поддержка · /remarks — замечания · /cancel — отменить ввод текста\n/id — ваш Telegram ID\nДиректору и Разработчику: /reload — перечитать таблицу · /journal — журнал действий · /status — состояние бота\nТолько Директору: /team — команда и роли · /adduser ID — дать доступ ¦ /gtd raqam · /auto raqam · /kkdg raqam\n/logist tashuvchi · /otpr jo‘natuvchi\n/today — bugun · /cat — toifalar · /checks — tekshiruvlar\n/support — yordam · /remarks — mulohazalar · /cancel — matn kiritishni bekor qilish\n/lang — til / язык / language\n/id — Telegram ID ingiz\nDirektor va dasturchiga: /reload — jadvalni qayta o‘qish · /journal — harakatlar jurnali · /status — bot holati\nFaqat direktorga: /team — jamoa va rollar · /adduser ID — kirish berish ¦ /gtd number · /auto number · /kkdg number\n/logist carrier · /otpr sender\n/today — today · /cat — categories · /checks — checks\n/support — support · /remarks — remarks · /cancel — cancel typing\n/lang — language / til / язык\n/id — your Telegram ID\nDirector and Developer: /reload — re-read the sheet · /journal — action log · /status — bot status\nDirector only: /team — team and roles · /adduser ID — grant access
+всё время ¦ butun davr ¦ all time
+текущий год ¦ joriy yil ¦ this year
+</b> открытого груза ¦ </b> ta ochiq yuk ¦ </b> open shipment
+</b> открытых грузов ¦ </b> ta ochiq yuk ¦ </b> open shipments
+хуже ¦ yomonroq ¦ worse
+лучше ¦ yaxshiroq ¦ better
+🏠 <b>Сегодня · ¦ 🏠 <b>Bugun · ¦ 🏠 <b>Today ·
+Подтвердить суммы у ¦ Summalarni tasdiqlash: ¦ Confirm amounts for
+— жёлтые ячейки, себестоимость пока предварительная ¦ — sariq kataklar, tannarx hozircha taxminiy ¦ — yellow cells, landed cost is preliminary
+Просрочено <b> ¦ Muddati o‘tgan <b> ¦ Overdue <b>
+</b> работ — дольше всех « ¦ </b> ta ish — eng uzog‘i « ¦ </b> tasks — the longest is «
+Нет цены завода (N) у ¦ Zavod narxi (N) yo‘q: ¦ No factory price (N) for
+Не взяты в работу: <b> ¦ Ishga olinmagan: <b> ¦ Not taken yet: <b>
+Заполнить расходы у ¦ Xarajatlarni to‘ldirish: ¦ Fill in costs for
+Закрыто с пометкой за 7 дней: <b> ¦ 7 kunda belgi bilan yopilgan: <b> ¦ Closed with a flag in 7 days: <b>
+Ваши грузы: заполнить расходы — <b> ¦ Sizning yuklaringiz: xarajatlarni to‘ldirish — <b> ¦ Your shipments: fill in costs — <b>
+Ваши грузы: всё заполнено, завершить — <b> ¦ Sizning yuklaringiz: hammasi to‘ldirilgan, yakunlash — <b> ¦ Your shipments: all filled, complete them — <b>
+<b>Главное сейчас</b> ¦ <b>Hozir eng muhimi</b> ¦ <b>Most important now</b>
+Всё спокойно 👍 Открытых проблем нет. ¦ Hammasi joyida 👍 Ochiq muammolar yo‘q. ¦ All calm 👍 No open problems.
+новые / в работе ¦ yangi / ishda ¦ new / in progress
+с причиной ¦ sabab bilan ¦ with a reason
+Просрочено ¦ Muddati o‘tgan ¦ Overdue
+Не заполнено ¦ To‘ldirilmagan ¦ Not filled
+Не подтверждено ¦ Tasdiqlanmagan ¦ Unconfirmed
+🛃 У таможни ¦ 🛃 Bojxonada ¦ 🛃 With customs
+🧾 У 1С УНФ ¦ 🧾 1C UNF da ¦ 🧾 With 1C UNF
+📌 Замечаний открыто ¦ 📌 Ochiq mulohazalar ¦ 📌 Open remarks
+🆘 Обращений открыто ¦ 🆘 Ochiq murojaatlar ¦ 🆘 Open requests
+Закрыто сегодня ¦ Bugun yopilgan ¦ Closed today
+Закрыто за 7 дней ¦ 7 kunda yopilgan ¦ Closed in 7 days
+с пометкой ¦ belgi bilan ¦ flagged
+📊 <b>Показатели</b> ¦ 📊 <b>Ko‘rsatkichlar</b> ¦ 📊 <b>Key figures</b>
+-му числу ¦ -sanagacha ¦ th day
+📅 <b>Месяц к месяцу</b> <i>(по ГТД ИМ40)</i> ¦ 📅 <b>Oyma-oy</b> <i>(IM40 BYD bo‘yicha)</i> ¦ 📅 <b>Month on month</b> <i>(by IM40 GTD)</i>
+Расходы к заводу: <b> ¦ Xarajat/zavod narxi: <b> ¦ Costs to factory price: <b>
+</b> против ¦ </b>, solishtiring: ¦ </b> versus
+в прошлом месяце <i>(обычные, медиана)</i> ¦ o‘tgan oyda <i>(odatiy, mediana)</i> ¦ last month <i>(typical, median)</i>
+📋 Открытые ¦ 📋 Ochiqlar ¦ 📋 Open
+🛃 У таможни ¦ 🛃 Bojxonada ¦ 🛃 With customs
+🧾 У 1С УНФ ¦ 🧾 1C UNF da ¦ 🧾 With 1C UNF
+🗒 Журнал ¦ 🗒 Jurnal ¦ 🗒 Log
+👤 Сотрудники ¦ 👤 Xodimlar ¦ 👤 Staff
+год ¦ yil ¦ year
+🗂 <b>Категории грузов</b> · ¦ 🗂 <b>Yuk toifalari</b> · ¦ 🗂 <b>Shipment categories</b> ·
+</b> · строк таблицы: ¦ </b> · jadval qatorlari: ¦ </b> · sheet rows:
+Себестоимость: <b> ¦ Tannarx: <b> ¦ Landed cost: <b>
+</b> · расходы к заводу обычно ¦ </b> · xarajat/zavod odatda ¦ </b> · costs to factory usually
+Выберите, как разделить грузы: ¦ Yuklarni qanday ajratishni tanlang: ¦ Choose how to split shipments:
+🧪 Проверки данных ¦ 🧪 Ma’lumot tekshiruvlari ¦ 🧪 Data checks
+ИМ40 ¦ IM40 ¦ IM40
+ИМ74 ¦ IM74 ¦ IM74
+ИМ70 ¦ IM70 ¦ IM70
+НД40 ¦ ND40 ¦ ND40
+ИМ51 ¦ IM51 ¦ IM51
+Импорт (выпуск для свободного обращения) ¦ Import (erkin muomalaga chiqarish) ¦ Import (release for free circulation)
+Таможенный склад ¦ Bojxona ombori ¦ Customs warehouse
+Временное хранение ¦ Vaqtincha saqlash ¦ Temporary storage
+Неполная декларация ¦ To‘liq bo‘lmagan deklaratsiya ¦ Incomplete declaration
+Переработка на таможенной территории ¦ Bojxona hududida qayta ishlash ¦ Processing in the customs territory
+стр. ¦ qator ¦ rows
+<b>Каждый режим отдельно</b> <i>(груз считается в каждом режиме, через который прошёл)</i> ¦ <b>Har bir rejim alohida</b> <i>(yuk o‘tgan har bir rejimda hisoblanadi)</i> ¦ <b>Each regime separately</b> <i>(a shipment counts in every regime it went through)</i>
+другой режим ¦ boshqa rejim ¦ other regime
+<b>Сочетания режимов в одном грузе</b> ¦ <b>Bitta yukdagi rejimlar birikmasi</b> ¦ <b>Regime combinations in one shipment</b>
+<i>Разделено по: ¦ <i>Ajratilgan: ¦ <i>Split by:
+. Всего: ¦ . Jami: ¦ . Total:
+· грузов: ¦ · yuklar: ¦ · shipments:
+себест.) · расходы ¦ tannarx) · xarajat ¦ of cost) · costs
+<i>Доля — от числа грузов; «расходы» — обычные расходы к цене завода (медиана).</i> ¦ <i>Ulush — yuklar sonidan; «xarajat» — zavod narxiga nisbatan odatiy xarajat (mediana).</i> ¦ <i>Share — of the number of shipments; «costs» — typical costs to the factory price (median).</i>
+🗂 Все категории ¦ 🗂 Barcha toifalar ¦ 🗂 All categories
+Категория ¦ Toifa ¦ Category
+В разделе « ¦ « ¦ In section «
+» за ¦ » bo‘limida, davr: ¦ » for
+такой категории нет. ¦ bunday toifa yo‘q. ¦ there is no such category.
+</b> из ¦ </b> / ¦ </b> of
+) · строк таблицы: ¦ ) · jadval qatorlari: ¦ ) · sheet rows:
+<i>(по ГТД ИМ40)</i> ¦ <i>(IM40 BYD bo‘yicha)</i> ¦ <i>(by IM40 GTD)</i>
+без НДС ¦ QQSsiz ¦ excl. VAT
+обычно (медиана) ¦ odatda (mediana) ¦ typical (median)
+💵 <b>Деньги</b> ¦ 💵 <b>Pul</b> ¦ 💵 <b>Money</b>
+<i>Себестоимость посчитана у ¦ <i>Tannarx hisoblangan: ¦ <i>Landed cost calculated for
+грузов (у остальных нет цены завода или курса).</i> ¦ ta yuk (qolganlarida zavod narxi yoki kurs yo‘q).</i> ¦ shipments (the rest have no factory price or rate).</i>
+Доля в себестоимости всех грузов: <code> ¦ Barcha yuklar tannarxidagi ulushi: <code> ¦ Share of the landed cost of all shipments: <code>
+📊 <b>Сравнение со всеми грузами</b>\nРасходы к заводу: ¦ 📊 <b>Barcha yuklar bilan solishtirish</b>\nXarajat/zavod narxi: ¦ 📊 <b>Compared with all shipments</b>\nCosts to factory price:
+против ¦ solishtiring: ¦ versus
+За 1 кг: ¦ 1 kg uchun: ¦ Per 1 kg:
+📅 <b>По годам</b> ¦ 📅 <b>Yillar bo‘yicha</b> ¦ 📅 <b>By year</b>
+🌍 Страны ¦ 🌍 Mamlakatlar ¦ 🌍 Countries
+🏭 Главные поставщики ¦ 🏭 Asosiy yetkazib beruvchilar ¦ 🏭 Main suppliers
+🔧 Открытых работ: <b> ¦ 🔧 Ochiq ishlar: <b> ¦ 🔧 Open tasks: <b>
+🧪 С вероятной ошибкой в таблице: <b> ¦ 🧪 Jadvalda xato bo‘lishi mumkin: <b> ¦ 🧪 With a likely sheet error: <b>
+<b>Грузы</b> — новые сверху, стр. ¦ <b>Yuklar</b> — yangilari yuqorida, sahifa ¦ <b>Shipments</b> — newest first, page
+. Нажмите, чтобы открыть карточку. ¦ . Kartochkani ochish uchun bosing. ¦ . Tap to open the card.
+💱 Валюты и виды расходов ¦ 💱 Valyuta va xarajat turlari ¦ 💱 Currencies and cost types
+← К категории ¦ ← Toifaga ¦ ← To category
+Категория не найдена. ¦ Toifa topilmadi. ¦ Category not found.
+Грузов: ¦ Yuklar: ¦ Shipments:
+· расходы по валютам и видам ¦ · valyuta va turlar bo‘yicha xarajatlar ¦ · costs by currency and type
+🧪 <b>Проверки данных таблицы</b> ¦ 🧪 <b>Jadval ma’lumotlarini tekshirish</b> ¦ 🧪 <b>Sheet data checks</b>
+Бот ищет строки, где, скорее всего, ошибка ввода. Таблицу бот не меняет — только показывает, где посмотреть. ¦ Bot kiritishda xato bo‘lishi mumkin bo‘lgan qatorlarni qidiradi. Jadvalni o‘zgartirmaydi — faqat qayerni ko‘rishni ko‘rsatadi. ¦ The bot looks for rows that most likely have an input error. It does not change the sheet — it only shows where to look.
+· из них открытых: <b> ¦ · shundan ochiq: <b> ¦ · open among them: <b>
+: нет ¦ : yo‘q ¦ : none
+<b>Что означает</b> ¦ <b>Nimani anglatadi</b> ¦ <b>What it means</b>
+· строка ¦ · qator ¦ · row
+Ничего не найдено 👍 ¦ Hech narsa topilmadi 👍 ¦ Nothing found 👍
+🧪 Все проверки ¦ 🧪 Barcha tekshiruvlar ¦ 🧪 All checks
+<i>Кто, что и когда менял. Новые сверху.</i> ¦ <i>Kim, nimani va qachon o‘zgartirgan. Yangilari yuqorida.</i> ¦ <i>Who changed what and when. Newest first.</i>
+🗒 <b>Журнал действий</b> · записей: ¦ 🗒 <b>Harakatlar jurnali</b> · yozuvlar: ¦ 🗒 <b>Action log</b> · entries:
+Пока никто ничего не менял. ¦ Hozircha hech kim hech narsani o‘zgartirmagan. ¦ Nobody has changed anything yet.
+<i>Причина: ¦ <i>Sabab: ¦ <i>Reason:
+⚠️ с пометкой: ¦ ⚠️ belgi bilan: ¦ ⚠️ flagged:
+👤 По сотрудникам ¦ 👤 Xodimlar bo‘yicha ¦ 👤 By staff member
+👤 <b>Сотрудники · ¦ 👤 <b>Xodimlar · ¦ 👤 <b>Staff ·
+дней</b> ¦ kun</b> ¦ days</b>
+<i>Взял — нажал «В работе», закрыл — «Завершён», ⚠️ — закрыл с пометкой, причина — «Не завершён».</i> ¦ <i>Oldi — «Ishda» ni bosdi, yopdi — «Yakunlandi», ⚠️ — belgi bilan yopdi, sabab — «Yakunlanmagan».</i> ¦ <i>Took — tapped «In progress», closed — «Completed», ⚠️ — closed with a flag, reason — «Not completed».</i>
+За этот период действий не было. ¦ Bu davrda harakatlar bo‘lmagan. ¦ No actions in this period.
+Кто ¦ Kim ¦ Who
+Взял ¦ Oldi ¦ Took
+Закр ¦ Yopdi ¦ Closed
+Прич ¦ Sabab ¦ Reason
+🔧 <b>Сейчас в работе у</b> ¦ 🔧 <b>Hozir ishda</b> ¦ 🔧 <b>Currently in progress with</b>
+👥 <b>Команда и роли</b> ¦ 👥 <b>Jamoa va rollar</b> ¦ 👥 <b>Team and roles</b>
+🆕 <b>Ждут решения: ¦ 🆕 <b>Qaror kutmoqda: ¦ 🆕 <b>Awaiting decision:
