@@ -172,7 +172,7 @@ table(document.getElementById('tRisk'), [
   {k:'score', h:T.score, n:1, f:(v,x)=>`${x.icon} ${v}`}, {k:'kind', h:T.kind}, {k:'title', h:T.about, w:1},
   {k:'why', h:T.why, w:1}, {k:'owner', h:T.owner}, {k:'status', h:T.status}], D.risks, document.getElementById('qRisk'));
 table(document.getElementById('tDocs'), [
-  {k:'date', h:T.date}, {k:'cargo', h:T.cargo, w:1}, {k:'name', h:T.file, w:1}, {k:'stage', h:T.dstage},
+  {k:'date', h:T.date}, {k:'cargo', h:T.cargo, w:1}, {k:'name', h:T.file, w:1}, {k:'stage', h:T.dstage}, {k:'proc', h:T.dproc},
   {k:'from', h:T.from}, {k:'to', h:T.to}, {k:'acc', h:T.acc, w:1}], D.docs, document.getElementById('qDocs'));
 """
 

@@ -141,6 +141,15 @@ CREATE TABLE IF NOT EXISTS user_access (
     updated_at INTEGER,
     PRIMARY KEY (user_id, key)
 );
+CREATE TABLE IF NOT EXISTS doc_log (
+    id       INTEGER PRIMARY KEY AUTOINCREMENT,
+    doc_id   INTEGER NOT NULL,
+    ts       INTEGER NOT NULL,
+    status   TEXT NOT NULL,                 -- sent / accepted / work / done / returned / final
+    user_id  INTEGER,
+    user_name TEXT DEFAULT '',
+    note     TEXT DEFAULT ''
+);
 CREATE TABLE IF NOT EXISTS doc_recv (
     doc_id     INTEGER NOT NULL,
     user_id    INTEGER NOT NULL,
@@ -204,6 +213,14 @@ class Storage:
             self.db.execute("ALTER TABLE docs ADD COLUMN stage TEXT NOT NULL DEFAULT 'work'")
             self.db.execute("ALTER TABLE docs ADD COLUMN final_at INTEGER")
             self.db.execute("ALTER TABLE docs ADD COLUMN final_by TEXT DEFAULT ''")
+        dcols = {r["name"] for r in self.db.execute("PRAGMA table_info(docs)")}
+        if dcols and "proc" not in dcols:    # стадия работы с файлом у получателя
+            self.db.execute("ALTER TABLE docs ADD COLUMN proc TEXT NOT NULL DEFAULT 'sent'")
+            self.db.execute("ALTER TABLE docs ADD COLUMN proc_by TEXT DEFAULT ''")
+            self.db.execute("ALTER TABLE docs ADD COLUMN proc_at INTEGER")
+            self.db.execute("ALTER TABLE docs ADD COLUMN proc_note TEXT DEFAULT ''")
+            # файлы, которые уже приняли, — сразу «Принят»
+            self.db.execute("UPDATE docs SET proc='accepted' WHERE id IN (SELECT doc_id FROM doc_recv WHERE acked_at IS NOT NULL)")
         self.db.execute("CREATE INDEX IF NOT EXISTS idx_history_ts ON history(ts)")
         self.db.execute("CREATE INDEX IF NOT EXISTS idx_history_rec ON history(record_id, id)")
 
@@ -602,6 +619,30 @@ class Storage:
 
     def doc_get(self, doc_id: int):
         return self.db.execute("SELECT * FROM docs WHERE id=?", (doc_id,)).fetchone()
+
+    def doc_set_proc(self, doc_ids: list[int], status: str, user_id: int | None, by: str, note: str = "") -> None:
+        """Стадия работы с файлами (вся пачка сразу) + запись в историю."""
+        now = int(time.time())
+        for did in doc_ids:
+            self.db.execute("UPDATE docs SET proc=?, proc_by=?, proc_at=?, proc_note=? WHERE id=?",
+                            (status, by, now, note, did))
+            self.db.execute("INSERT INTO doc_log(doc_id, ts, status, user_id, user_name, note) VALUES(?,?,?,?,?,?)",
+                            (did, now, status, user_id, by, note))
+        self.db.commit()
+
+    def doc_history(self, doc_id: int) -> list[sqlite3.Row]:
+        return list(self.db.execute("SELECT * FROM doc_log WHERE doc_id=? ORDER BY id", (doc_id,)))
+
+    def doc_batch_for(self, doc_id: int, user_id: int) -> list[sqlite3.Row]:
+        """Файлы той же пачки, которые получил этот человек."""
+        d = self.doc_get(doc_id)
+        if d is None:
+            return []
+        return list(self.db.execute("SELECT d.* FROM docs d JOIN doc_recv r ON r.doc_id=d.id WHERE d.batch=? "
+                                    "AND r.user_id=? ORDER BY d.id", (d["batch"], user_id)))
+
+    def docs_sent_by(self, user_id: int, limit: int = 200) -> list[sqlite3.Row]:
+        return list(self.db.execute("SELECT * FROM docs WHERE from_id=? ORDER BY id DESC LIMIT ?", (user_id, limit)))
 
     def doc_make_final(self, doc_id: int, by: str, to_roles: str) -> None:
         self.db.execute("UPDATE docs SET stage='final', final_at=?, final_by=?, to_roles=? WHERE id=?",

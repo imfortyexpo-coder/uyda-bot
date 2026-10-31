@@ -60,7 +60,7 @@ from storage import (ACTIVE_ROLES, ADMIN, ADMIN_ROLES, ARCHIVE, CUSTOMS, DENIED,
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 log = logging.getLogger("import-bot")
 esc = html.escape
-BOT_VERSION = "2026-10-31 · две роли у одного человека (15)"   # меняйте при выпуске новых файлов — видно в /status
+BOT_VERSION = "2026-10-31 · стадии работы с файлами (16)"   # меняйте при выпуске новых файлов — видно в /status
 BOT_DESCRIPTION = ("Учёт импортных грузов GOLD DISHES / UYDA: напоминания о новых грузах и открытых работах, "
                    "статусы, цена завода и все расходы, себестоимость, категории (страны, поставщики, транспорт), "
                    "проверки данных таблицы и журнал действий.")
@@ -888,7 +888,7 @@ def home_view(uid: int) -> tuple[str, InlineKeyboardMarkup]:
 
 NAV_SKIP = ("lg:", "zz:", "tr:", "sp:w", "sp:r", "sp:m", "sp:c", "sp:n", "rm:", "ra:", "u1:", "ci:", "xl:", "tdi",
             "mn:week", "noop", "s:", "f:", "z:", "rs:", "rp:", "ro:", "rn", "xl:r",
-            "dg:", "da:", "dx:", "dw:", "ds:", "dp:", "dq", "dz", "dd", "df:", "dy:", "ut:", "ur:", "db")   # действия, а не экраны — в путь «Назад» не пишем
+            "dg:", "da:", "dx:", "dw:", "ds:", "dp:", "dq", "dz", "dd", "df:", "dy:", "ut:", "ur:", "db", "dk:")   # действия, а не экраны — в путь «Назад» не пишем
 
 
 def nav_row() -> list[InlineKeyboardButton]:
@@ -1630,6 +1630,9 @@ def reference_html() -> str:
         "🟡 Рабочая версия — для работы между Специалистом по таможне и Оператором, Директору не уходит. "
         "✅ Финальная версия — файл готов: Директор получает его сразу. Отметить готовым можно при отправке "
         "или потом кнопкой «⭐ Сделать финальным». Файл с тем же названием — новая версия (v2, v3).\n"
+        "Стадии работы с файлом: 📤 Отправлен → 👀 Принят → 🔧 В работе → ✔️ Обработан, или ↩ На доработку "
+        "(с комментарием, что исправить). Стадию меняет получатель кнопками на файле, отправителю приходит сообщение; "
+        "«📎 Документы» → «📤 Мои отправленные» — где сейчас каждый ваш файл.\n"
         "Получатель получает сам файл и нажимает «✅ Принято» — отправителю приходит ответ. Кто не принял файл "
         "больше суток — получает напоминание утром. У партии видна вся история и фильтры: все, финальные, рабочие, "
         "мне, от меня; любой файл можно получить снова, все файлы — одним архивом, реестр — в Excel. "
@@ -3813,6 +3816,12 @@ DOC_TO_TITLE = {CUSTOMS: "🛃 Специалисту по таможне", OPER
 DOC_ROLE_SHORT = {CUSTOMS: "🛃 Таможня", OPERATOR: "🧾 1С УНФ", DIRECTOR: "👔 Директор"}
 DOC_STAGE = {"work": "🟡 Рабочая версия", "final": "✅ Финальная версия"}
 DOC_FILTERS = {"a": "Все", "f": "✅ Финальные", "w": "🟡 Рабочие", "i": "📥 Мне", "o": "📤 От меня"}
+# стадия работы с файлом у получателя: отправлен → принят → в работе → обработан (или ↩ на доработку)
+DOC_PROC = {"sent": ("📤", "Отправлен"), "accepted": ("👀", "Принят"), "work": ("🔧", "В работе"),
+            "done": ("✔️", "Обработан"), "returned": ("↩", "На доработке")}
+DOC_PROC_CODE = {"w": "work", "d": "done", "r": "returned"}
+DOC_PROC_VERB = {"accepted": "принял(а)", "work": "взял(а) в работу", "done": "обработал(а)",
+                 "returned": "вернул(а) на доработку"}
 DOC_MAX_DOWNLOAD = 20 * 1024 * 1024   # Telegram даёт боту скачать файл до 20 МБ; больше — хранится только в Telegram
 DOC_ZIP_MAX = 45 * 1024 * 1024        # архив, который бот может отправить (лимит Telegram — 50 МБ)
 DOC_BATCH_WAIT = 1.5                  # секунд ждём остальные файлы, если прислали несколько сразу
@@ -3941,6 +3950,29 @@ def file_of(message: Message) -> dict | None:
     return None
 
 
+def doc_proc_line(d, recv=None) -> str:
+    """«🔧 В работе · Самариддин, 31.10 14:40» — на какой стадии файл."""
+    rs = recv if recv is not None else app.db.doc_recv(d["id"])
+    if not rs:
+        return "📁 Сохранён у партии (никому не отправлялся)"
+    icon, name = DOC_PROC.get(d["proc"] or "sent", DOC_PROC["sent"])
+    line = f"{icon} <b>{name}</b>"
+    if d["proc"] in (None, "", "sent"):
+        waiting = [r["user_name"] for r in rs if not r["acked_at"]]
+        if waiting:
+            line += " · ждёт «Принято»: " + ", ".join(esc(n or "") for n in waiting)
+    elif d["proc_by"]:
+        line += f" · {esc(d['proc_by'])}, {fmt_dt(d['proc_at'])}"
+    if d["proc"] == "returned" and d["proc_note"]:
+        line += f"\n💬 {esc(short_title(d['proc_note'], 200))}"
+    return line
+
+
+def can_set_proc(uid: int, d) -> bool:
+    """Стадию меняет получатель файла."""
+    return can_edit(uid) and any(r["user_id"] == uid for r in app.db.doc_recv(d["id"]))
+
+
 def doc_header(d) -> str:
     return "✅ <b>Финальный документ по партии</b>" if d["stage"] == "final" else "📎 <b>Документ по партии</b>"
 
@@ -3951,7 +3983,8 @@ def doc_caption(d, header: str | None = None) -> str:
            DOC_STAGE.get(d["stage"], ""),
            f"👤 От: {esc(d['from_name'])} · {doc_role_short(d['from_role'])}",
            f"➡️ Кому: {doc_to_text(d['to_roles'])}",
-           f"🕘 {fmt_dt(d['created_at'])}"]
+           f"🕘 {fmt_dt(d['created_at'])}",
+           "Стадия: " + doc_proc_line(d)]
     if d["stage"] == "final" and d["final_by"] and d["final_by"] != d["from_name"]:
         out.append(f"✅ Финальным отметил(а): {esc(d['final_by'])}, {fmt_dt(d['final_at'])}")
     if d["note"]:
@@ -3970,10 +4003,18 @@ def doc_kb(d, viewer: int) -> InlineKeyboardMarkup:
     first = []
     if viewer in recv and not recv[viewer]["acked_at"]:
         first.append(btn("✅ Принято", f"da:{d['id']}"))
+    elif can_set_proc(viewer, d) and d["proc"] in ("accepted", "work", "returned", "sent"):
+        stage_row = []
+        if d["proc"] != "work":
+            stage_row.append(btn("🔧 В работу", f"dk:{d['id']}:w"))
+        stage_row.append(btn("✔️ Обработан", f"dk:{d['id']}:d"))
+        if d["proc"] != "returned":
+            stage_row.append(btn("↩ На доработку", f"dk:{d['id']}:r"))
+        rows.append(stage_row)
     if can_finalize(viewer, d):
         first.append(btn("⭐ Сделать финальным", f"df:{d['id']}"))
     if first:
-        rows.append(first)
+        rows.insert(0, first)
     rows.append([btn("📎 Все документы партии", f"dc:{d['record_id']}:0"), btn("📦 Партия", f"c:{d['record_id']}:-")])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
@@ -4143,15 +4184,7 @@ def docs_view(uid: int, rid: int, page: int = 0, flt: str = "") -> tuple[str, In
         out.append("\nВ этом фильтре файлов нет.")
     for d in docs[page * DOC_PAGE:(page + 1) * DOC_PAGE]:
         rs = recv.get(d["id"], [])
-        if not rs:
-            state = "📁 сохранён у партии"
-        elif all(r["acked_at"] for r in rs):
-            state = "✅ принято: " + ", ".join(esc(r["user_name"] or "") for r in rs)
-        else:
-            ok = [r for r in rs if r["acked_at"]]
-            state = "⏳ ждёт «Принято»: " + ", ".join(esc(r["user_name"] or "") for r in rs if not r["acked_at"])
-            if ok:
-                state += " · ✅ " + ", ".join(esc(r["user_name"] or "") for r in ok)
+        state = doc_proc_line(d, rs)
         mine = any(r["user_id"] == uid and not r["acked_at"] for r in rs)
         v = versions.get(d["id"])
         vtxt = f" · v{v[0]}" if v and v[1] > 1 else ""
@@ -4163,7 +4196,8 @@ def docs_view(uid: int, rid: int, page: int = 0, flt: str = "") -> tuple[str, In
         if d["note"]:
             out.append(f"💬 {esc(short_title(d['note'], 120))}")
         out.append(state)
-        kb.append([btn(f"{stage} {short_title(d['name'], 28)}{vtxt}" + (" 🔔" if mine else ""), f"dg:{d['id']}")])
+        picon = DOC_PROC.get(d["proc"] or "sent", DOC_PROC["sent"])[0] if rs else "📁"
+        kb.append([btn(f"{stage}{picon} {short_title(d['name'], 27)}{vtxt}" + (" 🔔" if mine else ""), f"dg:{d['id']}")])
     if pages > 1:
         kb.append(pager_fn(lambda p: f"dc:{key}:{p}:{flt}", page, pages))
     if can_edit(uid):
@@ -4282,6 +4316,12 @@ def docs_inbox_view(uid: int) -> tuple[str, InlineKeyboardMarkup]:
                 _, ids, title = doc_cargo(r)
                 total, _ = app.db.doc_counts(ids)
                 kb.append([btn(f"📎 {short_title(title, 30)} · {total}", f"dc:{r}:0")])
+    mine_sent = [d for d in app.db.docs_sent_by(uid, 300) if (d["proc"] or "sent") != "done"
+                 and app.db.doc_recv(d["id"])]
+    if mine_sent:
+        ret = sum(1 for d in mine_sent if d["proc"] == "returned")
+        out += ["", f"📤 <b>Мои отправленные в процессе: {len(mine_sent)}</b>" + (f" · ↩ на доработке: <b>{ret}</b>" if ret else "")]
+    kb.append([btn("📤 Мои отправленные" + (f" · {len(mine_sent)}" if mine_sent else ""), "dm")])
     if can_edit(uid):
         out += ["", "<i>Как отправить: пришлите файл боту — он спросит, к какой партии и кому. "
                     "Или откройте партию → «📎 Документы» → «📤 Отправить файлы».</i>"]
@@ -4290,8 +4330,8 @@ def docs_inbox_view(uid: int) -> tuple[str, InlineKeyboardMarkup]:
     return "\n".join(out), InlineKeyboardMarkup(inline_keyboard=kb)
 
 
-DOC_XL_HEADERS = ["Дата", "Партия", "Файл", "Версия", "Этап", "Размер", "От кого", "Роль", "Кому", "Комментарий",
-                  "Получатели", "Приняли", "Копия в папке бота"]
+DOC_XL_HEADERS = ["Дата", "Партия", "Файл", "Версия", "Этап", "Стадия работы", "Кто и когда", "Причина возврата",
+                  "Размер", "От кого", "Роль", "Кому", "Комментарий", "Получатели", "Приняли", "Копия в папке бота"]
 
 
 def docs_xlsx(docs, lang: str) -> bytes:
@@ -4303,14 +4343,17 @@ def docs_xlsx(docs, lang: str) -> bytes:
     for d in docs:
         rs = recv.get(d["id"], [])
         v = vers.get(d["id"])
+        proc = (" ".join(DOC_PROC.get(d["proc"] or "sent", DOC_PROC["sent"])) if rs else "📁 Сохранён у партии")
+        who = f"{d['proc_by']} {fmt_dt(d['proc_at'])}" if d["proc_by"] and d["proc_at"] else ""
         rows.append([fmt_dt(d["created_at"]), d["cargo_title"], d["name"], f"v{v[0]}" if v and v[1] > 1 else "",
-                     DOC_STAGE.get(d["stage"], ""), fsize(d["size"]), d["from_name"],
+                     DOC_STAGE.get(d["stage"], ""), proc, who, d["proc_note"] if d["proc"] == "returned" else "",
+                     fsize(d["size"]), d["from_name"],
                      doc_role_short(d["from_role"]), doc_to_text(d["to_roles"]),
                      d["note"], ", ".join(r["user_name"] for r in rs),
                      ", ".join(f"{r['user_name']} {fmt_dt(r['acked_at'])}" for r in rs if r["acked_at"]),
                      os.path.relpath(d["path"], cfg.BASE_DIR) if d["path"] else ""])
     return ops.list_xlsx(i18n.tr("Документы партий", lang), tr_list(DOC_XL_HEADERS, lang), tr_rows(rows, lang),
-                         widths=[16, 30, 34, 8, 20, 10, 22, 16, 26, 34, 28, 30, 40])
+                         widths=[16, 30, 34, 8, 20, 18, 26, 34, 10, 22, 16, 26, 34, 28, 30, 40])
 
 
 async def docs_zip(uid: int, rid: int, flt: str) -> tuple[bytes | None, int, int]:
@@ -4421,8 +4464,8 @@ async def handle_file(message: Message) -> None:
     asyncio.create_task(doc_after_quiet(uid, stamp, ask))
 
 
-@dp.callback_query(F.data.startswith(("dc:", "dg:", "du:", "dw:", "ds:", "dp:", "da:", "dx:", "dy:", "df:")))
-@dp.callback_query(F.data.in_({"dn", "dq", "dz", "dd"}))
+@dp.callback_query(F.data.startswith(("dc:", "dg:", "du:", "dw:", "ds:", "dp:", "da:", "dx:", "dy:", "df:", "dk:")))
+@dp.callback_query(F.data.in_({"dn", "dq", "dz", "dd", "dm"}))
 async def cb_docs(cb: CallbackQuery) -> None:
     if not await allowed_cb(cb):
         return
@@ -4539,14 +4582,13 @@ async def cb_docs(cb: CallbackQuery) -> None:
         return
     elif act == "da":
         rows = app.db.doc_ack_batch(int(parts[1]), uid)
+        fresh = [d["id"] for d in rows if (d["proc"] or "sent") == "sent"]
+        if fresh:
+            app.db.doc_set_proc(fresh, "accepted", uid, user_name_of(uid))
         d0 = app.db.doc_get(int(parts[1]))
         if d0 is not None:
-            kb_rows = [[btn("✅ Вы приняли", "noop")]]
-            if can_finalize(uid, d0):
-                kb_rows[0].append(btn("⭐ Сделать финальным", f"df:{d0['id']}"))
-            kb_rows.append([btn("📎 Все документы партии", f"dc:{d0['record_id']}:0")])
             try:
-                await cb.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(inline_keyboard=kb_rows))
+                await cb.message.edit_reply_markup(reply_markup=doc_kb(d0, uid))
             except Exception:
                 pass
         if not rows:
@@ -4560,11 +4602,33 @@ async def cb_docs(cb: CallbackQuery) -> None:
         for sender, ds in by_sender.items():
             if sender == uid or not is_allowed(sender):
                 continue
-            text = (f"✅ <b>{esc(me)}</b> · {esc(short_role(uid))} — принял(а) файлы: {len(ds)}\n"
+            text = (f"👀 <b>{esc(me)}</b> · {esc(short_role(uid))} — принял(а) файлы: {len(ds)}\n"
                     f"📦 <b>{esc(ds[0]['cargo_title'])}</b>\n" + "\n".join(f"• {esc(short_title(d['name'], 50))}" for d in ds[:10]))
             await send(sender, text, InlineKeyboardMarkup(inline_keyboard=[[btn("📎 Документы партии", f"dc:{ds[0]['record_id']}:0")]]))
         await cb.answer(f"✅ Принято: {len(rows)}")
         return
+    elif act == "dk":
+        d = app.db.doc_get(int(parts[1]))
+        status = DOC_PROC_CODE.get(parts[2] if len(parts) > 2 else "")
+        if d is None or status is None or not can_set_proc(uid, d):
+            await cb.answer("⛔ Стадию меняет получатель файла", show_alert=True)
+            return
+        if status == "returned":
+            ask_input(uid, "doc_ret", d["id"])
+            await cb.message.answer(f"↩ <b>На доработку</b> · {esc(short_title(d['name'], 50))}\n"
+                                    "Напишите, что нужно исправить (отправитель получит ваш комментарий). Отмена — /cancel.")
+            await cb.answer()
+            return
+        await doc_change_proc(uid, d, status)
+        try:
+            await cb.message.edit_reply_markup(reply_markup=doc_kb(app.db.doc_get(d["id"]), uid))
+        except Exception:
+            pass
+        await cb.answer(f"{DOC_PROC[status][0]} {DOC_PROC[status][1]}")
+        return
+    elif act == "dm":
+        text, kb = docs_sent_view(uid)
+        await safe_edit(cb, text, kb)
     elif act == "dy":
         rid, flt = int(parts[1]), (parts[2] if len(parts) > 2 else "a")
         await cb.answer("🗜 Собираю архив…")
@@ -4594,6 +4658,68 @@ async def cb_docs(cb: CallbackQuery) -> None:
         await send_xlsx(cb, docs_xlsx(docs, lang), f"UYDA_{safe_name(title)}_{stamp}.xlsx",
                         f"📥 <b>{esc(title)}</b> · {len(docs)}")
     await cb.answer()
+
+
+async def doc_change_proc(uid: int, d, status: str, note: str = "") -> list:
+    """Сменить стадию у файла и всей его пачки (что получил этот человек), сообщить отправителю."""
+    batch = [x for x in app.db.doc_batch_for(d["id"], uid) if x["proc"] not in ("done",) or status == "done"]
+    ids = [x["id"] for x in batch] or [d["id"]]
+    if status != "accepted":                       # «В работу» / «Обработан» сразу означает и «Принято»
+        app.db.doc_ack_batch(d["id"], uid)
+    me = user_name_of(uid)
+    app.db.doc_set_proc(ids, status, uid, me, note[:500])
+    docs = [app.db.doc_get(i) for i in ids]
+    sender = d["from_id"]
+    if sender and sender != uid and is_allowed(sender):
+        icon, name = DOC_PROC[status]
+        text = [f"{icon} <b>{esc(me)}</b> · {esc(short_role(uid))} — {DOC_PROC_VERB[status]} файлы: {len(docs)}",
+                f"📦 <b>{esc(d['cargo_title'])}</b>"]
+        text += [f"• {esc(short_title(x['name'], 50))}" for x in docs[:10]]
+        if status == "returned" and note:
+            text.append(f"<blockquote>💬 {esc(note[:500])}</blockquote>")
+            text.append("<i>Исправьте и пришлите файл с тем же названием — он станет новой версией.</i>")
+        await send(sender, "\n".join(text), InlineKeyboardMarkup(inline_keyboard=[
+            [btn("📤 Мои отправленные", "dm"), btn("📎 Документы партии", f"dc:{d['record_id']}:0")]]))
+    return docs
+
+
+def docs_sent_view(uid: int) -> tuple[str, InlineKeyboardMarkup]:
+    """📤 Мои отправленные: на какой стадии каждый файл, который я отправил."""
+    docs = app.db.docs_sent_by(uid)
+    recv = app.db.doc_recv_map([d["id"] for d in docs])
+    groups = [("returned", "↩ <b>Вернули на доработку</b>"), ("sent", "📤 <b>Ждут «Принято»</b>"),
+              ("accepted", "👀 <b>Приняты, ещё не в работе</b>"), ("work", "🔧 <b>В работе</b>"),
+              ("done", "✔️ <b>Обработаны</b> (последние)")]
+    sent = [d for d in docs if recv.get(d["id"])]
+    counts = {k: sum(1 for d in sent if (d["proc"] or "sent") == k) for k, _ in groups}
+    out = ["📤 <b>Мои отправленные файлы</b>", ""]
+    if not sent:
+        out.append("Вы ещё не отправляли файлы.")
+    else:
+        out.append(" · ".join(f"{DOC_PROC[k][0]} {counts[k]}" for k, _ in groups))
+    kb = []
+    for key, title in groups:
+        items = [d for d in sent if (d["proc"] or "sent") == key]
+        if not items:
+            continue
+        if key == "done":
+            items = items[:3]
+        out += ["", title]
+        for d in items[:6]:
+            line = f"• {esc(short_title(d['name'], 40))} — {esc(short_title(d['cargo_title'], 30))}"
+            if key == "sent":
+                waiting = [r["user_name"] for r in recv[d["id"]] if not r["acked_at"]]
+                line += " · " + ", ".join(esc(w or "") for w in waiting)
+            elif d["proc_by"]:
+                line += f" · {esc(d['proc_by'])}, {fmt_dt(d['proc_at'])}"
+            out.append(line)
+            if key == "returned" and d["proc_note"]:
+                out.append(f"  💬 <i>{esc(short_title(d['proc_note'], 150))}</i>")
+            if key != "done":
+                kb.append([btn(f"{DOC_PROC[key][0]} {short_title(d['name'], 30)}", f"dg:{d['id']}")])
+    kb = kb[:12]
+    kb.append([btn("📎 Документы", "dn")])
+    return fit("\n".join(out)), InlineKeyboardMarkup(inline_keyboard=kb)
 
 
 async def doc_reminders() -> None:
@@ -4634,7 +4760,7 @@ ACCESS_DEFAULT = {"docs": ACTIVE_ROLES, "docs_work": EDIT_ROLES, "dash": ACTIVE_
                   "excel": ACTIVE_ROLES, "week": ADMIN_ROLES}
 # какие кнопки относятся к разделу (кнопки без доступа бот прячет, нажатие — запрещает)
 ACCESS_BUTTONS = {
-    "docs": ("dn", "dc:", "dg:", "du:", "dw:", "ds:", "dp:", "da:", "dy:", "df:", "dq", "dz", "dd"),
+    "docs": ("dn", "dc:", "dg:", "du:", "dw:", "ds:", "dp:", "da:", "dy:", "df:", "dq", "dz", "dd", "dk:", "dm"),
     "risks": ("rk:", "rv:", "rs:", "rp:", "ro:", "rn"),
     "excel": ("xl:", "dx:"),
     "dash": ("db",),
@@ -4861,7 +4987,9 @@ def dashboard_data(uid: int, lang: str) -> dict:
         for d in docs:
             rs = recv.get(d["id"], [])
             docs_rows.append({"date": fmt_dt(d["created_at"]), "cargo": d["cargo_title"], "name": d["name"],
-                              "stage": T(DOC_STAGE.get(d["stage"], "")), "from": d["from_name"],
+                              "stage": T(DOC_STAGE.get(d["stage"], "")),
+                              "proc": T(" ".join(DOC_PROC.get(d["proc"] or "sent", DOC_PROC["sent"]))) if rs else T("📁 Сохранён"),
+                              "from": d["from_name"],
                               "to": T(doc_to_text(d["to_roles"])),
                               "acc": ", ".join(r["user_name"] for r in rs if r["acked_at"]) or (T("ждёт") if rs else "—")})
 
@@ -4901,7 +5029,7 @@ def dashboard_data(uid: int, lang: str) -> dict:
         "cargos": "Партий", "cargo": "Партия", "share": "Доля партий", "date": "Дата", "resp": "Ответственный",
         "stage": "Дней на этапе / норма", "missing": "Не заполнено", "risk": "Риск", "score": "Балл", "kind": "Риск",
         "about": "О чём", "why": "Почему", "owner": "Кто отвечает", "status": "Статус", "file": "Файл",
-        "dstage": "Этап", "from": "От кого", "to": "Кому", "acc": "Приняли", "search": "Поиск…",
+        "dstage": "Этап", "dproc": "Стадия работы", "from": "От кого", "to": "Кому", "acc": "Приняли", "search": "Поиск…",
         "empty": "Нет данных", "nochart": "Графики не загрузились — откройте файл в браузере (Chrome, Safari, Edge).",
         "footer": "Uyda · Shinam • Qulay • Sifatli — данные из таблицы импорта. Бот только читает таблицу и 1С.",
     }.items()}
@@ -5290,6 +5418,15 @@ async def handle_input(message: Message, pi: tuple) -> None:
                            InlineKeyboardMarkup(inline_keyboard=[[btn("⚠️ Открыть риск", f"rv:{rid_}")]]))
         return
     if not can_edit(uid):
+        return
+    if kind == "doc_ret":                              # причина возврата файла на доработку
+        d = app.db.doc_get(pi[1])
+        if d is None or not can_set_proc(uid, d):
+            return
+        docs = await doc_change_proc(uid, d, "returned", text)
+        await message.answer(f"↩ <b>Отправлено на доработку</b> · файлов: {len(docs)}\n"
+                             f"📦 <b>{esc(d['cargo_title'])}</b>\n<blockquote>{esc(text[:500])}</blockquote>",
+                             reply_markup=InlineKeyboardMarkup(inline_keyboard=[[btn("📎 Документы партии", f"dc:{d['record_id']}:0")]]))
         return
     if kind == "doc_find":                             # к какой партии отнести присланные файлы
         await app.refresh()

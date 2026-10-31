@@ -1,0 +1,42 @@
+# Обновление 16 · стадии работы с файлами; Справочник: роли и документы целиком
+<blockquote expandable>Файлы (Excel, PDF, Word, фото) передаются через бота и хранятся у партии. Просто пришлите файл боту — он спросит, к какой партии его отнести и кому отправить: 🛃 Специалисту по таможне, 🧾 1С УНФ-Оператору, 👔 Директору (можно нескольким сразу). Или на карточке партии: «📎 Документы» → «📤 Отправить файлы». Подпись к файлу станет комментарием.\n🟡 Рабочая версия — для работы между Специалистом по таможне и Оператором, Директору не уходит. ✅ Финальная версия — файл готов: Директор получает его сразу. Отметить готовым можно при отправке или потом кнопкой «⭐ Сделать финальным». Файл с тем же названием — новая версия (v2, v3).\nСтадии работы с файлом: 📤 Отправлен → 👀 Принят → 🔧 В работе → ✔️ Обработан, или ↩ На доработку (с комментарием, что исправить). Стадию меняет получатель кнопками на файле, отправителю приходит сообщение; «📎 Документы» → «📤 Мои отправленные» — где сейчас каждый ваш файл.\nПолучатель получает сам файл и нажимает «✅ Принято» — отправителю приходит ответ. Кто не принял файл больше суток — получает напоминание утром. У партии видна вся история и фильтры: все, финальные, рабочие, мне, от меня; любой файл можно получить снова, все файлы — одним архивом, реестр — в Excel. Копии файлов хранятся в папке docs рядом с ботом.</blockquote> ¦ <blockquote expandable>Fayllar (Excel, PDF, Word, rasm) bot orqali uzatiladi va yukda saqlanadi. Faylni botga yuboring — u qaysi yukka biriktirish va kimga yuborishni so‘raydi: 🛃 bojxona mutaxassisiga, 🧾 1C UNF operatoriga, 👔 direktorga (bir nechtasiga birdaniga ham mumkin). Yoki yuk kartochkasida: «📎 Hujjatlar» → «📤 Fayllarni yuborish». Faylga yozilgan izoh sharh sifatida saqlanadi.\n🟡 Ishchi versiya — bojxona mutaxassisi va operator o‘rtasidagi ish uchun, direktorga bormaydi. ✅ Yakuniy versiya — fayl tayyor: direktor uni darhol oladi. Tayyor deb yuborishda yoki keyin «⭐ Yakuniy qilish» tugmasi bilan belgilash mumkin. Xuddi shu nomdagi fayl — yangi versiya (v2, v3).\nFayl bilan ishlash bosqichlari: 📤 Yuborildi → 👀 Qabul qilindi → 🔧 Ishda → ✔️ Ishlov berildi yoki ↩ Qayta ishlashga (nimani tuzatish kerakligi izohi bilan). Bosqichni oluvchi fayldagi tugmalar bilan o‘zgartiradi, yuboruvchiga xabar keladi; «📎 Hujjatlar» → «📤 Men yuborganlar» — har bir faylingiz hozir qayerda.\nOluvchi faylning o‘zini oladi va «✅ Qabul qilindi» ni bosadi — yuboruvchiga javob keladi. Faylni bir kundan ortiq qabul qilmagan kishiga ertalab eslatma keladi. Yukda butun tarix va filtrlar bor: hammasi, yakuniy, ishchi, menga, mendan; istalgan faylni qayta olish mumkin, barcha fayllar — bitta arxivda, reyestr — Excelda. Fayllar nusxasi bot yonidagi docs papkasida saqlanadi.</blockquote> ¦ <blockquote expandable>Files (Excel, PDF, Word, photos) are passed through the bot and kept with the shipment. Just send a file to the bot — it will ask which shipment it belongs to and whom to send it to: 🛃 the customs specialist, 🧾 the 1C UNF Operator, 👔 the Director (several at once is fine). Or on the shipment card: «📎 Documents» → «📤 Send files». A file caption becomes the comment.\n🟡 Working version — for work between the customs specialist and the Operator, it does not go to the Director. ✅ Final version — the file is ready: the Director gets it right away. Mark it final when sending or later with «⭐ Mark as final». A file with the same name is a new version (v2, v3).\nFile work stages: 📤 Sent → 👀 Accepted → 🔧 In progress → ✔️ Processed, or ↩ Sent back for rework (with a comment on what to fix). The recipient changes the stage with the buttons on the file, the sender gets a message; «📎 Documents» → «📤 My sent files» — where each of your files is now.\nThe recipient gets the file itself and taps «✅ Accepted» — the sender gets a reply. Anyone who has not accepted a file for more than a day gets a reminder in the morning. The shipment shows the full history and filters: all, final, working, to me, from me; any file can be received again, all files — in one archive, the register — in Excel. Copies of the files are kept in the docs folder next to the bot.</blockquote>
+Стадия: ¦ Bosqich: ¦ Stage:
+Стадия работы ¦ Ish bosqichi ¦ Work stage
+Кто и когда ¦ Kim va qachon ¦ Who and when
+Причина возврата ¦ Qaytarish sababi ¦ Return reason
+📤 Отправлен ¦ 📤 Yuborildi ¦ 📤 Sent
+👀 Принят ¦ 👀 Qabul qilindi ¦ 👀 Accepted
+🔧 В работе ¦ 🔧 Ishda ¦ 🔧 In progress
+✔️ Обработан ¦ ✔️ Ishlov berildi ¦ ✔️ Processed
+↩ На доработке ¦ ↩ Qayta ishlashda ¦ ↩ Back for rework
+Отправлен ¦ Yuborildi ¦ Sent
+Принят ¦ Qabul qilindi ¦ Accepted
+Обработан ¦ Ishlov berildi ¦ Processed
+На доработке ¦ Qayta ishlashda ¦ Back for rework
+🔧 В работу ¦ 🔧 Ishga olish ¦ 🔧 Start work
+↩ На доработку ¦ ↩ Qayta ishlashga ¦ ↩ Send back for rework
+📁 Сохранён у партии (никому не отправлялся) ¦ 📁 Yukda saqlangan (hech kimga yuborilmagan) ¦ 📁 Saved to the shipment (not sent to anyone)
+📁 Сохранён у партии ¦ 📁 Yukda saqlangan ¦ 📁 Saved to the shipment
+📁 Сохранён ¦ 📁 Saqlangan ¦ 📁 Saved
+ждёт «Принято»: ¦ «Qabul qilindi» kutilmoqda: ¦ awaiting «Accepted»:
+взял(а) в работу файлы: ¦ fayllarni ishga oldi: ¦ started work on files:
+обработал(а) файлы: ¦ fayllarga ishlov berdi: ¦ processed files:
+вернул(а) на доработку файлы: ¦ fayllarni qayta ishlashga qaytardi: ¦ sent files back for rework:
+<i>Исправьте и пришлите файл с тем же названием — он станет новой версией.</i> ¦ <i>Tuzating va faylni xuddi shu nom bilan yuboring — u yangi versiya bo‘ladi.</i> ¦ <i>Fix it and send the file with the same name — it will become a new version.</i>
+📤 Мои отправленные ¦ 📤 Men yuborganlar ¦ 📤 My sent files
+📤 <b>Мои отправленные файлы</b> ¦ 📤 <b>Men yuborgan fayllar</b> ¦ 📤 <b>My sent files</b>
+Вы ещё не отправляли файлы. ¦ Siz hali fayl yubormagansiz. ¦ You have not sent any files yet.
+↩ <b>Вернули на доработку</b> ¦ ↩ <b>Qayta ishlashga qaytarilgan</b> ¦ ↩ <b>Sent back for rework</b>
+📤 <b>Ждут «Принято»</b> ¦ 📤 <b>«Qabul qilindi» kutilmoqda</b> ¦ 📤 <b>Awaiting «Accepted»</b>
+👀 <b>Приняты, ещё не в работе</b> ¦ 👀 <b>Qabul qilingan, hali ishda emas</b> ¦ 👀 <b>Accepted, not started yet</b>
+🔧 <b>В работе</b> ¦ 🔧 <b>Ishda</b> ¦ 🔧 <b>In progress</b>
+✔️ <b>Обработаны</b> (последние) ¦ ✔️ <b>Ishlov berilgan</b> (oxirgilari) ¦ ✔️ <b>Processed</b> (latest)
+📤 <b>Мои отправленные в процессе: ¦ 📤 <b>Men yuborganlar, jarayonda: ¦ 📤 <b>My sent files in progress:
+· ↩ на доработке: ¦ · ↩ qayta ishlashda: ¦ · ↩ back for rework:
+↩ <b>Отправлено на доработку</b> · файлов: ¦ ↩ <b>Qayta ishlashga yuborildi</b> · fayllar: ¦ ↩ <b>Sent back for rework</b> · files:
+↩ <b>На доработку</b> ¦ ↩ <b>Qayta ishlashga</b> ¦ ↩ <b>Send back for rework</b>
+Напишите, что нужно исправить (отправитель получит ваш комментарий). Отмена — /cancel. ¦ Nimani tuzatish kerakligini yozing (yuboruvchi izohingizni oladi). Bekor qilish — /cancel. ¦ Write what needs fixing (the sender will get your comment). Cancel — /cancel.
+⛔ Стадию меняет получатель файла ¦ ⛔ Bosqichni fayl oluvchisi o‘zgartiradi ¦ ⛔ Only the file recipient changes the stage
+стадии работы с файлами (16) ¦ fayllar bilan ishlash bosqichlari (16) ¦ file work stages (16)
+Роли назначает только Генеральный Директор. Новый человек нажимает /start — Директору приходит запрос с кнопками выбора роли. Дать доступ заранее: /adduser ID (ID человек узнаёт командой /id). Менять роли можно в любой момент: «👥 Команда» или /team. ¦ Rollarni faqat Bosh direktor tayinlaydi. Yangi odam /start ni bosadi — direktorga rol tanlash tugmalari bilan so‘rov keladi. Oldindan kirish berish: /adduser ID (odam ID ni /id buyrug‘i bilan biladi). Rollarni istalgan vaqtda o‘zgartirish mumkin: «👥 Jamoa» yoki /team. ¦ Only the General Director assigns roles. A new person taps /start and the Director receives a request with role buttons. To grant access in advance: /adduser ID (the person finds their ID with /id). Roles can be changed any time: «👥 Team» or /team.
+Уведомления о каждой смене статуса получают Директор, Разработчик и 1С УНФ-Оператор.</blockquote> ¦ Har bir holat o‘zgarishi haqida direktor, dasturchi va 1C UNF operatori xabar oladi.</blockquote> ¦ The Director, the Developer and the 1C UNF Operator are notified of every status change.</blockquote>
