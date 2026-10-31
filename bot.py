@@ -60,7 +60,7 @@ from storage import (ACTIVE_ROLES, ADMIN, ADMIN_ROLES, ARCHIVE, CUSTOMS, DENIED,
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 log = logging.getLogger("import-bot")
 esc = html.escape
-BOT_VERSION = "2026-10-31 · документы по этапам, доступы, дашборд"   # меняйте при выпуске новых файлов — видно в /status
+BOT_VERSION = "2026-10-31 · две роли у одного человека (15)"   # меняйте при выпуске новых файлов — видно в /status
 BOT_DESCRIPTION = ("Учёт импортных грузов GOLD DISHES / UYDA: напоминания о новых грузах и открытых работах, "
                    "статусы, цена завода и все расходы, себестоимость, категории (страны, поставщики, транспорт), "
                    "проверки данных таблицы и журнал действий.")
@@ -837,7 +837,7 @@ def main_menu(user_id: int | None = None) -> ReplyKeyboardMarkup:
     """Короткое меню внизу экрана — своё у каждой роли. Всё остальное — в «☰ Ещё»."""
     role = role_of(user_id) if user_id is not None else None
     K = lambda t: KeyboardButton(text=t)
-    if role is None or role == VIEWER:
+    if role is None or not can_edit(user_id):
         rows = [[K(MENU_TODAY), K(MENU_CATS)], [K(MENU_SEARCH), K(MENU_MORE)]]
         if role == VIEWER and has_access(user_id, "docs"):
             rows = [[K(MENU_TODAY), K(MENU_CATS)], [K(MENU_DOCS), K(MENU_SEARCH)], [K(MENU_MORE)]]
@@ -859,7 +859,7 @@ def home_view(uid: int) -> tuple[str, InlineKeyboardMarkup]:
     remarks = len(app.db.open_remarks())
     role = role_of(uid)
     out = ["🟠 <b>Uyda · Импорт</b> — главное меню",
-           f"<i>{role_label(role)}</i>" if role else "", "",
+           f"<i>{roles_label(uid)}</i>" if role else "", "",
            f"📋 Открытые работы: <b>{len(rows_open)}</b>",
            f"🛃 у таможни <b>{counts['k']}</b> · 🧾 у 1С УНФ <b>{counts['u']}</b>"
            + (f" · ⏳ срок прошёл <b>{counts['d']}</b>" if counts["d"] else "")
@@ -867,9 +867,9 @@ def home_view(uid: int) -> tuple[str, InlineKeyboardMarkup]:
            "", "Выберите раздел:"]
     kb = [[btn("🏠 Сегодня", "td"), btn("📋 Открытые работы", "l:a:0")]]
     mine = []
-    if role == CUSTOMS:
+    if has_role(uid, CUSTOMS):
         mine.append(btn(f"🛃 Мои грузы · {counts['k']}", "l:k:0"))
-    elif role == OPERATOR:
+    if has_role(uid, OPERATOR):
         mine.append(btn(f"🧾 Мои грузы · {counts['u']}", "l:u:0"))
     if counts["d"]:
         mine.append(btn(f"⏳ Срок прошёл · {counts['d']}", "l:d:0"))
@@ -1659,6 +1659,8 @@ def reference_html() -> str:
         "Роли назначает только Генеральный Директор. Новый человек нажимает /start — Директору приходит запрос "
         "с кнопками выбора роли. Дать доступ заранее: /adduser ID (ID человек узнаёт командой /id). "
         "Менять роли можно в любой момент: «👥 Команда» или /team.\n"
+        "➕ Одному человеку можно дать дополнительную роль (Разработчик, 1С УНФ-Оператор, Специалист по таможне): "
+        "он получает уведомления, документы и «Мои партии» за обе роли.\n"
         "Уведомления о каждой смене статуса получают Директор, Разработчик и 1С УНФ-Оператор."
         "</blockquote>",
         "<b>Обозначения</b>",
@@ -1873,8 +1875,8 @@ def today_view(uid: int) -> tuple[str, InlineKeyboardMarkup]:
     if rc["red"]:
         actions.insert(0, ("🔴", f"Высоких рисков: <b>{rc['red']}</b> — разберите в «⚠️ Риски»", "rk:r:0"))
     if counts["d"]:
-        mine = [r for r in filtered_open("d") if (me == CUSTOMS and app.resp_map.get(r["id"]) == CUSTOMS)
-                or (me == OPERATOR and app.resp_map.get(r["id"]) == OPERATOR)]
+        my_roles = set(roles_of(uid))
+        mine = [r for r in filtered_open("d") if app.resp_map.get(r["id"]) in my_roles & {CUSTOMS, OPERATOR}]
         if mine or admin or can_manage(uid):
             n = len(mine) if mine else counts["d"]
             actions.insert(0, ("⏳", f"Срок этапа прошёл: <b>{n}</b> — напомнить или решить", "l:d:0"))
@@ -2278,7 +2280,8 @@ def team_view(page: int = 0) -> tuple[str, InlineKeyboardMarkup]:
                "(его ID он узнаёт командой /id).")
     kb = []
     for m in members[page * PAGE_SIZE:(page + 1) * PAGE_SIZE]:
-        kb.append([btn(f"{ROLE_ICON[m['role']]} {short_title(member_title(m), 22)} · {m['id']}",
+        extra = "".join(ROLE_ICON[r] for r in roles_of(m["id"])[1:])
+        kb.append([btn(f"{ROLE_ICON[m['role']]}{extra} {short_title(member_title(m), 22)} · {m['id']}",
                        f"tu:{m['id']}:{page}")])
     if pages > 1:
         kb.append(pager("tm", page, pages))
@@ -2293,6 +2296,9 @@ def team_user_view(uid: int, page: int, viewer_id: int) -> tuple[str, InlineKeyb
     role = m["role"]
     name = f"👤 <b>{esc(member_title(m))}</b>" + (f" · @{esc(m['username'])}" if m["username"] else "")
     out = [name, f"🆔 <code>{uid}</code>", "", f"Роль: <b>{role_label(role)}</b>"]
+    extras = roles_of(uid)[1:]
+    if extras:
+        out.append("➕ Дополнительно: <b>" + ", ".join(f"{ROLE_ICON[r]} {ROLE_NAME[r]}" for r in extras) + "</b>")
     if role in ACTIVE_ROLES:
         out.append(f"<i>{ROLE_INFO[role]}</i>")
         acc = access_map(uid)
@@ -2317,6 +2323,8 @@ def team_user_view(uid: int, page: int, viewer_id: int) -> tuple[str, InlineKeyb
     history = app.db.role_history(uid)
     if history:
         names = {**ROLE_NAME, PENDING: "запрос", DENIED: "закрыт", "": "—"}
+        names.update({f"+{r}": f"➕ {ROLE_NAME[r]}" for r in EXTRA_ROLES})
+        names.update({f"-{r}": f"➖ {ROLE_NAME[r]}" for r in EXTRA_ROLES})
         out.append("\n<b>История ролей</b>")
         out.append("<blockquote expandable>" + "\n".join(
             f"{fmt_dt(h['ts'])} · {names.get(h['old_role'], h['old_role'])} → {names.get(h['new_role'], h['new_role'])}"
@@ -2327,6 +2335,18 @@ def team_user_view(uid: int, page: int, viewer_id: int) -> tuple[str, InlineKeyb
         kb.append([btn(role_button(r, mark=(role == r)), f"tr:{uid}:{CODE_OF[r]}:{page}")])
     if not protected and role != DENIED:
         kb.append([btn("⛔ Отклонить запрос" if role == PENDING else "⛔ Закрыть доступ", f"tr:{uid}:x:{page}")])
+    if role in ACTIVE_ROLES:
+        cur_extra = app.db.extra_roles(uid)
+        row = []
+        for r in EXTRA_ROLES:
+            if r == role:
+                continue
+            on = r in cur_extra
+            row.append(btn(("☑️ " if on else "➕ ") + f"{ROLE_ICON[r]} {ROLE_SHORT.get(r, ROLE_NAME[r])}",
+                           f"tx:{uid}:{CODE_OF[r]}:{page}"))
+        if row:
+            kb.append([btn("Дополнительная роль (можно несколько):", "noop")])
+            kb.extend([[b] for b in row])
     if role in ACTIVE_ROLES and not (owner or can_manage(uid)):
         over = app.db.access_of(uid)
         kb.append([btn("🔐 Доступы" + (f" · ✍️ {len(over)}" if over else ""), f"ua:{uid}:{page}")])
@@ -2609,16 +2629,39 @@ def role_of(user_id: int | None) -> str | None:
     return None
 
 
+EXTRA_ROLES = (DEVELOPER, OPERATOR, CUSTOMS)   # какие роли можно дать человеку дополнительно к основной
+
+
+def roles_of(user_id: int | None) -> list[str]:
+    """Все роли человека: основная и дополнительные. Пусто — доступа нет."""
+    main = role_of(user_id)
+    if main is None:
+        return []
+    return [main] + [r for r in app.db.extra_roles(user_id) if r in EXTRA_ROLES and r != main]
+
+
+def has_role(user_id: int | None, role: str) -> bool:
+    return role in roles_of(user_id)
+
+
+def roles_label(user_id: int | None) -> str:
+    """«💻 Разработчик + 🧾 1С УНФ-Оператор»."""
+    rs = roles_of(user_id)
+    if not rs:
+        return ""
+    return role_label(rs[0]) + "".join(f" + {ROLE_ICON[r]} {ROLE_SHORT.get(r, ROLE_NAME[r])}" for r in rs[1:])
+
+
 def is_allowed(user_id: int | None) -> bool:
     return role_of(user_id) is not None
 
 
 def is_admin(user_id: int | None) -> bool:
-    return role_of(user_id) in ADMIN_ROLES
+    return any(r in ADMIN_ROLES for r in roles_of(user_id))
 
 
 def can_edit(user_id: int | None) -> bool:
-    return role_of(user_id) in EDIT_ROLES
+    return any(r in EDIT_ROLES for r in roles_of(user_id))
 
 
 def admin_ids() -> set[int]:
@@ -2733,7 +2776,7 @@ async def cmd_start(message: Message) -> None:
         "Я слежу за таблицей импортных грузов <b>GOLD DISHES / UYDA</b>: напоминаю о новых грузах "
         "и открытых работах, считаю расходы и себестоимость.\n\n"
         f"✅ Вы подписаны на напоминания. Сводка — каждый день в {cfg.DAILY_REMINDER_TIME}.\n"
-        f"🔑 Ваша роль: <b>{role_label(role)}</b> — {ROLE_INFO[role]}.\n\n"
+        f"🔑 Ваша роль: <b>{roles_label(uid)}</b> — {ROLE_INFO[role]}.\n\n"
         "Пользуйтесь меню внизу экрана 👇",
         reply_markup=main_menu(message.from_user.id))
 
@@ -3445,12 +3488,12 @@ def risks_view(uid: int, flt: str = "a", page: int = 0) -> tuple[str, InlineKeyb
     rows = app.db.risks(("closed", "accepted") if flt == "h" else ("open", "work"))
     if flt == "h":
         rows = sorted(rows, key=lambda r: -(r["closed_at"] or 0))[:80]
-    me = role_of(uid)
-    mine_owner = {CUSTOMS: "customs", OPERATOR: "operator", DEVELOPER: "developer", DIRECTOR: "director"}.get(me, "")
+    owner_of = {CUSTOMS: "customs", OPERATOR: "operator", DEVELOPER: "developer", DIRECTOR: "director"}
+    mine_owners = {owner_of[r] for r in roles_of(uid) if r in owner_of}
     if flt == "r":
         rows = [r for r in rows if r["p"] * r["i"] >= 15]
     elif flt == "m":
-        rows = [r for r in rows if r["owner"] == mine_owner]
+        rows = [r for r in rows if r["owner"] in mine_owners]
     elif flt == "p":
         rows = [r for r in rows if not r["ref"].startswith("c:")]
     cnt = risk_counts()
@@ -3798,8 +3841,10 @@ def doc_mask_roles(mask: int) -> list[str]:
 
 
 def doc_default_mask(uid: int) -> int:
-    role = role_of(uid)
-    return DOC_BITS["c"] if role == OPERATOR else DOC_BITS["o"]
+    op, cu = has_role(uid, OPERATOR), has_role(uid, CUSTOMS)
+    if op and cu:
+        return DOC_BITS["g"]               # обе роли сразу — себе не отправляем, по умолчанию Директору
+    return DOC_BITS["c"] if op else DOC_BITS["o"]
 
 
 def doc_targets(role: str, stage: str = "work") -> set[int]:
@@ -3916,7 +3961,7 @@ def doc_caption(d, header: str | None = None) -> str:
 
 def can_finalize(uid: int, d) -> bool:
     return (d["stage"] != "final" and can_edit(uid) and has_access(uid, "docs_work")
-            and (uid == d["from_id"] or role_of(uid) in (OPERATOR, CUSTOMS) or can_manage(uid)))
+            and (uid == d["from_id"] or has_role(uid, OPERATOR) or has_role(uid, CUSTOMS) or can_manage(uid)))
 
 
 def doc_kb(d, viewer: int) -> InlineKeyboardMarkup:
@@ -4186,10 +4231,10 @@ def doc_choose_view(uid: int, found: list[int] | None = None) -> tuple[str, Inli
         if not cand:
             out.append("\n🔍 Ничего не найдено — попробуйте другое название, номер ГТД или машины.")
     else:
-        role = role_of(uid)
+        my_roles = set(roles_of(uid)) & {CUSTOMS, OPERATOR}
         opened = [c for c in all_cargos() if is_open_cargo(c)]
-        if role in (CUSTOMS, OPERATOR):
-            mine = [c for c in opened if any(app.resp_map.get(i) == role for i in c["ids"])]
+        if my_roles:
+            mine = [c for c in opened if any(app.resp_map.get(i) in my_roles for i in c["ids"])]
             opened = mine + [c for c in opened if c not in mine]
         recent = app.db.docs_recent_records(4)
         cand = []
@@ -4598,7 +4643,7 @@ ACCESS_BUTTONS = {
 
 
 def access_default(uid: int, key: str) -> bool:
-    return role_of(uid) in ACCESS_DEFAULT.get(key, ())
+    return any(r in ACCESS_DEFAULT.get(key, ()) for r in roles_of(uid))
 
 
 def access_map(uid: int | None) -> dict[str, bool]:
@@ -4729,7 +4774,7 @@ def dashboard_data(uid: int, lang: str) -> dict:
         if mo == 0:
             y, mo = y - 1, 12
     keys.reverse()
-    by_m = {k: {"n": 0, "factory": 0.0, "overhead": 0.0, "fx": 0.0} for k in keys}
+    by_m = {k: {"n": 0, "factory": 0.0, "overhead": 0.0, "fx": 0.0, "ox": 0.0} for k in keys}
     for c in cargos:
         d = c.get("date")
         if not d or (d.year, d.month) not in by_m:
@@ -4740,13 +4785,14 @@ def dashboard_data(uid: int, lang: str) -> dict:
         f, o = num_(a.get("factory_usd")), num_(a.get("calc_overhead_usd"))
         b["factory"] += f
         b["overhead"] += o
-        if f and "calc_overhead_usd" in a:
+        if f and "calc_overhead_usd" in a:      # процент — только по партиям, где есть и завод, и расходы
             b["fx"] += f
+            b["ox"] += o
     for (yy, mm) in keys:
         b = by_m[(yy, mm)]
         pct = None
         if b["fx"]:
-            pct = round(b["overhead"] / b["fx"] * 100, 1)
+            pct = round(b["ox"] / b["fx"] * 100, 1)
         months.append({"label": f"{T(MONTHS[mm - 1])[:3]} {str(yy)[2:]}", "n": b["n"], "factory": round(b["factory"]),
                        "overhead": round(b["overhead"]), "pct": pct})
 
@@ -4757,7 +4803,7 @@ def dashboard_data(uid: int, lang: str) -> dict:
         agg: dict[str, dict] = {}
         for c in year_c:
             key, label = c["keys"][dim]
-            r = agg.setdefault(key, {"label": T(label), "n": 0, "factory": 0.0, "overhead": 0.0, "fx": 0.0})
+            r = agg.setdefault(key, {"label": T(label), "n": 0, "factory": 0.0, "overhead": 0.0, "fx": 0.0, "ox": 0.0})
             a = c["agg"]
             f, o = num_(a.get("factory_usd")), num_(a.get("calc_overhead_usd"))
             r["n"] += 1
@@ -4765,11 +4811,12 @@ def dashboard_data(uid: int, lang: str) -> dict:
             r["overhead"] += o
             if f and "calc_overhead_usd" in a:
                 r["fx"] += f
+                r["ox"] += o
         rows = sorted(agg.values(), key=lambda r: (-(r["factory"] + r["overhead"]), -r["n"]))
         total = sum(r["n"] for r in rows) or 1
         cats[T(ct.DIMENSIONS[dim][1])] = [{"label": r["label"], "n": r["n"], "factory": round(r["factory"]),
                                            "overhead": round(r["overhead"]),
-                                           "pct": round(r["overhead"] / r["fx"] * 100, 1) if r["fx"] else None,
+                                           "pct": round(r["ox"] / r["fx"] * 100, 1) if r["fx"] else None,
                                            "share": round(r["n"] / total * 100, 1)} for r in rows[:40]]
 
     # открытые партии
@@ -4848,7 +4895,7 @@ def dashboard_data(uid: int, lang: str) -> dict:
         "title": "Uyda · Импорт — дашборд", "tab_overview": "Обзор", "tab_open": "Открытые партии",
         "tab_cats": "Категории", "tab_risks": "Риски", "tab_docs": "Документы",
         "ch_money": "Завод и расходы по месяцам", "ch_money_hint": "USD, по дате ГТД ИМ40, последние 12 месяцев",
-        "ch_pct": "Расходы к цене завода", "ch_pct_hint": "%, по месяцам — чем ниже, тем лучше",
+        "ch_pct": "Расходы к цене завода", "ch_pct_hint": "%, по месяцам, только партии с ценой завода — чем ниже, тем лучше",
         "ch_cat": "Завод и расходы по категориям", "ch_cat_hint": "USD, последние 12 месяцев, крупнейшие 12",
         "factory": "Завод", "overhead": "Расходы", "landed": "Себестоимость", "pct": "Расходы к заводу",
         "cargos": "Партий", "cargo": "Партия", "share": "Доля партий", "date": "Дата", "resp": "Ответственный",
@@ -5715,6 +5762,10 @@ async def cb_team_role(cb: CallbackQuery) -> None:
     row = app.db.get_user(uid)
     app.db.set_user_role(uid, new, actor, cb.from_user.full_name,
                          name=(row["name"] if row else "") or app.db.subscriber_name(uid))
+    extras = app.db.extra_roles(uid)
+    if new in extras or (new not in ACTIVE_ROLES and extras):   # основная роль не дублируется, без доступа — без доп. ролей
+        app.db.set_extra_roles(uid, [] if new not in ACTIVE_ROLES else [r for r in extras if r != new],
+                               actor, cb.from_user.full_name)
     app.pending_reason.pop(uid, None)
     if new in ACTIVE_ROLES:
         app.db.add_subscriber(uid, (row["name"] if row else "") or app.db.subscriber_name(uid))
@@ -5725,6 +5776,36 @@ async def cb_team_role(cb: CallbackQuery) -> None:
     await cb.answer(f"{ROLE_ICON[new]} {ROLE_SHORT.get(new, ROLE_NAME[new])}")
     if uid != actor:
         await notify_role_change(uid, new)
+
+
+@dp.callback_query(F.data.startswith("tx:"))
+async def cb_team_extra(cb: CallbackQuery) -> None:
+    """Дополнительная роль: включить / выключить (только Генеральный Директор)."""
+    if not await allowed_cb(cb):
+        return
+    actor = cb.from_user.id
+    if not can_manage(actor):
+        await cb.answer("⛔ Роли назначает Генеральный Директор", show_alert=True)
+        return
+    _, uid_s, code, page_s = cb.data.split(":")
+    uid, page, extra = int(uid_s), int(page_s), ROLE_CODE.get(code)
+    main = role_of(uid)
+    if extra not in EXTRA_ROLES or main is None or extra == main:
+        await cb.answer("Эту роль нельзя добавить", show_alert=True)
+        return
+    cur = app.db.extra_roles(uid)
+    if extra in cur:
+        new, change, word = [r for r in cur if r != extra], f"-{extra}", "убрана"
+    else:
+        new, change, word = cur + [extra], f"+{extra}", "добавлена"
+    app.db.set_extra_roles(uid, [r for r in EXTRA_ROLES if r in new], actor, cb.from_user.full_name, change,
+                           default_role=main, name=app.db.subscriber_name(uid))
+    text, kb = team_user_view(uid, page, actor)
+    await safe_edit(cb, text, kb)
+    await cb.answer(f"{ROLE_ICON[extra]} {ROLE_SHORT.get(extra, ROLE_NAME[extra])}: {word}")
+    if uid != actor and is_allowed(uid):
+        await send(uid, f"🔑 <b>Ваши роли в боте изменены</b>\n{roles_label(uid)}\n\n"
+                        "Нажмите /start, чтобы обновить меню.")
 
 
 # ===========================================================================

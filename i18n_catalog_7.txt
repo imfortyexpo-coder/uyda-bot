@@ -1,0 +1,10 @@
+# Обновление 15 · дополнительные роли
+➕ Дополнительно: ¦ ➕ Qo‘shimcha: ¦ ➕ Also:
+Дополнительная роль (можно несколько): ¦ Qo‘shimcha rol (bir nechta bo‘lishi mumkin): ¦ Additional role (several allowed):
+🔑 <b>Ваши роли в боте изменены</b> ¦ 🔑 <b>Botdagi rollaringiz o‘zgartirildi</b> ¦ 🔑 <b>Your roles in the bot have changed</b>
+Нажмите /start, чтобы обновить меню. ¦ Menyuni yangilash uchun /start ni bosing. ¦ Press /start to refresh the menu.
+добавлена ¦ qo‘shildi ¦ added
+убрана ¦ olib tashlandi ¦ removed
+Эту роль нельзя добавить ¦ Bu rolni qo‘shib bo‘lmaydi ¦ This role cannot be added
+➕ Одному человеку можно дать дополнительную роль (Разработчик, 1С УНФ-Оператор, Специалист по таможне): он получает уведомления, документы и «Мои партии» за обе роли. ¦ ➕ Bitta odamga qo‘shimcha rol berish mumkin (Dasturchi, 1C UNF operatori, Bojxona mutaxassisi): u ikkala rol bo‘yicha bildirishnomalar, hujjatlar va «Mening yuklarim»ni oladi. ¦ ➕ One person can get an additional role (Developer, 1C UNF Operator, Customs specialist): they receive notifications, documents and «My shipments» for both roles.
+две роли у одного человека (15) ¦ bitta odamda ikki rol (15) ¦ two roles for one person (15)

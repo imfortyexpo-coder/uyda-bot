@@ -104,3 +104,5 @@ Uyda · Shinam • Qulay • Sifatli — данные из таблицы имп
 к прошлому месяцу ¦ o‘tgan oyga nisbatan ¦ vs last month
 ждёт ¦ kutilmoqda ¦ waiting
 документы по этапам, доступы, дашборд ¦ hujjatlar bosqichlari, ruxsatlar, dashbord ¦ document stages, access, dashboard
+%, по месяцам, только партии с ценой завода — чем ниже, тем лучше ¦ %, oylar bo‘yicha, faqat zavod narxi bor yuklar — qancha past bo‘lsa, shuncha yaxshi ¦ %, by month, only shipments with a factory price — lower is better
+документы по этапам, доступы, дашборд (14.1) ¦ hujjatlar bosqichlari, ruxsatlar, dashbord (14.1) ¦ document stages, access, dashboard (14.1)

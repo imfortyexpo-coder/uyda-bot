@@ -196,6 +196,9 @@ class Storage:
         rcols = {r["name"] for r in self.db.execute("PRAGMA table_info(resp_state)")}
         if rcols and "since" not in rcols:   # с какого момента груз у текущего ответственного
             self.db.execute("ALTER TABLE resp_state ADD COLUMN since INTEGER")
+        ucols = {r["name"] for r in self.db.execute("PRAGMA table_info(users)")}
+        if "extra_roles" not in ucols:      # дополнительные роли человека (через запятую)
+            self.db.execute("ALTER TABLE users ADD COLUMN extra_roles TEXT DEFAULT ''")
         dcols = {r["name"] for r in self.db.execute("PRAGMA table_info(docs)")}
         if dcols and "stage" not in dcols:   # рабочий / финальный файл
             self.db.execute("ALTER TABLE docs ADD COLUMN stage TEXT NOT NULL DEFAULT 'work'")
@@ -340,9 +343,33 @@ class Storage:
         return self.db.execute("SELECT COUNT(*) FROM users WHERE role=?", (role,)).fetchone()[0]
 
     def db_ids_by_roles(self, roles: tuple[str, ...]) -> set[int]:
-        """ID всех, кому в боте выбрана одна из этих ролей."""
-        q = f"SELECT user_id FROM users WHERE role IN ({','.join('?' * len(roles))})"
-        return {r["user_id"] for r in self.db.execute(q, roles)}
+        """ID всех, кому в боте выбрана одна из этих ролей — основная или дополнительная
+        (дополнительная действует, только пока у человека открыт доступ)."""
+        want, out = set(roles), set()
+        for r in self.db.execute("SELECT user_id, role, COALESCE(extra_roles, '') AS extra FROM users"):
+            extra = {x for x in r["extra"].split(",") if x}
+            if r["role"] in want or (r["role"] in ACTIVE_ROLES and extra & want):
+                out.add(r["user_id"])
+        return out
+
+    def extra_roles(self, user_id: int) -> list[str]:
+        row = self.db.execute("SELECT COALESCE(extra_roles, '') FROM users WHERE user_id=?", (user_id,)).fetchone()
+        return [x for x in (row[0] if row else "").split(",") if x]
+
+    def set_extra_roles(self, user_id: int, roles: list[str], actor_id: int | None, actor_name: str,
+                        change: str = "", default_role: str = ADMIN, name: str = "") -> None:
+        """Записать дополнительные роли. change — '+operator' / '-operator' для журнала ролей."""
+        now = int(time.time())
+        if self.get_user(user_id) is None:
+            self.db.execute("INSERT INTO users(user_id, name, username, role, requested_at, updated_at, updated_by) "
+                            "VALUES(?, ?, '', ?, ?, ?, ?)", (user_id, name, default_role, now, now, actor_name))
+        self.db.execute("UPDATE users SET extra_roles=?, updated_at=?, updated_by=? WHERE user_id=?",
+                        (",".join(roles), now, actor_name, user_id))
+        if change:
+            cur = self.get_user(user_id)["role"]
+            self.db.execute("INSERT INTO role_log(ts, target_id, old_role, new_role, actor_id, actor_name) "
+                            "VALUES(?, ?, ?, ?, ?, ?)", (now, user_id, cur, change, actor_id, actor_name))
+        self.db.commit()
 
     def db_admin_ids(self) -> set[int]:
         return self.db_ids_by_roles(ADMIN_ROLES)
