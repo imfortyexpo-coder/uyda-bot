@@ -60,7 +60,7 @@ from storage import (ACTIVE_ROLES, ADMIN, ADMIN_ROLES, ARCHIVE, CUSTOMS, DENIED,
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 log = logging.getLogger("import-bot")
 esc = html.escape
-BOT_VERSION = "2026-10-31 · стадии работы с файлами (16)"   # меняйте при выпуске новых файлов — видно в /status
+BOT_VERSION = "2026-11-02 · Google Таблица через свой аккаунт (17)"   # меняйте при выпуске новых файлов — видно в /status
 BOT_DESCRIPTION = ("Учёт импортных грузов GOLD DISHES / UYDA: напоминания о новых грузах и открытых работах, "
                    "статусы, цена завода и все расходы, себестоимость, категории (страны, поставщики, транспорт), "
                    "проверки данных таблицы и журнал действий.")
@@ -1398,7 +1398,9 @@ def totals_html(records: list[dict], title: str) -> str:
 def source_info() -> tuple[str, bool]:
     """Откуда бот берёт данные и не устарели ли они: (строка для сообщения, нужно ли предупреждение)."""
     if not cfg.EXCEL_FILE:
-        return "Google Таблица", False
+        how = getattr(app.reader, "mode", "")
+        return "Google Таблица" + (" (вход через ваш Google-аккаунт, только чтение)" if how == "oauth"
+                                   else " (сервисный аккаунт)" if how == "service" else ""), False
     info = rel.file_age(cfg.EXCEL_FILE)
     if info is None:
         return f"файл <b>{esc(cfg.EXCEL_FILE)}</b> не найден в папке бота", True

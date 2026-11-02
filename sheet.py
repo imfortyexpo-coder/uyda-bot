@@ -8,6 +8,8 @@ import logging
 import re
 from datetime import date, datetime
 
+import os
+
 import gspread
 from gspread.utils import ValueRenderOption, absolute_range_name
 
@@ -341,11 +343,46 @@ def rows_label(rec: dict) -> str:
 # ===========================================================================
 # Чтение из Google
 # ===========================================================================
+LOGIN_HINT = "войдите в Google заново: в папке бота откройте cmd и выполните  py -3.12 google_login.py"
+
+
+def google_client():
+    """Доступ к Google Таблицам. -> (клиент gspread, как вошли: 'oauth' — свой аккаунт, 'service' — сервисный).
+    Свой аккаунт (google_token.json) главнее: достаточно прав «Читатель» к таблице."""
+    token = cfg.in_base(cfg.GOOGLE_TOKEN_FILE)
+    if os.path.exists(token):
+        from google.oauth2.credentials import Credentials
+        creds = Credentials.from_authorized_user_file(token, cfg.GOOGLE_SCOPES)
+        return gspread.authorize(creds), "oauth"
+    sa = cfg.in_base(cfg.SERVICE_ACCOUNT_FILE)
+    if os.path.exists(sa):
+        return gspread.service_account(filename=sa), "service"
+    raise RuntimeError("Нет входа в Google (нет google_token.json и service_account.json) — " + LOGIN_HINT)
+
+
 class SheetReader:
     def __init__(self):
-        self._gc = gspread.service_account(filename=cfg.SERVICE_ACCOUNT_FILE)
+        self._gc = None
+        self.mode = ""
 
     def fetch(self) -> list[dict]:
+        if not cfg.SPREADSHEET_ID:
+            raise RuntimeError("В env не указана таблица (GOOGLE_SPREADSHEET_ID) — " + LOGIN_HINT)
+        if self._gc is None:
+            self._gc, self.mode = google_client()
+        try:
+            return self._fetch()
+        except Exception as e:
+            from google.auth.exceptions import RefreshError
+            if isinstance(e, RefreshError):
+                self._gc = None          # в следующий раз — заново с диска (вдруг вход уже обновили)
+                raise RuntimeError("Вход в Google устарел или отозван — " + LOGIN_HINT) from None
+            if isinstance(e, gspread.exceptions.APIError) and getattr(e, "code", None) in (403, 404):
+                raise RuntimeError("Google не даёт открыть таблицу (нет доступа «Читатель» или неверная ссылка). "
+                                   "Проверьте, что таблица открывается у вас в браузере.") from None
+            raise
+
+    def _fetch(self) -> list[dict]:
         book = self._gc.open_by_key(cfg.SPREADSHEET_ID)
         ws = (book.get_worksheet_by_id(int(cfg.WORKSHEET_GID)) if cfg.WORKSHEET_GID
               else book.worksheet(cfg.WORKSHEET_NAME))

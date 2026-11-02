@@ -47,6 +47,16 @@ SPREADSHEET_ID = os.getenv("GOOGLE_SPREADSHEET_ID", "")
 WORKSHEET_GID = os.getenv("GOOGLE_WORKSHEET_GID", "").strip()
 WORKSHEET_NAME = os.getenv("GOOGLE_WORKSHEET_NAME", "Лист1")
 SERVICE_ACCOUNT_FILE = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE", "service_account.json")
+# Вход в Google через свой аккаунт (доступ «Читатель» к таблице достаточно), без сервисного аккаунта:
+# один раз запустить  py -3.12 google_login.py  — появится файл google_token.json. Он главнее service_account.json.
+GOOGLE_TOKEN_FILE = os.getenv("GOOGLE_TOKEN_FILE", "google_token.json")
+GOOGLE_OAUTH_CLIENT_FILE = os.getenv("GOOGLE_OAUTH_CLIENT_FILE", "google_oauth_client.json")
+GOOGLE_SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]   # только чтение таблиц
+
+
+def in_base(path: str) -> str:
+    """Путь относительно папки бота (если не полный)."""
+    return path if os.path.isabs(path) else os.path.join(BASE_DIR, path)
 # Сколько строк сверху занимает шапка. Бот сам находит строку с «Отправитель» в столбце B;
 # это число используется, только если такой строки нет в первых 5 строках.
 HEADER_ROWS = int(os.getenv("HEADER_ROWS", "2"))

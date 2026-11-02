@@ -1,10 +1,13 @@
 # ── НИКОГДА не попадают в GitHub ──────────────────────────
-# токен бота и настройки
+# токен бота, ключи Google и настройки
 env
 .env
 *.env
 tok
 service_account.json
+google_token.json
+google_oauth_client.json
+client_secret*.json
 *.json.key
 # база бота, копии базы, файлы партий
 *.db
@@ -13,28 +16,22 @@ service_account.json
 *.db-shm
 backups/
 docs/
-# таблица импорта и любые выгрузки с данными компании
+# таблица импорта, архивы, документы компании
 /*.xlsx
 /*.xls
 /*.xlsm
 /*.csv
+**/*.xlsx
+*.zip
+*.pdf
 odata_*.txt
+# из папок в репозиторий попадают только brand и BotFather
+/*/
+!/brand/
+!/BotFather/
 # служебное
 __pycache__/
 *.pyc
 *.log
 .venv/
 venv/
-uyda-update-*/
-uyda-update-*/
-*.zip
-**/*.xlsx
-/*/
-!/brand/
-!/BotFather/
-/*/
-!/brand/
-!/BotFather/
-/*/
-!/brand/
-!/BotFather/
